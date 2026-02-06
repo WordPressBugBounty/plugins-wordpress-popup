@@ -111,7 +111,6 @@ abstract class Hustle_Module_Page_Abstract extends Hustle_Admin_Page_Abstract {
 		if ( ! empty( $this->current_page ) && ( $this->current_page === $this->page || $this->current_page === $this->page_edit ) ) {
 			$this->on_listing_and_wizard_actions();
 		}
-
 	}
 
 	/**
@@ -654,7 +653,7 @@ abstract class Hustle_Module_Page_Abstract extends Hustle_Admin_Page_Abstract {
 		$wc_cats    = array();
 		$wc_tags    = array();
 
-		$module = new Hustle_Module_Model( filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT ) );
+		$module = Hustle_Module_Model::new_instance( filter_input( INPUT_GET, 'id', FILTER_VALIDATE_INT ) );
 		if ( ! is_wp_error( $module ) ) {
 			$settings = $module->get_visibility()->to_array();
 

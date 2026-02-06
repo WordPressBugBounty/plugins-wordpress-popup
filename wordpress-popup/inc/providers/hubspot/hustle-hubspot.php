@@ -176,7 +176,7 @@ if ( ! class_exists( 'Hustle_HubSpot' ) ) :
 
 			} else {
 
-				$module = new Hustle_Module_Model( $module_id );
+				$module = Hustle_Module_Model::new_instance( $module_id );
 				if ( ! is_wp_error( $module ) ) {
 					$auth_url = $api->get_authorization_uri( $module_id, true, $module->get_wizard_page() );
 				}
@@ -432,7 +432,6 @@ if ( ! class_exists( 'Hustle_HubSpot' ) ) :
 			}
 
 			return $response;
-
 		}
 	}
 

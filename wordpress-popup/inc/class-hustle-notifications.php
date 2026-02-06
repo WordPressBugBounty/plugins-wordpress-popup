@@ -258,6 +258,44 @@ class Hustle_Notifications {
 	}
 
 	/**
+	 * Prints the html for the provider's authentication deprecation notice.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param string $provider Provider's name.
+	 * @param array  $provider_data Provider's data.
+	 */
+	private function get_provider_auth_deprecation_notice_html( $provider, $provider_data = array() ) {
+		$current_user = wp_get_current_user();
+
+		$username = ! empty( $current_user->user_firstname ) ? $current_user->user_firstname : $current_user->user_login;
+
+		$migrate_url = add_query_arg(
+			array(
+				'page'                    => Hustle_Data::INTEGRATIONS_PAGE,
+				'show_provider_migration' => $provider,
+				'action'                  => 'show_migration_message',
+			),
+			'admin.php'
+		);
+		$provided_id = isset( $provider_data['id'] ) ? $provider . '_' . $provider_data['id'] : $provider;
+		?>
+		<div
+			id='<?php echo esc_attr( "hustle_migration_notice__$provided_id" ); ?>'
+			class="hustle-notice notice notice-warning hustle-provider-notice is-dismissible <?php echo esc_attr( "hustle_migration_notice__$provider" ); ?>"
+			data-name="<?php echo esc_attr( $provider ); ?>"
+			data-id="<?php echo isset( $provider_data['id'] ) ? esc_attr( $provider_data['id'] ) : ''; ?>"
+			style="display: none"
+		>
+			<p>
+			<?php $this->get_provider_migration_content( $provider, $username, $provider_data['name'] ); ?>
+			</p>
+			<p><a href="<?php echo esc_url( $migrate_url ); ?>" class="button-primary"><?php esc_html_e( 'Re-authorize Now', 'hustle' ); ?></a></p>
+		</div>
+		<?php
+	}
+
+	/**
 	 * Prints the copy for the notice for when migrating providers.
 	 *
 	 * @param string $provider Provider's slug.
@@ -268,11 +306,10 @@ class Hustle_Notifications {
 		switch ( $provider ) {
 			case 'constantcontact':
 				/* translators: user's name */
-				$msg = sprintf( esc_html__( "Hey %s, we have updated our Constant Contact integration to support the latest v3.0 API. Since you are connected to the old API version, we recommend you to migrate your integration to the latest API version as we'll cease to support the deprecated API at some point.", 'hustle' ), $username );
+				$msg = sprintf( esc_html__( "Hustle's Constant Contact integration has been upgraded to the latest API (v3) with OAuth2 authentication for improved security and reliability. To continue sending leads to Constant Contact, please re-authorize your integration.", 'hustle' ), $username );
 				break;
 			case 'infusionsoft':
-				/* translators: user's name */
-				$msg = sprintf( esc_html__( "Hey %s, we have updated our Keap integration to support the latest REST API. Since you are connected to the old API version, we recommend you to migrate your integration to the latest API version as we'll cease to support the deprecated API at some point.", 'hustle' ), $username );
+				$msg = esc_html__( "Hustle's Keap integration has been upgraded to the latest OAuth2 authentication for improved security and reliability. To continue sending leads to Keap, please re-authenticate your integration.", 'hustle' );
 				break;
 			case 'aweber':
 				/* translators: 1. user's name, */
@@ -359,7 +396,7 @@ class Hustle_Notifications {
 
 			add_action(
 				'load-plugins.php',
-				function() {
+				function () {
 					add_action( 'after_plugin_row_hustle/opt-in.php', array( $this, 'in_plugin_update_message' ), 10, 3 );
 				},
 				22 // Must be called after Dashboard which is 21.
@@ -613,6 +650,35 @@ class Hustle_Notifications {
 					);
 					$this->get_provider_migration_notice_html( 'aweber', $provider_data );
 				}
+			}
+		}
+
+		$keap_instances = get_option( 'hustle_provider_infusionsoft_settings' );
+		// We show the notice if there is at least one instance without a token.
+		if ( ! empty( $keap_instances ) && is_array( $keap_instances ) ) {
+			$provider    = Hustle_Infusion_Soft::get_instance();
+			$api_version = (int) $provider->get_installed_version();
+			if ( 1 === $api_version ) {
+				// Show only one notification.
+				// This will work globally for all the instances.
+				$provider_data = array(
+					'name' => Hustle_Infusion_Soft::SLUG,
+					'id'   => '0',
+				);
+				$this->get_provider_auth_deprecation_notice_html( 'infusionsoft', $provider_data );
+			}
+		}
+
+		$cc_instance = Hustle_ConstantContact::get_instance();
+		if ( $cc_instance->migration_required() ) {
+			// Check if there is a connected Constant Contact integration.
+			// If there is, show the notice.
+			if ( $cc_instance->is_connected() ) {
+				$provider_data = array(
+					'name' => Hustle_ConstantContact::SLUG,
+					'id'   => '0',
+				);
+				$this->get_provider_auth_deprecation_notice_html( 'constantcontact', $provider_data );
 			}
 		}
 	}

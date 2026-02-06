@@ -281,7 +281,7 @@ class Hustle_Dashboard_Admin extends Hustle_Admin_Page_Abstract {
 						$value = esc_html__( 'None', 'hustle' );
 						break;
 					}
-					$module = new Hustle_Module_Model( $module_id );
+					$module = Hustle_Module_Model::new_instance( $module_id );
 					if ( ! is_wp_error( $module ) ) {
 						$value = $module->module_name;
 						$url   = add_query_arg( 'page', $module->get_wizard_page() );

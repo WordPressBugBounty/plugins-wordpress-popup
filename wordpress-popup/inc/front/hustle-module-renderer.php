@@ -329,7 +329,7 @@ class Hustle_Module_Renderer extends Hustle_Renderer_Abstract {
 	 *
 	 * @since 4.3.0
 	 *
-	 * @param array $content The stored module's content meta settings.
+	 * @param object $content The stored module's content meta settings.
 	 * @return boolean
 	 */
 	private function is_show_cta( $content ) {
@@ -351,13 +351,13 @@ class Hustle_Module_Renderer extends Hustle_Renderer_Abstract {
 				return false;
 			}
 		} else {
-
 			// Make both buttons have a label.
-			// And make sure they have an URL if their action isn't to close the module.
 			if ( '' === $content->cta_label || '' === $content->cta_two_label ) {
 				return false;
+			}
 
-			} elseif (
+			// And make sure they have an URL if their action isn't to close the module.
+			if (
 				( 'close' !== $content->cta_target && '' === $content->cta_url ) ||
 				( 'close' !== $content->cta_two_target && '' === $content->cta_two_url )
 			) {
@@ -1688,7 +1688,7 @@ class Hustle_Module_Renderer extends Hustle_Renderer_Abstract {
 	 *
 	 * @since 4.0
 	 * @return string
-	 * @throws Excpetion Addon field isn't a string.
+	 * @throws Exception Addon field isn't a string.
 	 */
 	private function get_custom_fields() {
 
@@ -1707,13 +1707,13 @@ class Hustle_Module_Renderer extends Hustle_Renderer_Abstract {
 
 					// Log errors.
 					if ( ! is_string( $addon_fields ) ) {
-						throw new Excpetion( 'The returned markup should be a string.' );
+						throw new Exception( 'The returned markup should be a string.' );
 					}
 
 					$html .= $addon_fields;
 				}
 			} catch ( Exception $e ) {
-				Hustle_Utils::maybe_log( $connected_addon->get_slug(), 'failed to add custom front form fields.', $e->getMessage() );
+				Hustle_Provider_Utils::maybe_log( $connected_addon->get_slug(), 'failed to add custom front form fields.', $e->getMessage() );
 			}
 		}
 
@@ -2045,7 +2045,6 @@ class Hustle_Module_Renderer extends Hustle_Renderer_Abstract {
 		}
 
 		return $html;
-
 	}
 
 	/**

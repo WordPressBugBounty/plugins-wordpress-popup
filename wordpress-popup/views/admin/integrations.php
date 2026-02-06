@@ -46,6 +46,20 @@
 <!-- Aweber integration migration modal -->
 <?php $this->render( 'admin/dialogs/modal-migrate-aweber' ); ?>
 
+<!-- Constant Contact integration migration modal -->
+<?php if ( Opt_In_Utils::get_hub_api_key() ) : ?>
+	<?php $this->render( 'admin/dialogs/modal-migrate-constantcontact-hub' ); ?>
+<?php else : ?>
+	<?php $this->render( 'admin/dialogs/modal-migrate-constantcontact-non-hub' ); ?>
+<?php endif; ?>
+
+<!-- Infusionsoft integration migration modal -->
+<?php if ( Opt_In_Utils::get_hub_api_key() ) : ?>
+	<?php $this->render( 'admin/dialogs/modal-migrate-infusionsoft-hub' ); ?>
+<?php else : ?>
+	<?php $this->render( 'admin/dialogs/modal-migrate-infusionsoft' ); ?>
+<?php endif; ?>
+
 <?php
 // Global Footer.
 $this->render( 'admin/global/sui-components/sui-footer' );

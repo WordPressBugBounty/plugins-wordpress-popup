@@ -38,7 +38,7 @@ class Hustle_Settings_Admin_Ajax {
 	private function filter_ips( $ip_string ) {
 
 		// Create an array with their values.
-		$ip_array = preg_split( '/[\s,]+/', $ip_string, null, PREG_SPLIT_NO_EMPTY );
+		$ip_array = preg_split( '/[\s,]+/', $ip_string, -1, PREG_SPLIT_NO_EMPTY );
 
 		// Remove from the array the IPs that are not valid IPs.
 		foreach ( $ip_array as $key => $ip ) {
@@ -80,7 +80,6 @@ class Hustle_Settings_Admin_Ajax {
 		 * @since 4.0.3
 		 */
 		do_action( 'hustle_after_reset_settings' );
-
 	}
 
 	/**
@@ -345,7 +344,6 @@ class Hustle_Settings_Admin_Ajax {
 		Hustle_Settings_Admin::update_hustle_settings( $value, 'unsubscribe' );
 
 		wp_send_json_success();
-
 	}
 
 	/**
@@ -446,7 +444,7 @@ class Hustle_Settings_Admin_Ajax {
 
 			foreach ( $modules_ids as $module_id ) {
 
-				$module = new Hustle_Module_Model( $module_id );
+				$module = Hustle_Module_Model::new_instance( $module_id );
 				if ( ! is_wp_error( $module ) ) {
 
 					$selected_roles = isset( $modules_roles[ $module_id ] ) ? $modules_roles[ $module_id ] : array();
@@ -514,21 +512,16 @@ class Hustle_Settings_Admin_Ajax {
 					// Add capability.
 					$role->add_cap( $cap );
 
-				} else {
-
-					// Check if this role can edit at least one module before removing the cap.
-					if ( 'edit' === $capability ) {
-
-						if ( ! Hustle_Module_Model::can_role_edit_one_module( $role_slug ) ) {
-							// Remove capability.
-							$role->remove_cap( $cap );
-						} else {
-							$role->add_cap( $cap );
-						}
-					} else {
+				} elseif ( 'edit' === $capability ) { // Check if this role can edit at least one module before removing the cap.
+					if ( ! Hustle_Module_Model::can_role_edit_one_module( $role_slug ) ) {
 						// Remove capability.
 						$role->remove_cap( $cap );
+					} else {
+						$role->add_cap( $cap );
 					}
+				} else {
+					// Remove capability.
+					$role->remove_cap( $cap );
 				}
 			}
 		}
@@ -537,7 +530,6 @@ class Hustle_Settings_Admin_Ajax {
 		Hustle_Settings_Admin::update_hustle_settings( $incoming, 'permissions' );
 
 		wp_send_json_success();
-
 	}
 
 	/**
@@ -749,7 +741,7 @@ class Hustle_Settings_Admin_Ajax {
 
 				$module_id = filter_input( INPUT_POST, 'module_id', FILTER_VALIDATE_INT );
 
-				$module = new Hustle_Module_Model( $module_id );
+				$module = Hustle_Module_Model::new_instance( $module_id );
 
 				if ( is_wp_error( $module ) ) {
 					$palette_array = $fallback_palette;
@@ -807,5 +799,4 @@ class Hustle_Settings_Admin_Ajax {
 
 		return $id;
 	}
-
 }

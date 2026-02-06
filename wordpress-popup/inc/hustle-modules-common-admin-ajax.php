@@ -158,9 +158,9 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 					$templates_helper = new Hustle_Templates_Helper();
 					$module_data     += $templates_helper->get_template( $template, $module_mode );
 
-					$module_model = new Hustle_Module_Model();
+					$module_model = Hustle_Module_Model::new_instance();
 				} else {
-					$module_model = new Hustle_SShare_Model();
+					$module_model = Hustle_SShare_Model::new_instance();
 				}
 
 				$module_id = $module_model->create_new( $module_data );
@@ -371,14 +371,14 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 
 			$is_new_module = is_wp_error( $module );
 
-			if ( ! $is_new_module && ! current_user_can( 'hustle_create' ) ) {
+			if ( $is_new_module && ! Opt_In_Utils::is_user_allowed( 'hustle_create' ) ) {
 				throw new Exception( 'invalid_permissions' );
 			}
 
 			$module_type = filter_input( INPUT_POST, 'type', FILTER_SANITIZE_SPECIAL_CHARS );
 
 			if ( ! $module_type || ! in_array( $module_type, Hustle_Data::get_module_types(), true ) ) {
-				throw new Exception( __( "The module's type is not valid.", 'hustle' ) );
+				throw new Exception( esc_html__( "The module's type is not valid.", 'hustle' ) );
 			}
 
 			// Send error if the user can't create new modules but is importing a new one.
@@ -407,13 +407,24 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 					throw new Exception( sprintf( __( 'Error: %s', 'hustle' ), esc_html( $file['error'] ) ) );
 				}
 
+				// Temporarily allow JSON file uploads.
+				$json_mime_filter = function ( $mimes ) {
+					$mimes['json'] = 'application/json';
+					return $mimes;
+				};
+
+				add_filter( 'upload_mimes', $json_mime_filter );
 				// Get the file's content.
 				$overrides = array(
 					'test_form' => false,
-					'test_type' => false,
+					'test_type' => true,
 				);
 
 				$wp_file = wp_handle_upload( $file, $overrides );
+
+				// Remove the filter after validation.
+				remove_filter( 'upload_mimes', $json_mime_filter );
+
 				if ( isset( $wp_file['error'] ) ) {
 					throw new Exception( __( 'The file could not be uploaded.check your upload folder permissions.', 'hustle' ) );
 				}
@@ -444,10 +455,8 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 					if ( Hustle_Module_Model::SOCIAL_SHARING_MODULE !== $data['data']['module_type'] ) {
 						throw new Exception( __( "You can't import modules of other than \"Social Sharing\" type into Social Sharing modules.", 'hustle' ) );
 					}
-				} else {
-					if ( Hustle_Module_Model::SOCIAL_SHARING_MODULE === $data['data']['module_type'] ) {
+				} elseif ( Hustle_Module_Model::SOCIAL_SHARING_MODULE === $data['data']['module_type'] ) {
 						throw new Exception( __( "You can't import Social Sharing modules into other module types.", 'hustle' ) );
-					}
 				}
 
 				$source_mode = $data['data']['module_mode'];
@@ -471,16 +480,15 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 							$data['meta']['design']['subtitle_color_alt'] = $data['meta']['design']['subtitle_color'];
 						}
 					}
-				} else {
-					if ( version_compare( $data['plugin']['version'], '4.4.9', '<' ) &&
+				} elseif ( version_compare( $data['plugin']['version'], '4.4.9', '<' ) &&
 							! empty( $data['meta']['design']['icon_style'] ) &&
 							'outline' === $data['meta']['design']['icon_style'] ) {
-						if ( isset( $data['meta']['design']['widget_icon_bg_color'] ) ) {
-							$data['meta']['design']['widget_counter_border'] = $data['meta']['design']['widget_icon_bg_color'];
-						}
-						if ( isset( $data['meta']['design']['floating_icon_bg_color'] ) ) {
-							$data['meta']['design']['floating_counter_border'] = $data['meta']['design']['floating_icon_bg_color'];
-						}
+
+					if ( isset( $data['meta']['design']['widget_icon_bg_color'] ) ) {
+						$data['meta']['design']['widget_counter_border'] = $data['meta']['design']['widget_icon_bg_color'];
+					}
+					if ( isset( $data['meta']['design']['floating_icon_bg_color'] ) ) {
+						$data['meta']['design']['floating_counter_border'] = $data['meta']['design']['floating_icon_bg_color'];
 					}
 				}
 				$target_mode = sanitize_key( $target_mode );
@@ -540,7 +548,6 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 					)
 				);
 			}
-
 		}
 
 		/**
@@ -731,7 +738,7 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 			$metas = filter_input( INPUT_POST, $module_mode . '_metas', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY );
 
 			if ( empty( $metas ) ) {
-				throw new Exception( __( 'Please select the settings to import.', 'hustle' ) );
+				throw new Exception( esc_html__( 'Please select the settings to import.', 'hustle' ) );
 			}
 
 			// No filter was applied. Import everything.
@@ -740,7 +747,7 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 			}
 
 			// Remove the metas that the user chose not to import.
-			foreach ( $data['meta'] as $name => $value ) {
+			foreach ( $data['meta'] as $name => $value ) { // phpcs:ignore
 				if ( ! in_array( $name, $metas, true ) ) {
 					unset( $data['meta'][ $name ] );
 				}
@@ -765,7 +772,7 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 			// Check if the current user can do this.
 			$is_allowed = Opt_In_Utils::is_user_allowed( 'hustle_edit_module', $module->id );
 			if ( ! $is_allowed ) {
-				throw new Exception( sprintf( __( 'Access denied. You do not have permission to perform this action.', 'hustle' ) ) );
+				throw new Exception( sprintf( esc_html__( 'Access denied. You do not have permission to perform this action.', 'hustle' ) ) );
 			}
 
 			$data = $this->apply_import_filters( $data, $module->module_mode );
@@ -829,15 +836,15 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 			$module_data = array_merge( $data['data'], $data['meta'] );
 
 			if ( Hustle_Module_Model::SOCIAL_SHARING_MODULE !== $module_type ) {
-				$module_model = new Hustle_Module_Model();
+				$module_model = Hustle_Module_Model::new_instance();
 			} else {
-				$module_model = new Hustle_SShare_Model();
+				$module_model = Hustle_SShare_Model::new_instance();
 			}
 
 			$module_id = $module_model->create_new( $module_data );
 
 			if ( ! empty( $module_id ) ) {
-				$module = new Hustle_Module_Model( $module_id );
+				$module = Hustle_Module_Model::new_instance( $module_id );
 				$module->clean_module_cache();
 
 				$url = add_query_arg(
@@ -852,7 +859,7 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 				wp_send_json_success( array( 'url' => $url ) );
 			}
 
-			throw new Exception( __( 'Creating a new module went wrong', 'hustle' ) );
+			throw new Exception( esc_html__( 'Creating a new module went wrong', 'hustle' ) );
 		}
 
 		/**
@@ -864,7 +871,7 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 			$hustle = filter_input( INPUT_POST, 'hustle', FILTER_SANITIZE_SPECIAL_CHARS );
 			$ids    = filter_input( INPUT_POST, 'ids', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY );
 			if ( ! is_array( $ids ) || empty( $ids ) ) {
-				wp_send_json_error( __( 'Failed', 'hustle' ) );
+				wp_send_json_error( esc_html__( 'Failed', 'hustle' ) );
 			}
 
 			foreach ( $ids as $id ) {
@@ -1047,7 +1054,6 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 
 			wp_send_json_success( $result );
 		}
-
 	}
 
 endif;

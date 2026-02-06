@@ -52,7 +52,6 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 		public function __construct() {
 			// Init request callback listener.
 			add_action( 'init', array( $this, 'process_callback_request' ) );
-
 		}
 
 		/**
@@ -118,7 +117,7 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 				)
 			);
 
-			return add_query_arg( $params, self::REDIRECT_URI );
+			return add_query_arg( $params, self::get_remote_api_url() );
 		}
 
 		/**
@@ -147,7 +146,7 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 				array(
 					'redirect_uri' => rawurlencode( $this->get_redirect_uri() ),
 					'grant_type'   => 'authorization_code',
-					'state'        => 'state', // It's added just because state param is required on the final endpoint. It's unuseful here.
+					'state'        => $this->prepare_state_param(), // It's added just because state param is required on the final endpoint. It's unuseful here.
 					'action'       => 'get_access_token',
 				)
 			);
@@ -232,9 +231,11 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 					return true;
 				}
 
-				if ( $response['response']['code'] <= 204
-					|| isset( $body->status ) && 'error' === $body->status ) {
-					return $body; }
+				if (
+					$response['response']['code'] <= 204 ||
+					( isset( $body->status ) && 'error' === $body->status ) ) {
+					return $body;
+				}
 			}
 			return $response;
 		}
@@ -348,7 +349,7 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 					'client_id'    => self::CLIENT_ID,
 					'scope'        => rawurlencode( self::SCOPE ),
 					'redirect_uri' => rawurlencode( $this->get_redirect_uri() ),
-					'state'        => rawurlencode( $this->get_nonce_value() . '|' . site_url( '/' ) ),
+					'state'        => $this->prepare_state_param(),
 				),
 				self::BASE_URL . 'oauth/authorize'
 			);
@@ -480,8 +481,16 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 
 			$difference = array_diff_key( $data, $filtered_data );
 			if ( ! empty( $difference ) ) {
-				$message = 'These fields are preventing your users from subscribing because they do not exist in your Hubspot account: ' . implode( ', ', array_keys( $difference ) );
-				throw new Exception( $message );
+				$invalid_fields = implode( ', ', array_keys( $difference ) );
+				throw new Exception(
+					esc_html(
+						sprintf(
+							/* translators: %s: List of invalid fields */
+							esc_html__( 'These fields are preventing your users from subscribing because they do not exist in your Hubspot account: %s', 'hustle' ),
+							esc_html( $invalid_fields )
+						)
+					)
+				);
 			}
 
 			foreach ( $data as $key => $value ) {
@@ -528,8 +537,16 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 
 			$difference = array_diff_key( $data, $filtered_data );
 			if ( ! empty( $difference ) ) {
-				$message = 'These fields are preventing your users from subscribing because they do not exist in your Hubspot account: ' . implode( ', ', array_keys( $difference ) );
-				throw new Exception( $message );
+				$invalid_fields = implode( ', ', array_keys( $difference ) );
+				throw new Exception(
+					esc_html(
+						sprintf(
+							/* translators: %s: List of invalid fields */
+							esc_html__( 'These fields are preventing your users from subscribing because they do not exist in your Hubspot account: %s', 'hustle' ),
+							esc_html( $invalid_fields )
+						)
+					)
+				);
 			}
 
 			foreach ( $data as $key => $value ) {

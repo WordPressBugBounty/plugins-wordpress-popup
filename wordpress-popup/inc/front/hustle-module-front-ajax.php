@@ -76,7 +76,7 @@ class Hustle_Module_Front_Ajax {
 				'{site_url}'   => site_url(),
 				'{site_title}' => get_bloginfo( 'name' ),
 			);
-			$module              = new Hustle_Module_Model( $module_id );
+			$module              = Hustle_Module_Model::new_instance( $module_id );
 			$local_list_settings = ! is_wp_error( $module ) ? $module->get_provider_settings( 'local_list' ) : '';
 			if ( ! empty( $local_list_settings['local_list_name'] ) ) {
 				$site_placeholders['{local_list}'] = $local_list_settings['local_list_name'];
@@ -105,12 +105,24 @@ class Hustle_Module_Front_Ajax {
 	 * Check the schedule
 	 */
 	public function module_display_despite_static_cache() {
+		// Verify nonce for security.
+		$nonce = filter_input( INPUT_POST, '_nonce', FILTER_SANITIZE_SPECIAL_CHARS );
+		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'hustle_display_check' ) ) {
+			wp_send_json_error( __( 'Invalid security token.', 'hustle' ) );
+		}
+
 		$module_id = filter_input( INPUT_POST, 'module_id', FILTER_VALIDATE_INT );
 		if ( ! $module_id ) {
 			wp_send_json_error( __( 'Invalid module ID!', 'hustle' ) );
 		}
 		$module = Hustle_Module_Collection::instance()->return_model_from_id( $module_id );
-		if ( is_wp_error( $module ) ) {
+		if (
+			is_wp_error( $module ) ||
+			(
+				$module instanceof Hustle_Module_Model &&
+				1 !== (int) $module->active
+			)
+		) {
 			wp_send_json_error( __( 'Invalid module!', 'hustle' ) );
 		}
 		$is_scheduled = true;
@@ -256,7 +268,7 @@ class Hustle_Module_Front_Ajax {
 			return;
 		}
 		$module_id = sanitize_text_field( wp_unslash( $_POST['data']['module_id'] ) );// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$module    = new Hustle_Module_Model( $module_id );
+		$module    = Hustle_Module_Model::new_instance( $module_id );
 
 		if ( is_wp_error( $module ) || ! $module instanceof Hustle_Module_Model || ! property_exists( $module, 'active' ) ) {
 			wp_send_json_error( __( 'Invalid module', 'hustle' ) );
@@ -306,7 +318,7 @@ class Hustle_Module_Front_Ajax {
 			'success'  => false,
 			'behavior' => array(),
 		);
-		$module   = new Hustle_Module_Model( $module_id );
+		$module   = Hustle_Module_Model::new_instance( $module_id );
 		if ( is_wp_error( $module ) ) {
 			return $response;
 		}
@@ -648,9 +660,20 @@ class Hustle_Module_Front_Ajax {
 					continue;
 				}
 
-				if ( 'email' === $fields[ $slug ]['type'] && ! is_email( $form_data[ $slug ] ) ||
-					'url' === $fields[ $slug ]['type'] && false === filter_var( $form_data[ $slug ], FILTER_VALIDATE_URL ) ||
-					'datepicker' === $fields[ $slug ]['type'] && false === $this->validate_date( $form_data[ $slug ], $fields[ $slug ]['date_format'] ) ) {
+				if (
+					(
+						'email' === $fields[ $slug ]['type'] &&
+						! is_email( $form_data[ $slug ] )
+					) ||
+					(
+						'url' === $fields[ $slug ]['type'] &&
+						false === filter_var( $form_data[ $slug ], FILTER_VALIDATE_URL )
+					) ||
+					(
+						'datepicker' === $fields[ $slug ]['type'] &&
+						false === $this->validate_date( $form_data[ $slug ], $fields[ $slug ]['date_format'] )
+					)
+				) {
 
 					$submit_errors[ $slug ] = $fields[ $slug ]['validation_message'];
 
@@ -935,7 +958,7 @@ class Hustle_Module_Front_Ajax {
 			} elseif ( isset( $sanitized_data['form_step'] ) && 'enter_email' === $sanitized_data['form_step'] ) {
 				$modules_id = self::get_module_ids( $email, $sanitized_data, $messages );
 
-				$module   = new Hustle_Module_Model();
+				$module   = Hustle_Module_Model::new_instance();
 				$params   = array(
 					'ajax_step'   => true,
 					'modules_id'  => $modules_id,
@@ -1014,7 +1037,7 @@ class Hustle_Module_Front_Ajax {
 			wp_send_json_error();
 		}
 
-		$module_instance = new Hustle_SShare_Model();
+		$module_instance = Hustle_SShare_Model::new_instance();
 		$networks_shares = $module_instance->retrieve_networks_shares( $networks, $post_id );
 
 		wp_send_json_success(
@@ -1040,6 +1063,12 @@ class Hustle_Module_Front_Ajax {
 		if ( ! is_array( $data ) || empty( $data ) ) {
 			return;
 		}
+
+		// Verify nonce for security.
+		if ( empty( $data['_nonce'] ) || ! wp_verify_nonce( $data['_nonce'], 'hustle_log_conversion' ) ) {
+			wp_send_json_error( __( 'Invalid security token.', 'hustle' ) );
+		}
+
 		$module_id = $data['module_id'];
 
 		if ( empty( $module_id ) ) {
@@ -1089,7 +1118,7 @@ class Hustle_Module_Front_Ajax {
 			wp_send_json_error( __( 'Invalid Request: Module id invalid', 'hustle' ) );
 		}
 
-		$module = new Hustle_Module_Model( $module_id );
+		$module = Hustle_Module_Model::new_instance( $module_id );
 		if ( is_wp_error( $module ) ) {
 			wp_send_json_error( __( 'Invalid module!', 'hustle' ) );
 		}
@@ -1112,7 +1141,6 @@ class Hustle_Module_Front_Ajax {
 		} else {
 			wp_send_json_success( __( 'Stats Successfully saved', 'hustle' ) );
 		}
-
 	}
 
 	/**

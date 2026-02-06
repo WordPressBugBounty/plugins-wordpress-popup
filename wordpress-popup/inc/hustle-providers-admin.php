@@ -169,5 +169,4 @@ class Hustle_Providers_Admin extends Hustle_Admin_Page_Abstract {
 
 		return $response;
 	}
-
 }

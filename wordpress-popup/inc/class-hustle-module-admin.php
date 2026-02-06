@@ -78,8 +78,8 @@ if ( ! class_exists( 'Hustle_Module_Admin' ) ) :
 		public function add_upsell_menu_item() {
 			add_submenu_page(
 				'hustle',
-				__( 'Limited-time Offer', 'hustle' ),
-				__( 'Limited-time Offer', 'hustle' ),
+				__( 'Get Hustle Pro', 'hustle' ),
+				__( 'Get Hustle Pro', 'hustle' ),
 				'hustle_menu',
 				'https://wpmudev.com/project/hustle/?utm_source=hustle&utm_medium=plugin&utm_campaign=hustle_submenu_upsell',
 			);
@@ -188,7 +188,7 @@ if ( ! class_exists( 'Hustle_Module_Admin' ) ) :
 				if ( Opt_In_Utils::is_free() ) {
 					if ( ! Opt_In_Utils::is_hustle_included_in_membership() ) {
 						$url   = Opt_In_Utils::get_link( 'plugin', 'hustle_pluginlist_upgrade' );
-						$label = __( 'Limited-time Offer', 'hustle' );
+						$label = __( 'Get Hustle Pro', 'hustle' );
 					} else {
 						$url   = Opt_In_Utils::get_link( 'install_plugin' );
 						$label = __( 'Upgrade', 'hustle' );

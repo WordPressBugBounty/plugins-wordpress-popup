@@ -136,7 +136,7 @@ class Hustle_Module_Model extends Hustle_Model {
 	 *
 	 * @since 4.0
 	 *
-	 * @return array
+	 * @return \Hustle_Meta_Base_Integrations
 	 */
 	public function get_integrations_settings() {
 		$stored = $this->get_settings_meta( self::KEY_INTEGRATIONS_SETTINGS );
@@ -254,7 +254,6 @@ class Hustle_Module_Model extends Hustle_Model {
 		$form_fields = apply_filters( 'hustle_form_elements', $emails_data['form_elements'] );
 
 		return $form_fields;
-
 	}
 
 	/**
@@ -439,7 +438,6 @@ class Hustle_Module_Model extends Hustle_Model {
 		update_option( self::KEY_UNSUBSCRIBE_NONCES, $data );
 
 		return true;
-
 	}
 
 	/**
@@ -558,7 +556,7 @@ class Hustle_Module_Model extends Hustle_Model {
 					// Handle Visibility -> URL textarea.
 					$urls  = preg_split( '/\r\n|\r|\n/', $value );
 					$urls  = array_map(
-						function( $v ) {
+						function ( $v ) {
 							return filter_var( wp_strip_all_tags( $v ), FILTER_SANITIZE_URL );
 						},
 						(array) $urls
@@ -934,11 +932,10 @@ class Hustle_Module_Model extends Hustle_Model {
 		$i        = 0;
 
 		while ( array_key_exists( $new_name, $sanitized_fields ) ) {
-			$i++;
+			++$i;
 			$new_name = $field_name . '-' . $i;
 		}
 
 		return $new_name;
 	}
-
 }

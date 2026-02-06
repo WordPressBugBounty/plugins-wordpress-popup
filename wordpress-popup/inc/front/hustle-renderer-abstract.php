@@ -69,7 +69,7 @@ abstract class Hustle_Renderer_Abstract {
 		if ( ! isset( self::$render_ids[ $id ] ) ) {
 			self::$render_ids[ $id ] = 0;
 		} else {
-			self::$render_ids[ $id ] ++;
+			++self::$render_ids[ $id ];
 		}
 	}
 
@@ -200,7 +200,6 @@ abstract class Hustle_Renderer_Abstract {
 				$style // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			);
 		}
-
 	}
 
 	/**
@@ -224,7 +223,7 @@ abstract class Hustle_Renderer_Abstract {
 		} else {
 			// Previewing a template.
 			// Only non-ssharing modules have templates.
-			$module = new Hustle_Module_Model();
+			$module = Hustle_Module_Model::new_instance();
 
 			$template_mode = $preview_data['template_mode'];
 			$template_name = $preview_data['template_name'];

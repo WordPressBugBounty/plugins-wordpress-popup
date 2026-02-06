@@ -167,12 +167,6 @@ class Hustle_Settings_Admin {
 			'sender_email_name'                     => get_bloginfo( 'name' ),
 			'sender_email_address'                  => get_option( 'admin_email', '' ),
 			'mobile_breakpoint'                     => 782,
-			'published_popup_on_dashboard'          => '1',
-			'draft_popup_on_dashboard'              => '1',
-			'published_slidein_on_dashboard'        => '1',
-			'draft_slidein_on_dashboard'            => '1',
-			'published_embedded_on_dashboard'       => '1',
-			'draft_embedded_on_dashboard'           => '1',
 			'global_tracking_disabled'              => '0',
 			'debug_enabled'                         => '0',
 			// Dashboard settings.
@@ -582,5 +576,4 @@ class Hustle_Settings_Admin {
 
 		return apply_filters( 'hustle_get_custom_color_palettes', $custom_palettes );
 	}
-
 }

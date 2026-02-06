@@ -54,5 +54,4 @@ class Hustle_Tutorials_Page extends Hustle_Admin_Page_Abstract {
 	public function get_page_template_args() {
 		return array();
 	}
-
 }

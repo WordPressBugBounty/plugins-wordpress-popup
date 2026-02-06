@@ -348,7 +348,7 @@ class Hustle_SShare_Model extends Hustle_Model {
 		if ( 0 !== $post_id ) {
 
 			// Don't use stored if we don't have anything stored in this post.
-			if ( ! get_post_meta( $post_id, self::COUNTER_META_KEY ) ) {
+			if ( ! get_post_meta( $post_id, self::COUNTER_META_KEY, true ) ) {
 				return false;
 			}
 
@@ -734,5 +734,4 @@ class Hustle_SShare_Model extends Hustle_Model {
 	public function get_renderer() {
 		return new Hustle_Renderer_Sshare();
 	}
-
 }

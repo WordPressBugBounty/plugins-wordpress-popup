@@ -306,12 +306,11 @@ class Hustle_Tracking_Model {
 		$date_format = '%%Y-%%m-%%d';
 		if ( ! is_null( $starting_date ) && ! is_null( $ending_date ) && ! empty( $starting_date ) && ! empty( $ending_date ) ) {
 			$date_query = $wpdb->prepare( "$clause DATE_FORMAT($prefix`date_created`, '$date_format') >= %s AND DATE_FORMAT($prefix`date_created`, '$date_format') <= %s", $starting_date, $ending_date );// phpcs:ignore
-		} else {
-			if ( ! is_null( $starting_date ) && ! empty( $starting_date ) ) {
+		} elseif ( ! is_null( $starting_date ) && ! empty( $starting_date ) ) {
 				$date_query = $wpdb->prepare( "$clause DATE_FORMAT($prefix`date_created`, '$date_format') >= %s", $starting_date );// phpcs:ignore
-			} elseif ( ! is_null( $ending_date ) && ! empty( $ending_date ) ) {
-				$date_query = $wpdb->prepare( "$clause DATE_FORMAT($prefix`date_created`, '$date_format') <= %s", $starting_date );// phpcs:ignore
-			}
+		} elseif ( ! is_null( $ending_date ) && ! empty( $ending_date ) ) {
+			$date_query = $wpdb->prepare( "$clause DATE_FORMAT($prefix`date_created`, '$date_format') <= %s", $starting_date );// phpcs:ignore
+
 		}
 		return $date_query;
 	}

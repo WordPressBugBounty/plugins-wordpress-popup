@@ -26,7 +26,7 @@ class Hustle_ConvertKit_Form_Hooks extends Hustle_Provider_Form_Hooks_Abstract {
 
 		$addon     = $this->addon;
 		$module_id = $this->module_id;
-		$module    = new Hustle_Module_Model( $module_id );
+		$module    = Hustle_Module_Model::new_instance( $module_id );
 		if ( is_wp_error( $module ) ) {
 			return;
 		}

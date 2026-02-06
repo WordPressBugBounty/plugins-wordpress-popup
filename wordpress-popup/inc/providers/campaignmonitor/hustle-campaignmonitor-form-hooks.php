@@ -98,7 +98,7 @@ class Hustle_Campaignmonitor_Form_Hooks extends Hustle_Provider_Form_Hooks_Abstr
 				}
 
 				$new_fields  = array_diff( array_keys( $_fields ), $api_fields );
-				$module      = new Hustle_Module_Model( $module_id );
+				$module      = Hustle_Module_Model::new_instance( $module_id );
 				$form_fields = $module->get_form_fields();
 
 				foreach ( $new_fields as $custom_field ) {
@@ -349,5 +349,4 @@ class Hustle_Campaignmonitor_Form_Hooks extends Hustle_Provider_Form_Hooks_Abstr
 
 		return $type;
 	}
-
 }

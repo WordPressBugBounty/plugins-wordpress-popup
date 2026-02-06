@@ -113,13 +113,13 @@ class Hustle_Layout_Helper {
 	 * @since 4.2.0
 	 *
 	 * @param  array   $options Array with the options that define the markup to be returned.
-	 * @param  boolean $return Whether to echo or return the markup.
+	 * @param  boolean $return_value Whether to echo or return the markup.
 	 * @return string
 	 */
-	public function get_html_for_options( $options, $return = false ) {
+	public function get_html_for_options( $options, $return_value = false ) {
 		$html = '';
 		foreach ( $options as $key => $option ) {
-			$html .= $this->render( 'admin/commons/options', $option, $return );
+			$html .= $this->render( 'admin/commons/options', $option, $return_value );
 		}
 		return $html;
 	}
@@ -132,16 +132,16 @@ class Hustle_Layout_Helper {
 	 *
 	 * @param string     $file Path to the view file.
 	 * @param array      $params Array whose keys will be variable names when within the view file.
-	 * @param bool|false $return Whether to echo or return the contents.
+	 * @param bool|false $return_value Whether to echo or return the contents.
 	 * @return string
 	 */
-	public function render( $file, $params = array(), $return = false ) {
+	public function render( $file, $params = array(), $return_value = false ) {
 
 		// Assign $file to a variable which is unlikely to be used by users of the method.
 		$opt_in_to_be_file_name = $file;
 		extract( $params, EXTR_OVERWRITE ); // phpcs:ignore WordPress.PHP.DontExtract.extract_extract
 
-		if ( $return ) {
+		if ( $return_value ) {
 			ob_start();
 		}
 
@@ -164,7 +164,7 @@ class Hustle_Layout_Helper {
 			}
 		}
 
-		if ( $return ) {
+		if ( $return_value ) {
 			return ob_get_clean();
 		}
 
@@ -367,6 +367,5 @@ class Hustle_Layout_Helper {
 				data-attribute="' . esc_attr( $name ) . '" />
 
 		</div>';
-
 	}
 }
