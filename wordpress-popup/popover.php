@@ -10,7 +10,7 @@
  * Plugin Name: Hustle
  * Plugin URI: https://wordpress.org/plugins/wordpress-popup/
  * Description: Start collecting email addresses and quickly grow your mailing list with big bold pop-ups, slide-ins, widgets, or in post opt-in forms.
- * Version: 7.8.10.1
+ * Version: 7.8.10.2
  * Author: WPMU DEV
  * Author URI: https://wpmudev.com
  * Tested up to: 6.8

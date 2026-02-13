@@ -1057,7 +1057,8 @@ class Hustle_Module_Front_Ajax {
 	 * @return null
 	 */
 	public function log_module_conversion() {
-		$data = json_decode( file_get_contents( 'php://input' ) );
+		$data = file_get_contents( 'php://input' );
+		$data = json_decode( $data );
 		$data = $data ? get_object_vars( $data ) : array();
 
 		if ( ! is_array( $data ) || empty( $data ) ) {
@@ -1081,6 +1082,10 @@ class Hustle_Module_Front_Ajax {
 		}
 
 		if ( $module->id ) {
+
+			if ( ! $module->active ) {
+				wp_send_json_error( __( 'Module is not active.', 'hustle' ) );
+			}
 
 			$page_id         = $data['page_id'];
 			$module_sub_type = ( isset( $data['module_sub_type'] ) && ! empty( $data['module_sub_type'] ) ) ? $data['module_sub_type'] : null;
