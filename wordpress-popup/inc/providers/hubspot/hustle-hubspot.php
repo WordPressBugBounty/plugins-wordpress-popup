@@ -38,7 +38,7 @@ if ( ! class_exists( 'Hustle_HubSpot' ) ) :
 		 * @since 3.0.5
 		 * @var string
 		 */
-		protected $version = '1.0';
+		protected $version = '2.0';
 
 		/**
 		 * Class
@@ -87,7 +87,7 @@ if ( ! class_exists( 'Hustle_HubSpot' ) ) :
 			$this->logo_2x = plugin_dir_url( __FILE__ ) . 'images/logo.png';
 
 			// Instantiate API when instantiating because it's used after getting the authorization.
-			$hustle_hubpost = new Hustle_HubSpot_Api();
+			$hustle_hubpost = $this->api();
 		}
 
 		/**
@@ -120,10 +120,17 @@ if ( ! class_exists( 'Hustle_HubSpot' ) ) :
 		/**
 		 * Get API
 		 *
-		 * @return bool|Hustle_HubSpot_Api
+		 * @return bool|Hustle_Hubspot_API_V3
 		 */
 		public function api() {
-			return self::static_api();
+			$installed_version = $this->get_installed_version();
+			// TODO: Remove the version check and always return v3 API once we are ready to fully switch to v3.
+			// For now, we want to keep using v1 for existing users to avoid any potential issues, while new users will get v3 directly.
+			if ( version_compare( $installed_version, '2.0', '<' ) ) {
+				return self::static_api();
+			}
+
+			return self::static_api_v3();
 		}
 
 		/**
@@ -136,6 +143,21 @@ if ( ! class_exists( 'Hustle_HubSpot' ) ) :
 				require_once 'opt-in-hubspot-api.php'; }
 
 			$api = new Hustle_HubSpot_Api();
+
+			return $api;
+		}
+
+		/**
+		 * Get API v3 by static method
+		 *
+		 * @return \Hustle_Hubspot_API_V3
+		 */
+		public static function static_api_v3() {
+			if ( ! class_exists( 'Hustle_Hubspot_API_V3' ) ) {
+				require_once 'hustlle-hubspot-api-v3.php';
+			}
+
+			$api = new Hustle_Hubspot_API_V3();
 
 			return $api;
 		}
@@ -351,6 +373,17 @@ if ( ! class_exists( 'Hustle_HubSpot' ) ) :
 		}
 
 		/**
+		 * Check if migration is required.
+		 *
+		 * @return boolean
+		 */
+		public function migration_required() {
+			$installed_version = $this->get_installed_version();
+
+			return version_compare( $installed_version, '2.0', '<' );
+		}
+
+		/**
 		 * Save the account details.
 		 *
 		 * @since 4.0.2
@@ -432,6 +465,68 @@ if ( ! class_exists( 'Hustle_HubSpot' ) ) :
 			}
 
 			return $response;
+		}
+
+		/**
+		 * Process data migration.
+		 *
+		 * @return bool|WP_Error
+		 */
+		public function process_data_migration() {
+			$settings = $this->get_settings_values();
+
+			if ( empty( $settings['lists'] ) ) {
+				return false;
+			}
+
+			$api      = $this->static_api_v3();
+			$new_list = array();
+
+			$legacy_lists = array_keys( $settings['lists'] );
+			$mappings     = $api->get_legacy_list_mappings( $legacy_lists );
+
+			$missing_lists = array();
+			if ( is_wp_error( $mappings ) ) {
+				$missing_lists = $legacy_lists;
+			} else {
+				$missing_lists = $mappings->{'missingLegacyListIds'};
+			}
+
+			foreach ( $mappings->{'legacyListIdsToIdsMapping'} as $mapping ) {
+				$list   = $settings['lists'][ $mapping->{'legacyListId'} ];
+				$new_id = $mapping->{'listId'};
+
+				$new_list[ $new_id ] = $list;
+			}
+
+			foreach ( $missing_lists as $missing_list ) {
+				// Keep the old list ID for the missing lists, so at least the existing subscribers in those lists can be migrated to the new API version.
+				$new_list[ $missing_list ] = $settings['lists'][ $missing_list ];
+			}
+
+			$settings['lists'] = $new_list;
+
+			$this->save_settings_values( $settings );
+			update_option( $this->get_version_options_name(), $this->version );
+
+			if ( ! empty( $missing_lists ) ) {
+
+				$list_names     = array_intersect_key( $settings['lists'], array_flip( $missing_lists ) );
+				$invalid_fields = implode( ', ', $list_names );
+
+				return new WP_Error(
+					'provider_error',
+					esc_html(
+						sprintf(
+							/* translators: %s: List of missed lists */
+							esc_html__( 'These lists were not found in your HubSpot account: %s', 'hustle' ),
+							esc_html( $invalid_fields )
+						)
+					)
+				);
+			}
+
+			return true;
 		}
 	}
 

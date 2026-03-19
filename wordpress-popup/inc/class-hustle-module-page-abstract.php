@@ -114,6 +114,16 @@ abstract class Hustle_Module_Page_Abstract extends Hustle_Admin_Page_Abstract {
 	}
 
 	/**
+	 * Perform actions during the 'load-{page}' hook.
+	 *
+	 * @since 7.8.11
+	 */
+	public function current_page_loaded() {
+		Hustle_Background_Conversion_Log::get_instance()->process_task();
+		parent::current_page_loaded();
+	}
+
+	/**
 	 * Set up the page's own properties
 	 * Like the current module type, page title, path to the listing page and wizard page template.
 	 *

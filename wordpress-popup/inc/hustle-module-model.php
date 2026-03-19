@@ -567,6 +567,8 @@ class Hustle_Module_Model extends Hustle_Model {
 					if ( ! in_array( $key, array( 'main_content', 'emailmessage', 'email_message', 'success_message' ), true ) ) {
 						$value = wp_kses_post( $value );
 					}
+				} elseif ( 'custom_css' === $key ) {
+					$value = sanitize_textarea_field( $value );
 				} elseif ( ! is_int( $value ) ) {
 					$value = sanitize_text_field( $value );
 				}
@@ -602,7 +604,35 @@ class Hustle_Module_Model extends Hustle_Model {
 			return $errors;
 		}
 
+		$validator = $this->create_validator();
+
+		$field_errors = array();
+		foreach ( Hustle_Module_Fields::FIELDS as $section => $fields ) {
+			if ( ! isset( $data[ $section ] ) ) {
+				continue;
+			}
+
+			$result = $validator->validate( $fields, $data[ $section ] );
+			if ( ! $result['is_valid'] ) {
+				$field_errors[ $section ] = $result['errors'];
+			}
+		}
+
+		if ( ! empty( $field_errors ) ) {
+			$errors['error']['field_errors'] = $field_errors;
+			return $errors;
+		}
+
 		return true;
+	}
+
+	/**
+	 * Create the validator instance.
+	 *
+	 * @return Hustle_Module_Fields_Validator
+	 */
+	protected function create_validator() {
+		return new Hustle_Module_Fields_Validator();
 	}
 
 	/**

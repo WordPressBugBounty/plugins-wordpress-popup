@@ -116,10 +116,11 @@ class Hustle_Layout_Helper {
 	 * @param  boolean $return_value Whether to echo or return the markup.
 	 * @return string
 	 */
-	public function get_html_for_options( $options, $return_value = false ) {
-		$html = '';
+	public static function get_html_for_options( $options, $return_value = false ) {
+		$instance = new self();
+		$html     = '';
 		foreach ( $options as $key => $option ) {
-			$html .= $this->render( 'admin/commons/options', $option, $return_value );
+			$html .= $instance->render( 'admin/commons/options', $option, $return_value );
 		}
 		return $html;
 	}

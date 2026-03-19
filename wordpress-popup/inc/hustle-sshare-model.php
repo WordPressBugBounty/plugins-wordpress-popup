@@ -286,7 +286,7 @@ class Hustle_SShare_Model extends Hustle_Model {
 	public static function get_social_platform_names() {
 		$social_platform_names = array(
 			'facebook'      => esc_html__( 'Facebook', 'hustle' ),
-			'twitter'       => esc_html__( 'Twitter', 'hustle' ),
+			'twitter'       => esc_html__( 'X', 'hustle' ),
 			'pinterest'     => esc_html__( 'Pinterest', 'hustle' ),
 			'reddit'        => esc_html__( 'Reddit', 'hustle' ),
 			'linkedin'      => esc_html__( 'LinkedIn', 'hustle' ),

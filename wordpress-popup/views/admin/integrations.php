@@ -60,6 +60,9 @@
 	<?php $this->render( 'admin/dialogs/modal-migrate-infusionsoft' ); ?>
 <?php endif; ?>
 
+<!-- ConvertKit integration migration modal -->
+<?php $this->render( 'admin/dialogs/modal-migrate-convertkit' ); ?>
+
 <?php
 // Global Footer.
 $this->render( 'admin/global/sui-components/sui-footer' );

@@ -98,6 +98,8 @@ class Hustle_Module_Front {
 		}
 		// phpcs:enable
 
+		Hustle_Module_Inline_Style_Queue::init();
+
 		if ( ! $is_preview ) {
 			$this->prepare_for_front();
 		} else {
@@ -121,7 +123,7 @@ class Hustle_Module_Front {
 
 		// Enqueue it in the footer to overrider all the css that comes with the popup.
 		add_action(
-			'wp_footer',
+			'hustle_after_enqueue_inline_styles',
 			array( $this, 'register_styles' )
 		);
 
@@ -299,8 +301,8 @@ class Hustle_Module_Front {
 				'is_admin'              => is_admin(),
 				'real_page_id'          => Opt_In_Utils::get_real_page_id(),
 				'thereferrer'           => Opt_In_Utils::get_referrer(),
-				'actual_url'            => Opt_In_Utils::get_current_actual_url(),
-				'full_actual_url'       => Opt_In_Utils::get_current_actual_url( true ),
+				'actual_url'            => esc_url_raw( Opt_In_Utils::get_current_actual_url() ),
+				'full_actual_url'       => esc_url_raw( Opt_In_Utils::get_current_actual_url( true ) ),
 				'native_share_enpoints' => Hustle_SShare_Model::get_sharing_endpoints( false ),
 				'ajaxurl'               => admin_url( 'admin-ajax.php', is_ssl() ? 'https' : 'http' ),
 				'page_id'               => get_queried_object_id(), // Used in many places to decide whether to show the module and cookies.
@@ -723,10 +725,14 @@ class Hustle_Module_Front {
 						if (
 							! empty( $mailchimp_settings ) &&
 							! is_null( $mailchimp_settings['group'] ) &&
-							'-1' !== $mailchimp_settings['group'] &&
-							'dropdown' === $mailchimp_settings['group_type']
+							'-1' !== $mailchimp_settings['group']
 						) {
-							$select2_found = true;
+							if (
+								isset( $mailchimp_settings['group_type'] ) &&
+								'dropdown' === $mailchimp_settings['group_type']
+							) {
+								$select2_found = true;
+							}
 						}
 					}
 				}

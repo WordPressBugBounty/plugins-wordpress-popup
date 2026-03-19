@@ -208,14 +208,6 @@ if ( ! class_exists( 'Hustle_Admin_Page_Abstract' ) ) :
 				true
 			);
 
-			wp_enqueue_script(
-				'shared-tutorials',
-				Opt_In::$plugin_url . 'assets/js/shared-tutorials.min.js',
-				'',
-				HUSTLE_SUI_VERSION,
-				true
-			);
-
 			/**
 			 * Filters the variable to be localized into the js side of Hustle's admin pages.
 			 *
@@ -267,9 +259,6 @@ if ( ! class_exists( 'Hustle_Admin_Page_Abstract' ) ) :
 					'social_sharing' => Hustle_Data::SOCIAL_SHARING_LISTING_PAGE,
 				),
 				'messages'             => array(
-					/* translators: Plugin name */
-					'hustleTutorials'             => esc_html( sprintf( __( '%s Tutorials', 'hustle' ), Opt_In_Utils::get_plugin_name() ) ),
-					'tutorialsRemoved'            => $tutorials_removed,
 					'something_went_wrong'        => esc_html__( 'Something went wrong. Please try again', 'hustle' ), // everywhere.
 					'something_went_wrong_reload' => '<label class="wpmudev-label--notice"><span>' . esc_html__( 'Something went wrong. Please reload this page and try again.', 'hustle' ) . '</span></label>', // everywhere.
 					/* translators: "Aweber" between "strong" tags */

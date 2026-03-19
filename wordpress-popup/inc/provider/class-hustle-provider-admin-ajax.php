@@ -77,6 +77,7 @@ class Hustle_Provider_Admin_Ajax {
 		add_action( 'wp_ajax_hustle_provider_migrate_aweber', array( $this, 'migrate_aweber' ) );
 		add_action( 'wp_ajax_hustle_provider_migrate_constantcontact', array( $this, 'migrate_constantcontact' ) );
 		add_action( 'wp_ajax_hustle_provider_migrate_infusionsoft', array( $this, 'migrate_infusionsoft' ) );
+		add_action( 'wp_ajax_hustle_provider_migrate_convertkit', array( $this, 'migrate_convertkit' ) );
 	}
 
 	/**
@@ -591,6 +592,48 @@ class Hustle_Provider_Admin_Ajax {
 		);
 
 		wp_send_json_success( $result );
+	}
+
+	/**
+	 * Migrate ConvertKit integration to V4
+	 *
+	 * @since 7.8.11
+	 */
+	public function migrate_convertkit() {
+		$this->validate_ajax();
+
+		if ( isset( $_POST['data'] ) && is_array( $_POST['data'] ) ) {// phpcs:ignore
+			$post_data = filter_input( INPUT_POST, 'data', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		} else {
+			$post_data = filter_input( INPUT_POST, 'data' );
+		}
+		$sanitized_post_data = Opt_In_Utils::validate_and_sanitize_fields( $post_data, array( 'slug', 'api_key', 'global_multi_id' ) );
+
+		$convertkit = Hustle_ConvertKit::get_instance()->configure_api_key(
+			$sanitized_post_data
+		);
+
+		if ( ! empty( $convertkit['errors'] ) ) {
+			wp_send_json_error();
+		}
+
+		$integration_id = filter_var( $sanitized_post_data['global_multi_id'], FILTER_SANITIZE_SPECIAL_CHARS );
+
+		wp_send_json_success(
+			array(
+				'redirect' => add_query_arg(
+					array(
+						'page'           => Hustle_Data::INTEGRATIONS_PAGE,
+						'migration'      => true,
+						'slug'           => 'convertkit',
+						'nonce'          => wp_create_nonce( 'hustle_provider_external_redirect' ),
+						'action'         => 'external-redirect',
+						'integration_id' => $integration_id,
+					),
+					admin_url( 'admin.php' )
+				),
+			)
+		);
 	}
 
 	/**

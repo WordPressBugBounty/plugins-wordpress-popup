@@ -77,16 +77,19 @@ class Hustle_Tracking_Model {
 	 */
 	public function save_tracking( $module_id, $action, $module_type, $page_id, $module_sub_type = null, $date_created = null, $ip = null ) {
 		global $wpdb;
+
 		/**
 		 * IP Tracking
 		 */
-		$ip_query    = ' AND `ip` IS NULL';
 		$settings    = Hustle_Settings_Admin::get_privacy_settings();
 		$ip_tracking = ! isset( $settings['ip_tracking'] ) || 'on' === $settings['ip_tracking'];
-		if ( $ip_tracking ) {
-			$ip       = $ip ? $ip : Opt_In_Geo::get_user_ip();
+
+		if ( $ip && $ip_tracking ) {
 			$ip_query = ' AND `ip` = %s';
+		} else {
+			$ip_query = ' AND `ip` IS NULL';
 		}
+
 		if ( ! in_array( $action, array( 'conversion', 'cta_conversion', 'cta_1_conversion', 'cta_2_conversion', 'optin_conversion' ), true ) ) {
 			$action = 'view';
 		}

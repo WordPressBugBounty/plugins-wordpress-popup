@@ -68,12 +68,22 @@ class Hustle_Campaignmonitor_Form_Hooks extends Hustle_Provider_Form_Hooks_Abstr
 			if ( isset( $submitted_data['last_name'] ) ) {
 				$name['last_name'] = $submitted_data['last_name'];
 			}
-			$name = implode( ' ', $name );
+
+			if ( empty( $name ) ) {
+
+				$name = '';
+				if ( isset( $submitted_data['name'] ) ) {
+					$name = $submitted_data['name'];
+				}
+			} else {
+				$name = implode( ' ', $name );
+			}
 
 			// Remove unwanted fields.
 			foreach ( $submitted_data as $key => $sub_d ) {
 
 				if ( 'email' === $key ||
+					'name' === $key ||
 					'first_name' === $key ||
 					'last_name' === $key || 'gdpr' === $key ) {
 					continue;

@@ -167,6 +167,20 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 				return true;
 			}
 
+			// Mark the integration as errored when we can't get a valid token.
+			$this->is_error = true;
+
+			if ( is_object( $response ) ) {
+				if ( ! empty( $response->message ) ) {
+					$this->error_message = $response->message;
+				} elseif ( ! empty( $response->error_description ) ) {
+					$this->error_message = $response->error_description;
+				}
+			}
+
+			// Clear stored tokens so we don't keep trying to refresh on every check.
+			$this->remove_wp_options();
+
 			return false;
 		}
 
@@ -182,7 +196,7 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 		 *
 		 * @return mixed
 		 */
-		private function request( $endpoint, $method = 'GET', $query_args = array(), $access_token = '', $x_www = false, $json = false ) {
+		protected function request( $endpoint, $method = 'GET', $query_args = array(), $access_token = '', $x_www = false, $json = false ) {
 			// Avoid multiple call at once.
 			if ( $this->sending ) {
 				return false; }
@@ -190,10 +204,7 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 			$this->sending = true;
 			$url           = self::API_URL . $endpoint;
 
-			$args = array(
-				'client_id' => self::CLIENT_ID,
-				'scope'     => self::SCOPE,
-			);
+			$args = $this->get_client_data();
 			$args = wp_parse_args( $args, $query_args );
 
 			if ( ! $x_www && $json ) {
@@ -238,6 +249,18 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 				}
 			}
 			return $response;
+		}
+
+		/**
+		 * Get client id and scope data.
+		 *
+		 * @return array
+		 */
+		protected function get_client_data() {
+			return array(
+				'client_id' => self::CLIENT_ID,
+				'scope'     => self::SCOPE,
+			);
 		}
 
 		/**

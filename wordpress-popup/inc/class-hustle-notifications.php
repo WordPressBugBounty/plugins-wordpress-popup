@@ -264,21 +264,32 @@ class Hustle_Notifications {
 	 *
 	 * @param string $provider Provider's name.
 	 * @param array  $provider_data Provider's data.
+	 * @param string $button_text Notice button text.
+	 * @param string $button_url Notice button URL.
 	 */
-	private function get_provider_auth_deprecation_notice_html( $provider, $provider_data = array() ) {
+	private function get_provider_auth_deprecation_notice_html( $provider, $provider_data = array(), $button_text = '', $button_url = '' ) {
 		$current_user = wp_get_current_user();
 
 		$username = ! empty( $current_user->user_firstname ) ? $current_user->user_firstname : $current_user->user_login;
 
-		$migrate_url = add_query_arg(
-			array(
-				'page'                    => Hustle_Data::INTEGRATIONS_PAGE,
-				'show_provider_migration' => $provider,
-				'action'                  => 'show_migration_message',
-			),
-			'admin.php'
-		);
 		$provided_id = isset( $provider_data['id'] ) ? $provider . '_' . $provider_data['id'] : $provider;
+
+		if ( empty( $button_text ) ) {
+			$button_text = __( 'Re-authorize Now', 'hustle' );
+		}
+
+		if ( empty( $button_url ) ) {
+			$button_url = add_query_arg(
+				array(
+					'page'                    => Hustle_Data::INTEGRATIONS_PAGE,
+					'show_provider_migration' => $provider,
+					'action'                  => 'show_migration_message',
+					'integration_id'          => isset( $provider_data['id'] ) ? $provider_data['id'] : '0',
+				),
+				'admin.php'
+			);
+		}
+
 		?>
 		<div
 			id='<?php echo esc_attr( "hustle_migration_notice__$provided_id" ); ?>'
@@ -290,7 +301,7 @@ class Hustle_Notifications {
 			<p>
 			<?php $this->get_provider_migration_content( $provider, $username, $provider_data['name'] ); ?>
 			</p>
-			<p><a href="<?php echo esc_url( $migrate_url ); ?>" class="button-primary"><?php esc_html_e( 'Re-authorize Now', 'hustle' ); ?></a></p>
+			<p><a href="<?php echo esc_url( $button_url ); ?>" class="button-primary"><?php echo esc_html( $button_text ); ?></a></p>
 		</div>
 		<?php
 	}
@@ -314,6 +325,14 @@ class Hustle_Notifications {
 			case 'aweber':
 				/* translators: 1. user's name, */
 				$msg = sprintf( esc_html__( "Hey %1\$s, we have updated our AWeber integration to support the oAuth 2.0. Since you are connected via oAuth 1.0, we recommend you to migrate your %2\$s integration to the latest authorization method as we'll cease to support the deprecated oAuth method at some point.", 'hustle' ), $username, $identifier );
+				break;
+			case 'convertkit':
+				/* translators: 1. integration identifier */
+				$msg = sprintf( esc_html__( 'Hustle’s Kit (Formerly ConvertKit) integration has been upgraded to the latest API (v4) for improved security and reliability. To continue sending leads to Kit, please re-authorize your "%s" integration.', 'hustle' ), $identifier );
+				break;
+			case 'hubspot':
+				/* translators: 1. user's name, 2. provider's name */
+				$msg = sprintf( esc_html__( 'Hey %1$s, we have updated our HubSpot integration to support the latest API (v3).', 'hustle' ), $username );
 				break;
 
 			default:
@@ -348,7 +367,6 @@ class Hustle_Notifications {
 						'hustle_page_hustle_integrations',
 						'hustle_page_hustle_entries',
 						'hustle_page_hustle_settings',
-						'hustle_page_hustle_tutorials',
 					),
 				)
 			);
@@ -679,6 +697,57 @@ class Hustle_Notifications {
 					'id'   => '0',
 				);
 				$this->get_provider_auth_deprecation_notice_html( 'constantcontact', $provider_data );
+			}
+		}
+
+		$hubspot_instance = Hustle_HubSpot::get_instance();
+		if ( $hubspot_instance->migration_required() ) {
+			// Check if there is a connected HubSpot integration.
+			// If there is, show the notice.
+			if ( $hubspot_instance->is_connected() ) {
+				$provider_data = array(
+					'name' => Hustle_HubSpot::SLUG,
+					'id'   => '0',
+				);
+
+				$url = add_query_arg(
+					array(
+						'page'                    => Hustle_Data::INTEGRATIONS_PAGE,
+						'show_provider_migration' => 'hubspot',
+						'action'                  => 'migrate_provider_data',
+						'nonce'                   => wp_create_nonce( 'hustle_provider_migrate' ),
+					),
+					'admin.php'
+				);
+
+				$this->get_provider_auth_deprecation_notice_html(
+					'hubspot',
+					$provider_data,
+					__( 'Migrate Data', 'hustle' ),
+					$url
+				);
+			}
+		}
+
+		$ck_instance = Hustle_ConvertKit::get_instance();
+		// Check if there is a connected ConvertKit integration.
+		// If there is, show the notice.
+		if ( $ck_instance->is_connected() ) {
+			$connections = $ck_instance->get_settings_values();
+			if ( empty( $connections ) || ! is_array( $connections ) ) {
+				return;
+			}
+
+			foreach ( $connections as $connection_id => $connection ) {
+				if ( empty( $connection['version'] ) || version_compare( $connection['version'], '2.0', '<' ) ) {
+					// Show only one notification.
+					// This will work globally for all the instances.
+					$provider_data = array(
+						'name' => $connection['name'],
+						'id'   => $connection_id,
+					);
+					$this->get_provider_auth_deprecation_notice_html( 'convertkit', $provider_data );
+				}
 			}
 		}
 	}

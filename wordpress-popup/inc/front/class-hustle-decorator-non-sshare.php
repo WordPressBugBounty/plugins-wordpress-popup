@@ -430,6 +430,8 @@ class Hustle_Decorator_Non_Sshare extends Hustle_Decorator_Abstract {
 					} else {
 						// If outside of @media block, add to output.
 						$output .= $prepared;
+						// reset $prepared for next styles.
+						$prepared = '';
 					}
 				} else {
 					$media_names[ $prev_media_names_key ]['styles'] = $prepared;
@@ -438,6 +440,8 @@ class Hustle_Decorator_Non_Sshare extends Hustle_Decorator_Abstract {
 
 				// If no @media, add styles to $output outside @media.
 				$output .= $prepared;
+				// reset $prepared for next styles.
+				$prepared = '';
 			}
 
 			// Increase index.

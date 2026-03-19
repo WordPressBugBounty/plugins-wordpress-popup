@@ -134,8 +134,8 @@ class Opt_In_Utils {
 			return '';
 		}
 
-		$host = filter_var( wp_unslash( $_SERVER['HTTP_HOST'] ), FILTER_SANITIZE_SPECIAL_CHARS );
-		$uri  = filter_var( wp_unslash( $_SERVER['REQUEST_URI'] ), FILTER_SANITIZE_SPECIAL_CHARS );
+		$host = filter_var( wp_unslash( $_SERVER['HTTP_HOST'] ), FILTER_SANITIZE_URL );
+		$uri  = filter_var( wp_unslash( $_SERVER['REQUEST_URI'] ), FILTER_SANITIZE_URL );
 
 		$url = $host . $uri;
 
@@ -143,7 +143,7 @@ class Opt_In_Utils {
 			return $url;
 		}
 
-		return esc_url( 'http' . ( isset( $_SERVER['HTTPS'] ) ? 's' : '' ) . '://' . $url );
+		return 'http' . ( isset( $_SERVER['HTTPS'] ) ? 's' : '' ) . '://' . $url;
 	}
 
 	/**
@@ -473,11 +473,11 @@ class Opt_In_Utils {
 			array_walk_recursive(
 				$value,
 				function ( &$val ) {
-					$val = sanitize_text_field( $val );
+					$val = sanitize_textarea_field( $val );
 				}
 			);
 		} else {
-			$value = sanitize_text_field( $value );
+			$value = sanitize_textarea_field( $value );
 		}
 
 		return $value;
@@ -1302,63 +1302,38 @@ class Opt_In_Utils {
 	 */
 	private static function is_hub_cache() {
 		$key_option = 'hustle_hub_cache_enabled';
-		$key_time   = 'hustle_hub_cache_timeout';
-		$cache      = get_site_option( $key_option, null );
-		if ( ! is_null( $cache ) ) {
-			$timeout = get_site_option( $key_time );
-			if ( time() < $timeout || ! is_admin() ) {
-				$return = $cache;
-			}
-		}
-		if ( ! isset( $return ) ) {
-			$return = self::get_hub_cache_status();
-			update_site_option( $key_option, (int) $return );
-			update_site_option( $key_time, time() + DAY_IN_SECONDS );
+		$cache      = get_site_transient( $key_option );
+
+		if ( false === $cache ) {
+			$cache = self::is_hub_cache_enabled();
+			set_site_transient( $key_option, (int) $cache, DAY_IN_SECONDS );
 		}
 
-		return (bool) $return;
+		return (bool) $cache;
 	}
 
 	/**
-	 * Check if Static Server Cache is enabled on HUB or not
+	 * Check if Static Server Cache is enabled on HUB
 	 *
 	 * @return boolean
 	 */
-	private static function get_hub_cache_status() {
-		if ( ! class_exists( 'WPMUDEV_Dashboard' ) ) {
-			return false;
+	private static function is_hub_cache_enabled() {
+		return (bool) self::get_hosting_feature( 'static_cache' );
+	}
+
+	/**
+	 * Get list of hosting features and their status
+	 *
+	 * @param string $name The name of the hosting feature to check.
+	 * @return mixed The status of the hosting feature, or an empty string if not found.
+	 */
+	private static function get_hosting_feature( $name ) {
+		if ( function_exists( 'wpmudev_hosting_features' ) ) {
+			$states = wpmudev_hosting_features();
+			return isset( $states[ $name ] ) ? $states[ $name ] : '';
 		}
-		try {
-			$api     = WPMUDEV_Dashboard::$api;
-			$api_key = $api->get_key();
-			$site_id = $api->get_site_id();
-			$base    = defined( 'WPMUDEV_CUSTOM_API_SERVER' ) && WPMUDEV_CUSTOM_API_SERVER
-				? WPMUDEV_CUSTOM_API_SERVER
-				: 'https://wpmudev.com/';
-			$url     = "{$base}api/hub/v1/sites/$site_id/modules/hosting";
 
-			$options = array(
-				'headers' => array(
-					'Authorization' => 'Basic ' . $api_key,
-					'apikey'        => $api_key,
-				),
-			);
-			$data    = array(
-				'domain' => network_site_url(),
-			);
-
-			$response = $api->call( $url, $data, 'GET', $options );
-
-			if ( 200 === wp_remote_retrieve_response_code( $response ) ) {
-				$data = json_decode( wp_remote_retrieve_body( $response ), true );
-				if ( ! empty( $data['static_cache']['is_active'] ) ) {
-					return true;
-				}
-			}
-			return false;
-		} catch ( Exception $e ) {
-			return false;
-		}
+		return '';
 	}
 
 	/**

@@ -518,6 +518,30 @@ class Hustle_Module_Front_Ajax {
 				$response['behavior']['file']      = $emails_settings['auto_download_file'];
 				$response['behavior']['file_name'] = $file_name;
 			}
+
+			if (
+				! empty( $emails_settings['notification_email'] ) &&
+				! empty( $emails_settings['notification_email_recipient'] )
+			) {
+				$notification_recipient = $this->replace_placeholders(
+					$module_id,
+					sanitize_email( $emails_settings['notification_email_recipient'] ),
+					$form_data
+				);
+				$notification_subject   = $this->replace_placeholders(
+					$module_id,
+					sanitize_text_field( $emails_settings['notification_email_subject'] ),
+					$form_data
+				);
+				$notification_body      = $this->replace_placeholders(
+					$module_id,
+					wp_kses_post( $emails_settings['notification_email_body'] ),
+					$form_data
+				);
+
+				// Send the notification email right away.
+				Hustle_Mail::send_email( $notification_recipient, $notification_subject, $notification_body );
+			}
 		}
 
 		if ( ! empty( $submit_errors ) ) {
@@ -747,7 +771,6 @@ class Hustle_Module_Front_Ajax {
 			return false;
 		}
 
-		$tracking = Hustle_Tracking_Model::get_instance();
 		if ( 'social_sharing' === $module->module_type ) {
 			$action = 'conversion';
 		} elseif ( $cta ) {
@@ -755,9 +778,42 @@ class Hustle_Module_Front_Ajax {
 		} else {
 			$action = 'optin_conversion';
 		}
-		$tracking->save_tracking( $module->id, $action, $module->module_type, $page_id, $module_sub_type );
+		$this->temp_log_conversion( $module, $action, $page_id, $module_sub_type );
 
 		return true;
+	}
+
+
+	/**
+	 * Temporary log for conversions.
+	 *
+	 * @param Hustle_Module_Model $module Module.
+	 * @param string              $action Action.
+	 * @param int                 $post_id Post ID.
+	 * @param string|null         $module_sub_type Module subtype.
+	 */
+	private function temp_log_conversion( $module, $action, $post_id, $module_sub_type ) {
+		$settings    = Hustle_Settings_Admin::get_privacy_settings();
+		$ip_tracking = ! isset( $settings['ip_tracking'] ) || 'on' === $settings['ip_tracking'];
+
+		if ( $ip_tracking ) {
+			$user_ip = Opt_In_Geo::get_user_ip();
+		} else {
+			$user_ip = '';
+		}
+
+		$logs   = get_option( 'hustle_conversion_logs', array() );
+		$logs[] = array(
+			'time'            => time(),
+			'module_id'       => $module->id,
+			'module_type'     => $module->module_type,
+			'post_id'         => $post_id,
+			'action'          => $action,
+			'ip'              => $user_ip,
+			'module_sub_type' => $module_sub_type,
+		);
+
+		update_option( 'hustle_conversion_logs', $logs );
 	}
 
 	/**
@@ -1129,23 +1185,14 @@ class Hustle_Module_Front_Ajax {
 		}
 
 		if ( $module->id ) {
-
-			$module_type     = $data['module_type'];
 			$page_id         = $data['page_id'];
 			$module_sub_type = isset( $data['module_sub_type'] ) ? $data['module_sub_type'] : null;
 
-			$tracking = Hustle_Tracking_Model::get_instance();
-			$res      = $tracking->save_tracking( $module_id, 'view', $module_type, $page_id, $module_sub_type );
-
-		} else {
-			$res = false;
-		}
-
-		if ( ! $res ) {
-			wp_send_json_error( __( 'Error saving stats', 'hustle' ) );
-		} else {
+			$this->temp_log_conversion( $module, 'view', $page_id, $module_sub_type );
 			wp_send_json_success( __( 'Stats Successfully saved', 'hustle' ) );
 		}
+
+		wp_send_json_error( __( 'Error saving stats', 'hustle' ) );
 	}
 
 	/**

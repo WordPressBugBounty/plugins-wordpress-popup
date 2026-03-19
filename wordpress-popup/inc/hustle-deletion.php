@@ -51,6 +51,7 @@ class Hustle_Deletion {
 		delete_option( 'hustle_custom_palettes' );
 		delete_option( 'hustle_notice_stop_support_m2' );
 		delete_option( 'hustle-hide_tutorials' );
+		delete_option( 'hustle_conversion_logs' );
 	}
 
 	/**

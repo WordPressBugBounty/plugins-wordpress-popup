@@ -1,143 +1,57 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * Hustle_ConvertKit class
+ * Hustle_ConvertKit_V2 class
  *
  * @package Hustle
  */
 
-if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
+if ( ! class_exists( 'Hustle_ConvertKit_V2' ) ) :
 
-	include_once 'hustle-convertkit-api.php';
+	include_once 'hustle-convertkit-api-v2.php';
 
 	/**
-	 * Convertkit Email Integration
+	 * ConvertKit V2 Email Integration (API Key only)
 	 *
-	 * @class Hustle_ConvertKit
-	 * @version 2.0.3
+	 * @class Hustle_ConvertKit_V2
+	 * @version 7.8.11
 	 **/
-	class Hustle_ConvertKit extends Hustle_Provider_Abstract {
-
-		const SLUG = 'convertkit';
+	class Hustle_ConvertKit_V2 extends Hustle_ConvertKit {
 
 		/**
 		 * Api
 		 *
-		 * @var ConvertKit_Api_Interface
+		 * @var Hustle_ConvertKit_API_V2
 		 */
 		protected static $api;
-		/**
-		 * Errors
-		 *
-		 * @var array
-		 */
-		protected static $errors;
-
-		/**
-		 * Provider Instance
-		 *
-		 * @since 3.0.5
-		 *
-		 * @var self|null
-		 */
-		protected static $instance = null;
-
-		/**
-		 * Slug
-		 *
-		 * @since 3.0.5
-		 * @var string
-		 */
-		protected $slug = 'convertkit';
 
 		/**
 		 * Version
 		 *
-		 * @since 3.0.5
+		 * @since 7.8.11
 		 * @var string
 		 */
-		protected $version = '1.0';
-
-		/**
-		 * Class
-		 *
-		 * @since 3.0.5
-		 * @var string
-		 */
-		protected $class = __CLASS__;
-
-		/**
-		 * Title
-		 *
-		 * @since 3.0.5
-		 * @var string
-		 */
-		protected $title = 'Kit';
-
-		/**
-		 * Class name of form settings
-		 *
-		 * @var string
-		 */
-		protected $form_settings = 'Hustle_ConvertKit_Form_Settings';
-
-		/**
-		 * Class name of form hooks
-		 *
-		 * @since 4.0
-		 * @var string
-		 */
-		protected $form_hooks = 'Hustle_ConvertKit_Form_Hooks';
+		protected $version = '2.0';
 
 		/**
 		 * Array of options which should exist for confirming that settings are completed
 		 *
-		 * @since 4.0
+		 * @since 7.8.11
 		 * @var array
 		 */
-		protected $completion_options = array( 'api_key', 'api_secret' );
+		protected $completion_options = array( 'api_key' );
 
 		/**
 		 * Provider constructor.
 		 */
 		public function __construct() {
 			$this->icon_2x = plugin_dir_url( __FILE__ ) . 'images/icon.png';
-			$this->logo_2x = plugin_dir_url( __FILE__ ) . 'images/logo.png';
+			$this->logo_2x = plugin_dir_url( __FILE__ ) . 'images/logo.jpg';
 		}
-
-		/**
-		 * Get Instance
-		 *
-		 * @return self|null
-		 */
-		public static function get_instance() {
-			if ( is_null( self::$instance ) ) {
-				self::$instance = new static();
-			}
-
-			return self::$instance;
-		}
-
-		/**
-		 * Get the wizard callbacks for the global settings.
-		 *
-		 * @since 4.0
-		 *
-		 * @return array
-		 */
-		public function settings_wizards() {
-			return array(
-				array(
-					'callback'     => array( $this, 'configure_api_key' ),
-					'is_completed' => array( $this, 'is_connected' ),
-				),
-			);
-		}
-
 
 		/**
 		 * Configure the API key settings. Global settings.
 		 *
-		 * @since 4.0
+		 * @since 7.8.11
 		 *
 		 * @param array $submitted_data Submitted data.
 		 * @return array
@@ -145,37 +59,31 @@ if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
 		public function configure_api_key( $submitted_data ) {
 			$has_errors      = false;
 			$default_data    = array(
-				'api_key'    => '',
-				'api_secret' => '',
-				'name'       => '',
+				'api_key' => '',
+				'name'    => '',
 			);
 			$current_data    = $this->get_current_data( $default_data, $submitted_data );
-			$is_submit       = isset( $submitted_data['api_key'] ) && isset( $submitted_data['api_secret'] );
+			$is_submit       = isset( $submitted_data['api_key'] );
 			$global_multi_id = $this->get_global_multi_id( $submitted_data );
 
-			$api_key_valid    = true;
-			$api_secret_valid = true;
+			$api_key_valid = true;
 
 			if ( $is_submit ) {
 
 				$api_key_valid     = ! empty( $current_data['api_key'] );
-				$api_secret_valid  = ! empty( $current_data['api_secret'] );
-				$api_key_validated = $api_key_valid
-									&& $api_secret_valid
-									&& $this->validate_credentials( $submitted_data['api_secret'], $submitted_data['api_key'] );
+				$api_key_validated = $api_key_valid && $this->validate_credentials( $submitted_data['api_key'] );
 
 				if ( ! $api_key_validated ) {
-					$error_message    = $this->provider_connection_falied();
-					$api_key_valid    = false;
-					$api_secret_valid = false;
-					$has_errors       = true;
+					$error_message = $this->provider_connection_falied();
+					$api_key_valid = false;
+					$has_errors    = true;
 				}
 
 				if ( ! $has_errors ) {
 					$settings_to_save = array(
-						'api_key'    => $current_data['api_key'],
-						'api_secret' => $current_data['api_secret'],
-						'name'       => $current_data['name'],
+						'api_key' => $current_data['api_key'],
+						'name'    => $current_data['name'],
+						'version' => $this->version,
 					);
 					// If not active, activate it.
 					// TODO: Wrap this in a friendlier method.
@@ -191,7 +99,7 @@ if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
 				if ( ! $has_errors ) {
 
 					return array(
-						'html'         => Hustle_Provider_Utils::get_integration_modal_title_markup( __( 'ConvertKit Added', 'hustle' ), __( 'You can now go to your pop-ups, slide-ins and embeds and assign them to this integration', 'hustle' ) ),
+						'html'         => Hustle_Provider_Utils::get_integration_modal_title_markup( __( 'Kit Added', 'hustle' ), __( 'You can now go to your pop-ups, slide-ins and embeds and assign them to this integration', 'hustle' ) ),
 						'buttons'      => array(
 							'close' => array(
 								'markup' => Hustle_Provider_Utils::get_provider_button_markup( __( 'Close', 'hustle' ), 'sui-button-ghost', 'close' ),
@@ -235,30 +143,6 @@ if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
 				),
 				array(
 					'type'     => 'wrapper',
-					'class'    => $api_secret_valid ? '' : 'sui-form-field-error',
-					'elements' => array(
-						'label'      => array(
-							'type'  => 'label',
-							'for'   => 'api_secret',
-							'value' => __( 'API Secret', 'hustle' ),
-						),
-						'api_secret' => array(
-							'type'        => 'text',
-							'name'        => 'api_secret',
-							'value'       => $current_data['api_secret'],
-							'placeholder' => __( 'Enter API Secret', 'hustle' ),
-							'id'          => 'api_secret',
-							'icon'        => 'key',
-						),
-						'error'      => array(
-							'type'  => 'error',
-							'class' => $api_secret_valid ? 'sui-hidden' : '',
-							'value' => __( 'Please enter a valid ConvertKit API secret', 'hustle' ),
-						),
-					),
-				),
-				array(
-					'type'     => 'wrapper',
 					'style'    => 'margin-bottom: 0;',
 					'elements' => array(
 						'label'   => array(
@@ -275,7 +159,7 @@ if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
 						),
 						'message' => array(
 							'type'  => 'description',
-							'value' => __( 'Helps to distinguish your integrations if you have connected to the multiple accounts of this integration.', 'hustle' ),
+							'value' => __( 'Helps distinguish your integrations if you have connected multiple accounts for this integration.', 'hustle' ),
 						),
 					),
 				),
@@ -292,11 +176,11 @@ if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
 			}
 
 			$step_html = Hustle_Provider_Utils::get_integration_modal_title_markup(
-				__( 'Configure ConvertKit', 'hustle' ),
+				__( 'Configure Kit', 'hustle' ),
 				sprintf(
-					/* translators: 1. opening 'a' tag to ConvertKit account, 2. closing 'a' tag */
-					__( 'Log in to your %1$sConvertKit%2$s account to get your API Key.', 'hustle' ),
-					'<a href="https://app.convertkit.com/account/edit" target="_blank">',
+					/* translators: 1. opening 'a' tag to Kit account, 2. closing 'a' tag */
+					__( 'Log in to your %1$sKit%2$s account to get your API Key.', 'hustle' ),
+					'<a href="https://app.kit.com/account_settings/developer_settings" target="_blank">',
 					'</a>'
 				)
 			);
@@ -346,27 +230,25 @@ if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
 		}
 
 		/**
-		 * Validate the provided API key and API secret.
+		 * Validate the provided API key.
 		 *
-		 * @since 4.0
+		 * @since 7.8.11
 		 *
-		 * @param string $api_secret Api secret.
 		 * @param string $api_key Api key.
 		 * @return bool
 		 */
-		private function validate_credentials( $api_secret, $api_key ) {
+		private function validate_credentials( $api_key ) {
 			if ( empty( $api_key ) ) {
 				return false;
 			}
 
 			try {
-				// Check if API key and API secret are valid.
-				$api         = self::api( $api_key, $api_secret );
-				$subscribers = $api->get_subscribers(); // check API secret.
-				$forms       = $api->get_forms(); // check API key.
+				// Check if API key is valid.
+				$api   = self::api( $api_key );
+				$forms = $api->get_forms(); // check API key.
 
-				if ( is_wp_error( $subscribers ) || is_wp_error( $forms ) ) {
-					Hustle_Provider_Utils::maybe_log( __METHOD__, __( 'Invalid ConvertKit API key ore API secret.', 'hustle' ) );
+				if ( is_wp_error( $forms ) ) {
+					Hustle_Provider_Utils::maybe_log( __METHOD__, __( 'Invalid Kit API key.', 'hustle' ) );
 					return false;
 				}
 			} catch ( Exception $e ) {
@@ -377,57 +259,24 @@ if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
 			return true;
 		}
 
-
 		/**
 		 * Get api
 		 *
 		 * @param string $api_key Api key.
 		 * @param string $api_secret Api secret.
-		 * @return Hustle_ConvertKit_Api_Interface
+		 * @return Hustle_ConvertKit_API_Interface
 		 */
 		public static function api( $api_key, $api_secret = '' ) {
 
 			if ( empty( self::$api ) ) {
 				try {
-					self::$api    = new Hustle_ConvertKit_Api( $api_key, $api_secret );
+					self::$api    = new Hustle_ConvertKit_API_V2( $api_key );
 					self::$errors = array();
 				} catch ( Exception $e ) {
 					self::$errors = array( 'api_error' => $e );
 				}
 			}
 			return self::$api;
-		}
-
-		/**
-		 * Check if migration is needed.
-		 * Migration is required if the provider is using version 1.0 (API key/secret authentication)
-		 * and needs to migrate to version 2.0 (OAuth authentication).
-		 *
-		 * @since 4.6.0
-		 * @return boolean
-		 */
-		public function migration_required() {
-			$api_version = $this->get_installed_version();
-			if ( empty( $api_version ) ) {
-				return false;
-			}
-
-			$settings = $this->get_settings_values();
-
-			return ! empty( $settings ) &&
-				version_compare( $api_version, '2.0', '<' );
-		}
-
-		/**
-		 * Get 3.0 provider mappings
-		 *
-		 * @return array
-		 */
-		public function get_30_provider_mappings() {
-			return array(
-				'api_key'    => 'api_key',
-				'api_secret' => 'api_secret',
-			);
 		}
 
 		/**
@@ -438,11 +287,10 @@ if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
 		 * @return array|mixed|object|WP_Error
 		 */
 		public function maybe_create_custom_fields( $global_multi_id, array $fields ) {
-			$api_key    = $this->get_setting( 'api_key', '', $global_multi_id );
-			$api_secret = $this->get_setting( 'api_secret', '', $global_multi_id );
+			$api_key = $this->get_setting( 'api_key', '', $global_multi_id );
 
 			// check if already existing.
-			$custom_fields = self::api( $api_key, $api_secret )->get_form_custom_fields();
+			$custom_fields = self::api( $api_key )->get_form_custom_fields();
 			$proceed       = true;
 			foreach ( $custom_fields as $custom_field ) {
 				if ( isset( $fields[ $custom_field->key ] ) ) {
@@ -455,8 +303,7 @@ if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
 			foreach ( $fields as $key => $field ) {
 				$add_custom_field = $api->create_custom_fields(
 					array(
-						'api_secret' => $api_secret,
-						'label'      => $field['label'],
+						'label' => $field['label'],
 					)
 				);
 				if ( is_wp_error( $add_custom_field ) ) {
@@ -466,6 +313,17 @@ if ( ! class_exists( 'Hustle_ConvertKit' ) ) :
 			}
 
 			return $proceed;
+		}
+
+		/**
+		 * Get 3.0 provider mappings
+		 *
+		 * @return array
+		 */
+		public function get_30_provider_mappings() {
+			return array(
+				'api_key' => 'api_key',
+			);
 		}
 	}
 

@@ -1,6 +1,6 @@
 === Hustle - Email Marketing, Lead Generation, Optins, Popups ===
 Plugin Name: Hustle - Email Marketing, Lead Generation, Opt-ins, Popups
-Version: 7.8.10.2
+Version: 7.8.12
 Author: WPMU DEV
 Author URI: https://wpmudev.com/
 Contributors: WPMUDEV
@@ -8,7 +8,7 @@ Tags: marketing, popup, optin, newsletter, subscription form, email, advertise, 
 Requires at least: 6.4
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 7.8.10.2
+Stable tag: 7.8.12
 
 Setup email optin forms, popups, newsletter forms & subscription forms to generate email leads with the best marketing popup builder
 
@@ -189,11 +189,25 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 
 == Changelog ==
 
-= 7.8.10.2 ( 2026-02-12 )
+= 7.8.12 ( 2026-03-19 ) =
+
+- Fix: Avoid repeated HubSpot token refresh requests to the WPMU DEV API when refresh fails.
+- Fix: Schedule settings not saving when schedule is expired.
+
+= 7.8.11 ( 2026-03-19 ) =
+
+- Enhancement: Allow multiple email blocks in automated emails.
+- Enhancement: Automated Email Subject field is now required to prevent sending incomplete emails.
+- Compatibility: Updated HubSpot integration to API v3.
+- Compatibility: Addressed MailPoet deprecated errors on PHP 8.2+.
+- Compatibility: PHP 8.4 compatibility improvements.
+- Compatibility: Upgraded Convert Kit integration to API v4.
+
+= 7.8.10.2 ( 2026-02-12 ) =
 
 - Fix: Security hardening for conversion tracking requests.
 
-= 7.8.10.1 ( 2026-01-27 )
+= 7.8.10.1 ( 2026-01-27 ) =
 
 - Fix: HubSpot integration critical error
 
