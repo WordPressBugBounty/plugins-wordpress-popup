@@ -1,12 +1,12 @@
-# Copyright (C) 2026 Hustle 7.8.12
-# This file is distributed under the same license as the Hustle 7.8.12 package.
+# Copyright (C) 2026 Hustle 7.8.12.1
+# This file is distributed under the same license as the Hustle 7.8.12.1 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Hustle 7.8.12\n"
+"Project-Id-Version: Hustle 7.8.12.1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-12 09:05+0000\n"
+"POT-Creation-Date: 2026-03-26 07:47+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -2821,7 +2821,7 @@ msgstr ""
 msgid "%s Preview"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:111, inc/front/hustle-module-front-ajax.php:1126
+#: inc/front/hustle-module-front-ajax.php:111, inc/front/hustle-module-front-ajax.php:1135
 msgid "Invalid security token."
 msgstr ""
 
@@ -2829,63 +2829,63 @@ msgstr ""
 msgid "Invalid module ID!"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:126, inc/front/hustle-module-front-ajax.php:1137, inc/front/hustle-module-front-ajax.php:1184, inc/provider/class-hustle-provider-admin-ajax.php:490, inc/provider/class-hustle-provider-admin-ajax.php:676
+#: inc/front/hustle-module-front-ajax.php:126, inc/front/hustle-module-front-ajax.php:1146, inc/front/hustle-module-front-ajax.php:1193, inc/provider/class-hustle-provider-admin-ajax.php:490, inc/provider/class-hustle-provider-admin-ajax.php:676
 msgid "Invalid module!"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:274
+#: inc/front/hustle-module-front-ajax.php:276
 msgid "Invalid module"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:278
+#: inc/front/hustle-module-front-ajax.php:280
 msgid "Module is not active"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:316
+#: inc/front/hustle-module-front-ajax.php:318
 msgid "Error saving form"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:603
+#: inc/front/hustle-module-front-ajax.php:612
 msgid "reCAPTCHA must be verified to submit the form."
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:631
+#: inc/front/hustle-module-front-ajax.php:640
 msgid "reCAPTCHA validation failed. Please try again."
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:641
+#: inc/front/hustle-module-front-ajax.php:650
 msgid "reCAPTCHA validation failed. The score is too low."
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:913, inc/providers/constantcontact/hustle-constantcontact-form-hooks.php:76, inc/providers/mailchimp/hustle-mailchimp-api.php:395, inc/providers/mailchimp/hustle-mailchimp-form-hooks.php:201, inc/providers/mailerlite/hustle-mailerlite-form-hooks.php:161, inc/providers/sendy/hustle-sendy.php:168
+#: inc/front/hustle-module-front-ajax.php:922, inc/providers/constantcontact/hustle-constantcontact-form-hooks.php:76, inc/providers/mailchimp/hustle-mailchimp-api.php:395, inc/providers/mailchimp/hustle-mailchimp-form-hooks.php:201, inc/providers/mailerlite/hustle-mailerlite-form-hooks.php:161, inc/providers/sendy/hustle-sendy.php:168
 msgid "Something went wrong."
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:1103
+#: inc/front/hustle-module-front-ajax.php:1112
 msgid "K"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:1104
+#: inc/front/hustle-module-front-ajax.php:1113
 msgid "M"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:1132
+#: inc/front/hustle-module-front-ajax.php:1141
 msgid "Invalid Request!"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:1143
+#: inc/front/hustle-module-front-ajax.php:1152
 msgid "Module is not active."
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:1159, inc/front/hustle-module-front-ajax.php:1192
+#: inc/front/hustle-module-front-ajax.php:1168, inc/front/hustle-module-front-ajax.php:1201
 msgid "Stats Successfully saved"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:1157, inc/front/hustle-module-front-ajax.php:1195
+#: inc/front/hustle-module-front-ajax.php:1166, inc/front/hustle-module-front-ajax.php:1204
 msgid "Error saving stats"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:1179
+#: inc/front/hustle-module-front-ajax.php:1188
 msgid "Invalid Request: Module id invalid"
 msgstr ""
 

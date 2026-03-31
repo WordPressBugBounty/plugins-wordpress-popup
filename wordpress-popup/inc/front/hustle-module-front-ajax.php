@@ -261,6 +261,8 @@ class Hustle_Module_Front_Ajax {
 	 * Submit form
 	 */
 	public function submit_form() {
+		// Verify nonce for security.
+		check_ajax_referer( 'hustle_module_form_submit', 'nonce' );
 
 		Hustle_Provider_Autoload::initiate_providers();
 
@@ -334,6 +336,13 @@ class Hustle_Module_Front_Ajax {
 		$entry->module_id   = $module_id;
 
 		if ( ! is_null( $fields ) ) {
+			$form_data = Opt_In_Utils::validate_and_sanitize_fields( $form_data );
+			array_walk_recursive(
+				$form_data,
+				function ( &$value ) {
+					$value = strip_shortcodes( $value );
+				}
+			);
 
 			// Verify recaptcha first.
 			if ( isset( $fields['recaptcha'] ) ) {
