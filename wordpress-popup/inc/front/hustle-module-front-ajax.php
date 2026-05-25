@@ -261,8 +261,6 @@ class Hustle_Module_Front_Ajax {
 	 * Submit form
 	 */
 	public function submit_form() {
-		// Verify nonce for security.
-		check_ajax_referer( 'hustle_module_form_submit', 'nonce' );
 
 		Hustle_Provider_Autoload::initiate_providers();
 
@@ -336,13 +334,6 @@ class Hustle_Module_Front_Ajax {
 		$entry->module_id   = $module_id;
 
 		if ( ! is_null( $fields ) ) {
-			$form_data = Opt_In_Utils::validate_and_sanitize_fields( $form_data );
-			array_walk_recursive(
-				$form_data,
-				function ( &$value ) {
-					$value = strip_shortcodes( $value );
-				}
-			);
 
 			// Verify recaptcha first.
 			if ( isset( $fields['recaptcha'] ) ) {
@@ -351,6 +342,17 @@ class Hustle_Module_Front_Ajax {
 
 				if ( ! empty( $submit_errors ) ) {
 					// Recaptcha failed. No need to check the other fields.
+					$fields = array();
+				}
+			}
+
+			// Verify Cloudflare Turnstile if present.
+			if ( isset( $fields['turnstile'] ) ) {
+
+				$submit_errors = $this->validate_turnstile( $form_data, $fields['turnstile'] );
+
+				if ( ! empty( $submit_errors ) ) {
+					// Turnstile failed. No need to check the other fields.
 					$fields = array();
 				}
 			}
@@ -400,6 +402,7 @@ class Hustle_Module_Front_Ajax {
 
 			$allow_subscribed = '1' === $integrations_settings['allow_subscribed_users'];
 
+			// Unset technical data.
 			$formatted_submitted_data = Hustle_Provider_Utils::format_submitted_data_for_addon( $submitted_data );
 			// Do provider's validation.
 			$provider_error = $this->attach_addons_on_form_submit( $module_id, $formatted_submitted_data, $allow_subscribed );
@@ -653,6 +656,73 @@ class Hustle_Module_Front_Ajax {
 				}
 			} catch ( Exception $e ) {
 				$submit_errors['recaptcha'] = $e->getMessage();
+			}
+		}
+
+		return $submit_errors;
+	}
+
+	/**
+	 * Do Cloudflare Turnstile backend validation.
+	 *
+	 * @since 7.8.13
+	 * @param array $form_data Form data.
+	 * @param array $turnstile_field Turnstile field settings.
+	 * @return array
+	 *
+	 * @throws Exception When Turnstile validation failed.
+	 */
+	private function validate_turnstile( $form_data, $turnstile_field ) {
+
+		$submit_errors      = array();
+		$turnstile_settings = Hustle_Settings_Admin::get_turnstile_settings();
+		$secret             = ! empty( $turnstile_settings['turnstile_client_secret'] ) ? $turnstile_settings['turnstile_client_secret'] : '';
+		$site_key           = ! empty( $turnstile_settings['turnstile_api_key'] ) ? $turnstile_settings['turnstile_api_key'] : '';
+		$token              = ! empty( $form_data['cf-turnstile-response'] ) ? $form_data['cf-turnstile-response'] : false;
+
+		if ( ! empty( $secret ) && ! empty( $site_key ) ) {
+
+			try {
+				$validation_message = ! empty( $turnstile_field['validation_message'] )
+						? esc_html( $turnstile_field['validation_message'] ) : '';
+
+				if ( ! $token ) {
+					throw new Exception(
+						! empty( $validation_message ) ? $validation_message
+						: esc_html__( 'Please complete the Cloudflare Turnstile challenge.', 'hustle' )
+					);
+				}
+
+				$remote_ip = filter_input( INPUT_SERVER, 'HTTP_X_FORWARDED_FOR', FILTER_SANITIZE_SPECIAL_CHARS );
+				if ( ! $remote_ip ) {
+					$remote_ip = filter_input( INPUT_SERVER, 'REMOTE_ADDR', FILTER_SANITIZE_SPECIAL_CHARS );
+				}
+
+				$response = wp_remote_post(
+					'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+					array(
+						'body' => array(
+							'secret'   => $secret,
+							'response' => $token,
+							'remoteip' => $remote_ip,
+						),
+					)
+				);
+
+				if ( is_wp_error( $response ) ) {
+					throw new Exception( $response->get_error_message() );
+				}
+
+				$response_body = ! empty( $response['body'] ) ? json_decode( $response['body'] ) : '';
+
+				if ( empty( $response_body ) || ! $response_body->success ) {
+					throw new Exception(
+						! empty( $validation_message ) ? $validation_message
+						: esc_html__( 'Turnstile validation failed. Please try again.', 'hustle' )
+					);
+				}
+			} catch ( Exception $e ) {
+				$submit_errors['turnstile'] = $e->getMessage();
 			}
 		}
 

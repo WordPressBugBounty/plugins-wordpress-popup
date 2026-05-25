@@ -334,6 +334,9 @@ class Hustle_Notifications {
 				/* translators: 1. user's name, 2. provider's name */
 				$msg = sprintf( esc_html__( 'Hey %1$s, we have updated our HubSpot integration to support the latest API (v3).', 'hustle' ), $username );
 				break;
+			case 'hustle_hubspot_missing_api_key':
+				$msg = esc_html__( 'You have active Hubspot integration, but your site is not connected to WPMU Dev Hub. Please provide your own HubSpot API keys in the integration settings to continue using HubSpot with Hustle.', 'hustle' );
+				break;
 
 			default:
 				$msg = '';
@@ -701,6 +704,33 @@ class Hustle_Notifications {
 		}
 
 		$hubspot_instance = Hustle_HubSpot::get_instance();
+		if ( $hubspot_instance->is_connected() && ! Opt_In_Utils::get_hub_api_key() ) {
+
+			if ( ! $hubspot_instance->has_api_keys() ) {
+				$integrations_url = add_query_arg(
+					array(
+						'page'                    => Hustle_Data::INTEGRATIONS_PAGE,
+						'action'                  => 'reauth_provider',
+						'nonce'                   => wp_create_nonce( 'hustle_provider_reauthorize' ),
+						'show_provider_migration' => 'hubspot',
+					),
+					'admin.php'
+				);
+
+				$provider_data = array(
+					'name' => Hustle_HubSpot::SLUG,
+					'id'   => '0',
+				);
+
+				$this->get_provider_auth_deprecation_notice_html(
+					'hustle_hubspot_missing_api_key',
+					$provider_data,
+					__( 'Re-authorize', 'hustle' ),
+					$integrations_url
+				);
+			}
+		}
+
 		if ( $hubspot_instance->migration_required() ) {
 			// Check if there is a connected HubSpot integration.
 			// If there is, show the notice.

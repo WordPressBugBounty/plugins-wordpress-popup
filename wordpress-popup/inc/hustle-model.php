@@ -632,6 +632,30 @@ abstract class Hustle_Model {
 	}
 
 	/**
+	 * Deletes meta for the current optin
+	 *
+	 * @since 7.8.13
+	 *
+	 * @param string $meta_key Meta key.
+	 * @return false|int
+	 */
+	public function delete_meta( $meta_key ) {
+		$this->clean_module_cache( 'meta' );
+
+		return $this->wpdb->delete(
+			Hustle_Db::modules_meta_table(),
+			array(
+				'module_id' => $this->id,
+				'meta_key'  => $meta_key, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+			),
+			array(
+				'%d',
+				'%s',
+			)
+		);
+	}
+
+	/**
 	 * Returns db data for current optin
 	 *
 	 * @return array

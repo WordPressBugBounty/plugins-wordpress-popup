@@ -444,7 +444,17 @@ class Hustle_Provider_Utils {
 	 */
 	public static function format_submitted_data_for_addon( $data ) {
 		$new_data = $data;
-		unset( $new_data['form'], $new_data['module_id'], $new_data['uri'], $new_data['hustle_module_id'], $new_data['post_id'], $new_data['g-recaptcha-response'], $new_data['hustle_sub_type'], $new_data['recaptcha-response'] );
+		unset(
+			$new_data['form'],
+			$new_data['module_id'],
+			$new_data['uri'],
+			$new_data['hustle_module_id'],
+			$new_data['post_id'],
+			$new_data['g-recaptcha-response'],
+			$new_data['hustle_sub_type'],
+			$new_data['recaptcha-response'],
+			$new_data['cf-turnstile-response']
+		);
 		$new_data = apply_filters( 'hustle_provider_form_formatted_submitted_data', $new_data, $data );
 
 		return $new_data;

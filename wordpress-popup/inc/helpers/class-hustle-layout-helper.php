@@ -138,31 +138,15 @@ class Hustle_Layout_Helper {
 	 */
 	public function render( $file, $params = array(), $return_value = false ) {
 
-		// Assign $file to a variable which is unlikely to be used by users of the method.
-		$opt_in_to_be_file_name = $file;
 		extract( $params, EXTR_OVERWRITE ); // phpcs:ignore WordPress.PHP.DontExtract.extract_extract
 
 		if ( $return_value ) {
 			ob_start();
 		}
 
-		$template_file = trailingslashit( Opt_In::$plugin_path ) . Opt_In::VIEWS_FOLDER . '/' . $opt_in_to_be_file_name . '.php';
+		$template_file = $this->locate_file( $file );
 		if ( file_exists( $template_file ) ) {
 			include $template_file;
-
-		} else {
-			$template_path = Opt_In::$template_path . $opt_in_to_be_file_name . '.php';
-
-			// Render file located outside the plugin's folder. Useful when adding third-party integrations.
-			$external_path = $opt_in_to_be_file_name . '.php';
-
-			if ( file_exists( $template_path ) ) {
-				include $template_path;
-			} elseif ( file_exists( $external_path ) ) {
-				include $external_path;
-			} elseif ( file_exists( $opt_in_to_be_file_name ) ) {
-				include $opt_in_to_be_file_name;
-			}
 		}
 
 		if ( $return_value ) {
@@ -174,6 +158,37 @@ class Hustle_Layout_Helper {
 				unset( $param );
 			}
 		}
+	}
+
+	/**
+	 * Locates a file and returns its path.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param string $layout Layout name, which is used to create the file name.
+	 * @return string
+	 */
+	public function locate_file( $layout ) {
+		// Assign $file to a variable which is unlikely to be used by users of the method.
+		$opt_in_to_be_file_name = $layout;
+
+		$template_file = trailingslashit( Opt_In::$plugin_path ) . Opt_In::VIEWS_FOLDER . '/' . $opt_in_to_be_file_name . '.php';
+
+		if ( file_exists( $template_file ) ) {
+			return apply_filters( 'hustle_locate_file', $template_file, $layout );
+		}
+
+		$template_path = Opt_In::$template_path . $opt_in_to_be_file_name . '.php';
+		if ( file_exists( $template_path ) ) {
+			return apply_filters( 'hustle_locate_file', $template_path, $layout );
+		}
+
+		$external_path = $opt_in_to_be_file_name . '.php';
+		if ( file_exists( $external_path ) ) {
+			return apply_filters( 'hustle_locate_file', $external_path, $layout );
+		}
+
+		return apply_filters( 'hustle_locate_file', $opt_in_to_be_file_name, $layout );
 	}
 
 	/**

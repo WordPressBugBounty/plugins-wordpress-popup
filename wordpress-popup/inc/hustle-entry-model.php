@@ -537,7 +537,7 @@ class Hustle_Entry_Model {
 	 * @return array
 	 */
 	public static function ignored_fields() {
-		return apply_filters( 'hustle_entry_ignored_fields', array( 'recaptcha', 'submit' ) );
+		return apply_filters( 'hustle_entry_ignored_fields', array( 'recaptcha', 'turnstile', 'submit' ) );
 	}
 
 	/**

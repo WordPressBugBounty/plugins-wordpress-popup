@@ -60,6 +60,12 @@
 	<?php $this->render( 'admin/dialogs/modal-migrate-infusionsoft' ); ?>
 <?php endif; ?>
 
+<!-- HubSpot integration migration modal -->
+<?php if ( ! Opt_In_Utils::get_hub_api_key() ) : ?>
+	<?php $this->render( 'admin/dialogs/modal-migrate-hubspot-non-hub' ); ?>
+<?php endif; ?>
+
+
 <!-- ConvertKit integration migration modal -->
 <?php $this->render( 'admin/dialogs/modal-migrate-convertkit' ); ?>
 

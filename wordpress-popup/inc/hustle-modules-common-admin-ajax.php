@@ -127,18 +127,6 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 					throw new Exception();
 				}
 
-				// Check we're not passing the free limits.
-				if ( Hustle_Data::was_free_limit_reached( $module_type ) ) {
-					$url_args = array(
-						Hustle_Module_Admin::UPGRADE_MODAL_PARAM => 'true',
-						'page' => Hustle_Data::get_listing_page_by_module_type( $module_type ),
-					);
-
-					$error_url   = add_query_arg( $url_args, 'admin.php' );
-					$error_array = array( 'redirect_url' => $error_url );
-					throw new Exception();
-				}
-
 				// All good so far, let's create the module.
 				$module_data = array(
 					'module_name' => $module_name,
@@ -379,20 +367,6 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 
 			if ( ! $module_type || ! in_array( $module_type, Hustle_Data::get_module_types(), true ) ) {
 				throw new Exception( esc_html__( "The module's type is not valid.", 'hustle' ) );
-			}
-
-			// Send error if the user can't create new modules but is importing a new one.
-			if ( $is_new_module && Hustle_Data::was_free_limit_reached( $module_type ) ) {
-
-				$url = add_query_arg(
-					array(
-						'page' => Hustle_Data::get_listing_page_by_module_type( $module_type ),
-						Hustle_Module_Admin::UPGRADE_MODAL_PARAM => 'true',
-					),
-					'admin.php'
-				);
-
-				wp_send_json_error( array( 'redirect_url' => $url ) );
 			}
 
 			try {
@@ -902,7 +876,7 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 						break;
 
 					case 'clone':
-						if ( $can_create && ! Hustle_Data::was_free_limit_reached( $module->module_type ) ) {
+						if ( $can_create ) {
 							$module->duplicate_module();
 						}
 						break;

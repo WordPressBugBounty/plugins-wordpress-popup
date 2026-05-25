@@ -318,6 +318,40 @@ class Hustle_Settings_Admin {
 	}
 
 	/**
+	 * Get the Cloudflare Turnstile settings.
+	 *
+	 * @since 4.0.0
+	 * @return array
+	 */
+	public static function get_turnstile_settings() {
+
+		$default = array(
+			'turnstile_api_key'       => '',
+			'turnstile_client_secret' => '',
+			'language'                => 'auto',
+		);
+
+		$saved_settings = self::get_hustle_settings( 'turnstile' );
+
+		if ( ! empty( $saved_settings ) ) {
+			return array_merge( $default, $saved_settings );
+		}
+
+		return $default;
+	}
+
+	/**
+	 * Check if Cloudflare Turnstile is configured and available to use.
+	 *
+	 * @since 7.8.13
+	 * @return bool
+	 */
+	public static function is_turnstile_available() {
+		$settings = self::get_turnstile_settings();
+		return ! empty( $settings['turnstile_api_key'] ) && ! empty( $settings['turnstile_client_secret'] );
+	}
+
+	/**
 	 * Get the recaptcha versions that are available to be used.
 	 *
 	 * @since 4.0.3

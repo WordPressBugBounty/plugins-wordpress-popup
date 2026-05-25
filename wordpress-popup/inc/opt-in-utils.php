@@ -1206,6 +1206,7 @@ class Opt_In_Utils {
 			'LK'  => __( 'Sri Lanka', 'hustle' ),
 			'XX'  => __( 'Stateless Persons', 'hustle' ),
 			'SD'  => __( 'Sudan', 'hustle' ),
+			'SS'  => __( 'South Sudan', 'hustle' ),
 			'SR'  => __( 'Suriname', 'hustle' ),
 			'SJ'  => __( 'Svalbard and Jan Mayen', 'hustle' ),
 			'SZ'  => __( 'Swaziland', 'hustle' ),

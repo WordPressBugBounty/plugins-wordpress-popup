@@ -1,14 +1,14 @@
 === Hustle - Email Marketing, Lead Generation, Optins, Popups ===
 Plugin Name: Hustle - Email Marketing, Lead Generation, Opt-ins, Popups
-Version: 7.8.12.1
+Version: 7.8.13.1
 Author: WPMU DEV
 Author URI: https://wpmudev.com/
 Contributors: WPMUDEV
 Tags: marketing, popup, optin, newsletter, subscription form, email, advertise, signup, mailing list, wordpress popup plugin, popup maker, pop-up, opt-in
 Requires at least: 6.4
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 7.8.12.1
+Stable tag: 7.8.13.1
 
 Setup email optin forms, popups, newsletter forms & subscription forms to generate email leads with the best marketing popup builder
 
@@ -189,7 +189,27 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 
 == Changelog ==
 
-= 7.8.12.1 ( 2026-03-31 )
+= 7.8.13.1 ( 2026-05-25 ) =
+
+- Fix: Resolve Cloudflare Turnstile conflict with The Newsletter Plugin
+
+= 7.8.13 ( 2026-05-25 ) =
+
+- Enhancement: Add new Zoho CRM integration to connect forms with Zoho CRM contacts
+- Enhancement: Add integration with The Newsletter Plugin for WordPress
+- Enhancement: Add support for Cloudflare Turnstile CAPTCHA
+- Enhancement: Add hustle_get_cta_html filter for customizing CTA button HTML
+- Enhancement: Add Telegram sharing option for current pages
+- Enhancement: Allow custom API keys for HubSpot integration
+- Fix: CTA area not clickable when the CTA label is empty
+- Fix: Prevent JavaScript TypeError when a popup contains no focusable elements
+- Fix: Resolve embed module box shadow overlapping content below
+- Fix: Add missing South Sudan option to the Visitor’s Country display condition dropdown
+- Fix: Prevent form submission failures caused by stale browser cache
+- Fix: Correct integration status remaining connected after disconnection
+- Fix: Resolve Social Sharing module preview not rendering
+
+= 7.8.12.1 ( 2026-03-31 ) =
 
 - Fix: Security hardening for shortcode handling.
 

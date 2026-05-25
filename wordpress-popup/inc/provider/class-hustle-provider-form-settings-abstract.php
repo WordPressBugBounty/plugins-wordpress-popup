@@ -410,7 +410,12 @@ abstract class Hustle_Provider_Form_Settings_Abstract {
 	 * @param array $submitted_data Submitted data.
 	 */
 	public function disconnect_form( $submitted_data ) {
-		$this->save_form_settings_values( array(), true );
+		$module = Hustle_Module_Model::new_instance( $this->module_id );
+		if ( is_wp_error( $module ) ) {
+			return;
+		}
+
+		$module->disconnect_integration( $this->provider->get_slug() );
 	}
 
 	/**

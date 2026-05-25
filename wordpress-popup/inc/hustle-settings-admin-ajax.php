@@ -21,6 +21,9 @@ class Hustle_Settings_Admin_Ajax {
 		// Return the recaptcha script for preview.
 		add_action( 'wp_ajax_hustle_load_recaptcha_preview', array( $this, 'load_recaptcha_preview' ) );
 
+		// Return the turnstile script for preview.
+		add_action( 'wp_ajax_hustle_load_turnstile_preview', array( $this, 'load_turnstile_preview' ) );
+
 		// Color Palette tab actions.
 		add_action( 'wp_ajax_hustle_handle_palette_actions', array( $this, 'handle_palette_actions' ) );
 
@@ -286,6 +289,39 @@ class Hustle_Settings_Admin_Ajax {
 	}
 
 	/**
+	 * Save the Cloudflare Turnstile settings.
+	 *
+	 * @since 4.0.0
+	 */
+	private function save_turnstile_settings() {
+
+		$settings_to_save = array(
+			'turnstile_api_key'       => '',
+			'turnstile_client_secret' => '',
+			'language'                => 'auto',
+		);
+
+		foreach ( $settings_to_save as $key => $value ) {
+			$incoming_setting = filter_input( INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS );
+
+			if ( $incoming_setting ) {
+				$settings_to_save[ $key ] = trim( $incoming_setting );
+			}
+		}
+
+		Hustle_Settings_Admin::update_hustle_settings( $settings_to_save, 'turnstile' );
+
+		wp_send_json_success(
+			array(
+				'notification' => array(
+					'status'  => 'success',
+					'message' => esc_html__( 'Cloudflare Turnstile configured successfully.', 'hustle' ),
+				),
+			)
+		);
+	}
+
+	/**
 	 * Save the Accessibility settings.
 	 *
 	 * @since 4.0.0
@@ -347,6 +383,20 @@ class Hustle_Settings_Admin_Ajax {
 	}
 
 	/**
+	 * Return the Cloudflare Turnstile script to be added in the page.
+	 *
+	 * @since 7.13.0
+	 */
+	public function load_turnstile_preview() {
+
+		$source = Hustle_Module_Front::add_turnstile_script( true, true );
+		// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript
+		$html = '<script src="' . esc_url( $source ) . '" async defer></script>';
+
+		wp_send_json_success( $html );
+	}
+
+	/**
 	 * Return the recaptcha script to be added in the page.
 	 * This script changes when the recaptcha's language changes,
 	 * so it must be updated on language change when previewing.
@@ -394,6 +444,10 @@ class Hustle_Settings_Admin_Ajax {
 
 			case 'recaptcha':
 				$this->save_recaptcha_settings();
+				break;
+
+			case 'turnstile':
+				$this->save_turnstile_settings();
 				break;
 
 			case 'accessibility':

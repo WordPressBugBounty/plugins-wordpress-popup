@@ -837,7 +837,7 @@ class Hustle_Module_Model extends Hustle_Model {
 			$api     = $addon::api( $api_key, $new_campaigns );
 
 			foreach ( $emails['form_elements'] as $element ) {
-				if ( empty( $element['type'] ) || in_array( $element['type'], array( 'submit', 'recaptcha' ), true ) ) {
+				if ( empty( $element['type'] ) || in_array( $element['type'], array( 'submit', 'recaptcha', 'turnstile' ), true ) ) {
 					continue;
 				}
 				$custom_fields[] = array(
@@ -967,5 +967,76 @@ class Hustle_Module_Model extends Hustle_Model {
 		}
 
 		return $new_name;
+	}
+
+	/**
+	 * Disconnect an integration from the module by its slug.
+	 *
+	 * @since 7.8.13
+	 *
+	 * @param string $slug Integration slug.
+	 * @return void
+	 */
+	public function disconnect_integration( $slug ) {
+		$settings = $this->get_integrations_settings()->to_array();
+
+		if (
+			isset( $settings['active_integrations'] ) &&
+			is_string( $settings['active_integrations'] )
+		) {
+			$integrations = explode( ',', $settings['active_integrations'] );
+			$integrations = array_map( 'trim', $integrations );
+
+			if ( in_array( $slug, $integrations, true ) ) {
+				// Remove the slug from the active integrations list.
+				$integrations       = array_diff( $integrations, array( $slug ) );
+				$integrations_count = count( $integrations );
+
+				$settings['active_integrations'] = implode( ',', $integrations );
+			}
+		}
+
+		if ( isset( $integrations_count ) ) {
+			$settings['active_integrations_count'] = $integrations_count;
+		}
+
+		$this->update_meta( self::KEY_INTEGRATIONS_SETTINGS, $settings );
+
+		// Delete the integration-specific settings meta.
+		$integration_meta_key = $slug . self::KEY_PROVIDER;
+		$this->update_meta( $integration_meta_key, array() );
+	}
+
+	/**
+	 * Connect an integration to the module by its slug.
+	 *
+	 * @since 7.8.13
+	 *
+	 * @param string $slug Integration slug.
+	 * @return void
+	 */
+	public function connect_integration( $slug ) {
+		$settings = $this->get_integrations_settings()->to_array();
+
+		if ( isset( $settings['active_integrations'] ) && is_string( $settings['active_integrations'] ) ) {
+			$integrations = explode( ',', $settings['active_integrations'] );
+			$integrations = array_map( 'trim', $integrations );
+
+			if ( ! in_array( $slug, $integrations, true ) ) {
+				$integrations[]     = $slug;
+				$integrations_count = count( $integrations );
+
+				$settings['active_integrations'] = implode( ',', $integrations );
+			}
+		} else {
+			$settings['active_integrations'] = $slug;
+			$integrations_count              = 1;
+		}
+
+		if ( isset( $integrations_count ) ) {
+			$settings['active_integrations_count'] = $integrations_count;
+		}
+
+		$this->update_meta( self::KEY_INTEGRATIONS_SETTINGS, $settings );
 	}
 }

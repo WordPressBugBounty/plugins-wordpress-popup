@@ -58,10 +58,6 @@ if ( ! class_exists( 'Hustle_Init' ) ) {
 				Hustle_Background_Conversion_Log::get_instance()->init();
 			}
 
-			if ( Opt_In_Utils::is_free() ) {
-				new Hustle_Cross_Sell();
-			}
-
 			// Front.
 			new Hustle_Module_Front();
 

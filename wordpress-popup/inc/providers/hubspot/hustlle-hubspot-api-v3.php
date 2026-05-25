@@ -14,6 +14,62 @@
 class Hustle_Hubspot_API_V3 extends Hustle_HubSpot_Api {
 
 	/**
+	 * Validates request callback from WPMU DEV
+	 *
+	 * @param string $provider Provider.
+	 * @return bool
+	 */
+	public function validate_callback_request( $provider ) {
+		$slug = isset( $_GET['provider'] ) ? sanitize_text_field( wp_unslash( $_GET['provider'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+		if ( $provider !== $slug ) {
+			return false;
+		}
+
+		$code = isset( $_GET['code'] ) ? sanitize_text_field( wp_unslash( $_GET['code'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( empty( $code ) ) {
+			return false;
+		}
+
+		$state = isset( $_GET['state'] ) ? sanitize_text_field( wp_unslash( $_GET['state'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( empty( $state ) ) {
+			return parent::validate_callback_request( $provider );
+		}
+
+		return $this->validate_oauth_callback( $state );
+	}
+
+	/**
+	 * Validate oAuth callback state parameter.
+	 *
+	 * @param string $state State parameter.
+	 * @return bool
+	 */
+	private function validate_oauth_callback( $state ) {
+		$state = base64_decode( $state ); // phpcs:ignore
+		if ( ! $state ) {
+			return false;
+		}
+
+		$params = json_decode( $state, true );
+		if ( ! $params || count( $params ) < 2 ) {
+			return false;
+		}
+
+		$nonce = $params['nonce'];
+		$url   = isset( $params['redirect_uri'] ) ? $params['redirect_uri'] : '';
+
+		$domain          = wp_parse_url( $url, PHP_URL_HOST );
+		$original_domain = wp_parse_url( site_url(), PHP_URL_HOST );
+
+		if ( $original_domain !== $domain ) {
+			return false;
+		}
+
+		return $this->verify_nonce( $nonce );
+	}
+
+	/**
 	 * Retrieve contact lists from HubSpot using v3 API
 	 *
 	 * @return array

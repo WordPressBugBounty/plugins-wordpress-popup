@@ -218,7 +218,7 @@ if ( ! class_exists( 'Hustle_Admin_Page_Abstract' ) ) :
 			wp_register_script(
 				'optin_admin_scripts',
 				Opt_In::$plugin_url . 'assets/js/admin.min.js',
-				array( 'jquery', 'backbone', 'jquery-effects-core' ),
+				array( 'jquery', 'backbone', 'jquery-effects-core', 'shared-ui' ),
 				Opt_In::VERSION,
 				true
 			);
@@ -250,6 +250,7 @@ if ( ! class_exists( 'Hustle_Admin_Page_Abstract' ) ) :
 			);
 
 			return array(
+				'ss_preview_nonce'     => wp_create_nonce( 'hustle-preview' ),
 				'dismiss_notice_nonce' => wp_create_nonce( 'hustle_dismiss_notification' ),
 				'urlParams'            => $url_params,
 				'module_page'          => array(

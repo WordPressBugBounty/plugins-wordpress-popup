@@ -136,6 +136,10 @@ class Hustle_Providers_Admin extends Hustle_Admin_Page_Abstract {
 			$response['integration_id'] = $multi_id;
 		}
 
+		if ( 'reauth_provider' === $action ) {
+			$response['reauth'] = true;
+		}
+
 		if ( 'migrate_provider_data' === $action && ! empty( $provider ) ) {
 			$nonce = filter_input( INPUT_GET, 'nonce' );
 

@@ -697,7 +697,17 @@ class Hustle_SShare_Model extends Hustle_Model {
 		if ( $networks_only ) {
 			return apply_filters(
 				'hustle_networks_with_share_enpoints',
-				array( 'facebook', 'twitter', 'pinterest', 'reddit', 'linkedin', 'vkontakte', 'whatsapp', 'email' )
+				array(
+					'facebook',
+					'twitter',
+					'pinterest',
+					'reddit',
+					'linkedin',
+					'vkontakte',
+					'whatsapp',
+					'email',
+					'telegram',
+				)
 			);
 
 		}
@@ -719,6 +729,7 @@ class Hustle_SShare_Model extends Hustle_Model {
 				'linkedin'  => 'https://www.linkedin.com/shareArticle?mini=true&url=' . $current_url,
 				'vkontakte' => 'https://vk.com/share.php?url=' . $current_url,
 				'whatsapp'  => 'https://api.whatsapp.com/send?text=' . $current_url,
+				'telegram'  => 'https://t.me/share/url?url=' . $current_url . '&text=' . $title,
 				'email'     => 'mailto:?subject=' . $title . '&body=' . $current_url,
 
 			),
