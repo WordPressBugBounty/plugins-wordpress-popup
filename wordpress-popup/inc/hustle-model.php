@@ -1462,6 +1462,17 @@ abstract class Hustle_Model {
 	}
 
 	/**
+	 * Set the db instance.
+	 *
+	 * @since 7.8.14
+	 *
+	 * @param wpdb $wpdb Database instance.
+	 */
+	public function set_db( $wpdb ) {
+		$this->wpdb = $wpdb;
+	}
+
+	/**
 	 * Opt_In_Data constructor.
 	 *
 	 * @param int $module_id Module ID.

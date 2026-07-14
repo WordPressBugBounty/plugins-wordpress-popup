@@ -86,6 +86,10 @@ $is_search            = filter_input( INPUT_GET, 'q' );
 
 </div>
 
+<?php if ( ! Opt_In_Utils::is_forminator_installed() && ! Hustle_Notifications::was_notification_dismissed( 'forminator_cross_sell' ) ) { ?>
+	<?php $this->render( 'admin/commons/sui-listing/elements/forminator-notice' ); ?>
+<?php } ?>
+
 <div id="hustle-floating-notifications-wrapper" class="sui-floating-notices"></div>
 
 <?php

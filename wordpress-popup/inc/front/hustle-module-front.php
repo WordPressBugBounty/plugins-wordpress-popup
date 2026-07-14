@@ -311,6 +311,7 @@ class Hustle_Module_Front {
 				'script_delay'          => apply_filters( 'hustle_lazy_load_script_delay', 3000 ), // to lazyload script for later on added elements.
 				'display_check_nonce'   => wp_create_nonce( 'hustle_display_check' ),
 				'conversion_nonce'      => wp_create_nonce( 'hustle_log_conversion' ),
+				'form_submit_nonce'     => wp_create_nonce( 'hustle_module_form_submit' ),
 			)
 		);
 

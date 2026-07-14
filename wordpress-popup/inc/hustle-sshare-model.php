@@ -186,6 +186,11 @@ class Hustle_SShare_Model extends Hustle_Model {
 				if ( ! in_array( $icon['platform'], $icon_with_enpoints, true ) && empty( $icon['link'] ) ) {
 					$errors['error']['icon_error'][] = $icon['platform'];
 				}
+
+				// Facebook App ID is required.
+				if ( 'facebook' === $icon['platform'] && empty( $icon['app_id'] ) ) {
+					$errors['error']['facebook_app_id_error'] = __( 'Facebook App ID is required.', 'hustle' );
+				}
 			}
 		}
 

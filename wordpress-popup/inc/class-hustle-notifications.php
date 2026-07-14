@@ -100,6 +100,9 @@ class Hustle_Notifications {
 		add_action( 'admin_notices', array( $this, 'show_sendgrid_update_notice' ) );
 
 		add_action( 'admin_notices', array( $this, 'show_provider_migration_notice' ) );
+
+		// Show the notice about Facebook App ID requirement for Social Sharing module.
+		add_action( 'admin_notices', array( $this, 'show_facebook_app_id_notice' ) );
 	}
 
 	/**
@@ -780,6 +783,79 @@ class Hustle_Notifications {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Displays a notice when a Social Sharing module has Facebook active but no App ID is set.
+	 * Shown in hustle pages. Per user notification.
+	 */
+	public function show_facebook_app_id_notice() {
+		if ( self::was_notification_dismissed( 'hustle_facebook_app_id' ) ) {
+			return;
+		}
+
+		if ( ! $this->has_facebook_without_app_id() ) {
+			return;
+		}
+
+		$url = add_query_arg(
+			array( 'page' => Hustle_Data::SOCIAL_SHARING_LISTING_PAGE ),
+			'admin.php'
+		);
+
+		$message  = '<p>';
+		$message .= sprintf(
+			/* translators: 1. opening 'a' tag, 2. closing 'a' tag */
+			esc_html__( 'One or more of your Social Sharing modules has Facebook active without a Facebook App ID. %1$sProvide your App ID%2$s to ensure the Facebook Share Dialog works correctly.', 'hustle' ),
+			'<a href="' . esc_url( $url ) . '">',
+			'</a>'
+		);
+		$message .= '</p>';
+
+		$this->show_notice( $message, 'hustle_facebook_app_id', 'warning', true );
+	}
+
+	/**
+	 * Checks whether any social sharing module has Facebook active without an App ID.
+	 *
+	 * @return bool
+	 */
+	private function has_facebook_without_app_id() {
+		$transient_key = 'hustle_social_sharing_modules';
+		$modules       = get_transient( $transient_key );
+
+		if ( false === $modules ) {
+			$modules = Hustle_Module_Collection::instance()->get_all(
+				true,
+				array( 'module_type' => Hustle_Module_Model::SOCIAL_SHARING_MODULE )
+			);
+
+			set_transient( $transient_key, $modules, 24 * HOUR_IN_SECONDS );
+		} else {
+			global $wpdb;
+			// Unserialized modules have old db connection, we need to set the new one to be able
+			// to get the content and check the icons.
+			$modules = array_map(
+				function ( $module ) use ( $wpdb ) {
+					$module->set_db( $wpdb );
+					return $module;
+				},
+				$modules
+			);
+		}
+
+		if ( empty( $modules ) ) {
+			return false;
+		}
+
+		foreach ( $modules as $module ) {
+			$icons = $module->get_content()->get_social_icons();
+			if ( isset( $icons['facebook'] ) && empty( $icons['facebook']['app_id'] ) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**

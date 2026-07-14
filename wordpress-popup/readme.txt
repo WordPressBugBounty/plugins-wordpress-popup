@@ -1,6 +1,6 @@
 === Hustle - Email Marketing, Lead Generation, Optins, Popups ===
 Plugin Name: Hustle - Email Marketing, Lead Generation, Opt-ins, Popups
-Version: 7.8.13.1
+Version: 7.8.14.1
 Author: WPMU DEV
 Author URI: https://wpmudev.com/
 Contributors: WPMUDEV
@@ -8,7 +8,7 @@ Tags: marketing, popup, optin, newsletter, subscription form, email, advertise, 
 Requires at least: 6.4
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 7.8.13.1
+Stable tag: 7.8.14.1
 
 Setup email optin forms, popups, newsletter forms & subscription forms to generate email leads with the best marketing popup builder
 
@@ -189,11 +189,26 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 
 == Changelog ==
 
-= 7.8.13.1 ( 2026-05-25 ) =
+= 7.8.14.1 ( 2026-07-14 )
 
-- Fix: Resolve Cloudflare Turnstile conflict with The Newsletter Plugin
+Fix: Facebook Social Sharing module displaying an error notice on mobile devices.
 
-= 7.8.13 ( 2026-05-25 ) =
+
+= 7.8.14 ( 2026-07-14 )
+
+- Enhancement: Facebook Social Sharing service requires APP ID.
+- Fix: An error occurred when the scheduled module was saved.
+- Fix: Security hardening.
+- Fix: Disable "Additional CSS" setting for Embeded blocks.
+- Compatibility: WordPress 7.0 compatibility enhancements.
+
+
+= 7.8.13.1 ( 2026-05-21 )
+
+- Fix: Cloudflare Turnstile conflicts
+
+
+= 7.8.13 ( 2026-05-18 )
 
 - Enhancement: Add new Zoho CRM integration to connect forms with Zoho CRM contacts
 - Enhancement: Add integration with The Newsletter Plugin for WordPress
@@ -209,34 +224,41 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 - Fix: Correct integration status remaining connected after disconnection
 - Fix: Resolve Social Sharing module preview not rendering
 
-= 7.8.12.1 ( 2026-03-31 ) =
 
-- Fix: Security hardening for shortcode handling.
-
-= 7.8.12 ( 2026-03-19 ) =
-
-- Fix: Avoid repeated HubSpot token refresh requests to the WPMU DEV API when refresh fails.
-- Fix: Schedule settings not saving when schedule is expired.
-
-= 7.8.11 ( 2026-03-19 ) =
+= 7.8.11 ( 2026-03-10 )
 
 - Enhancement: Allow multiple email blocks in automated emails.
 - Enhancement: Automated Email Subject field is now required to prevent sending incomplete emails.
+- Fix: Social Sharing bar offset settings not applying correctly.
+- Fix: hustle_module_viewed global tracking causing slowdowns on some sites.
+- Fix: Campaign Monitor error when adding the name field.
+- Fix: CTA button not closing popup when redirecting to anchor links.
+- Fix: JavaScript TypeError appearing in browser console on Hustle dashboard.
+- Fix: Specific URL visibility rules not working correctly with query parameters.
+- Fix: PHP warning produced by Hustle in some environments.
+- Fix: Whole module clickable CTA option not functioning correctly.
+- Fix: HubSpot connection still appearing connected after disconnection.
+- Fix: CSS triggers on Hustle popups not working correctly.
+- Fix: PHP errors reported by Query Monitor in latest Hustle beta.
+- Fix: Automated emails not sending in Hustle Pro.
+- Fix: Multiple specific URLs not saving correctly in Social Sharing visibility rules.
+- Fix: PHP notice Undefined array key selected_global_multi_id in email list screen.
 - Compatibility: Updated HubSpot integration to API v3.
 - Compatibility: Addressed MailPoet deprecated errors on PHP 8.2+.
 - Compatibility: PHP 8.4 compatibility improvements.
 - Compatibility: Upgraded Convert Kit integration to API v4.
 
-= 7.8.10.2 ( 2026-02-12 ) =
+
+= 7.8.10.2 ( 2026-02-12 )
 
 - Fix: Security hardening for conversion tracking requests.
 
-= 7.8.10.1 ( 2026-01-27 ) =
 
+= 7.8.10.1 ( 2026-01-27 )
 - Fix: HubSpot integration critical error
 
-= 7.8.10 ( 2026-01-26 ) =
- 
+ = 7.8.10 ( 2026-01-21 )
+
 - Enhancement: Upgrade Constant Contact integration to API v3 with OAuth2 PKCE
 - Enhancement: Upgrade Keap (Infusionsoft) integration to API v2
 - Enhancement: Security hardening for AWeber integration
@@ -246,23 +268,12 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 - Fix: Consent checkbox in Forminator not checked when triggering a Hustle popup
 - Fix: Multiple GeoIP requests
 
-= 7.8.9.3 ( 2026-01-19 ) =
- 
-- Fix: Improved security around file uploads
 
-= 7.8.9.2 ( 2026-01-14 ) =
- 
-- Fix: Security vulnerability - Sensitive Data Exposure
- 
-= 7.8.9.1 ( 2025-12-16 ) =
+ = 7.8.9.1 ( 2025-12-16 )
 
-- Miscellaneous improvements
+ - Miscellaneous improvements
 
-= 7.8.9 ( 2025-11-20 ) =
-
-- Miscellaneous improvements
-
-= 7.8.8 ( 2025-09-08 ) =
+ = 7.8.8 ( 2025-09-08 )
 
 - Improve: Accessibility enhancements across plugin admin screens for better screen reader support.
 - Improve: Adjusted color contrast on UI elements to meet WCAG 2 AA standards.
@@ -271,17 +282,17 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 - Fix: "Never see this again" cookie expiration date incorrectly tied to Closing behavior setting.
 
 
-= 7.8.7 ( 2025-04-25 ) =
+= 7.8.7 ( 2025-04-25 )
 
 - Enhance: Compatibility with WordPress 6.8
 - Enhance: Add a new menu item to help you discover other free plugins by WPMU DEV and more
 
-= 7.8.6 ( 2024-11-25 ) =
+= 7.8.6 ( 2024-11-25 )
 
 - Fix: Notice for _load_textdomain_just_in_time called incorrectly
 - Fix: Security hardening
 
-= 7.8.5 ( 2024-08-05 ) =
+= 7.8.5 ( 2024-08-05 )
 
 - Fix: XSS Security vulnerability
 
@@ -293,12 +304,46 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 
 = 7.8.3 ( 2024-01-17 ) =
 
-- Aligned Pro and Free version numbers to ensure consistency and simplify version management.
-- Enhance: Compatibility with PHP 8.3
-- Enhance: Twitter rebranding
-- Fix: Scroll issue on Pop-ups and Slide-ins preview when content is lengthy
-- Fix: Size of summary box logo
+ - Aligned Pro and Free version numbers to ensure consistency and simplify version management.
+ - Enhance: Compatibility with PHP 8.3
+ - Enhance: Twitter rebranding
+ - Fix: Scroll issue on Pop-ups and Slide-ins preview when content is lengthy
+ - Fix: Size of summary box logo
 
+
+= 10.8.2 ( 2023-10-03 ) =
+
+ - Fix: ConstantContact authentification.
+ - Fix: Cannot edit or add hyperlink
+ - Fix: Click triggers not working for elements loaded after Hustle has loaded
+ - Fix: Popup on exit intent is triggered when select box option is changed
+ - Fix: Text Field error message apostrophe is converted to &#039;
+ - Fix: Deprecated notice for PHP 8.2
+ - Enhance: Update the "Sendinblue" brand name to "Brevo"
+ - Enhance: Remove mascot images
+
+
+= 10.8.1 ( 2023-08-24 ) =
+
+- Enhance: Set up a redirect URL for Hubspot
+- Fix: Issues with Hustle ActiveCampaign integration
+- Fix: Bullet Points are not showing on the success message
+
+
+= 10.8.0 ( 2023-06-27 ) =
+
+- Enhance: Require PHP 7.4 as the minimum supported version
+- Enhance: Prevent XSS vulnerability in translations
+- Enhance: Update the "InfusionSoft" brand name to "Keap"
+- Fix: Prevent page scroll to a Hustle Embed when a Pop-Up is closed
+- Fix: Custom Margin, Padding, and Border do not work for Slide-ins
+- Fix: Social Sharing module and Static Server Cache causing critical error
+- Fix: Issue with Close button on iOS
+
+
+= 10.7.1 ( 2023-06-07 ) =
+
+- Enhance: Performance improvements.
 
 [Changelog for previous versions](https://wpmudev.com/project/hustle/#view-changelog).
 

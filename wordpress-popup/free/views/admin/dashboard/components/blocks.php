@@ -56,6 +56,11 @@ $args_sshare = array(
 		// WIDGET: Upsell.
 		$this->render( 'admin/dashboard/components/box-upsell' );
 
+		// WIDGET: Forminator Pro.
+		if ( ! Opt_In_Utils::is_forminator_installed() ) {
+			$this->render( 'admin/dashboard/components/forminator' );
+		}
+
 		// WIDGET: Social Shares.
 		$this->render( 'admin/sshare/dashboard', $args_sshare );
 		?>

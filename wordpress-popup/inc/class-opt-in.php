@@ -10,7 +10,7 @@
  */
 class Opt_In {
 
-	const VERSION = '7.8.13';
+	const VERSION = '7.8.14';
 
 	const VIEWS_FOLDER = 'views';
 

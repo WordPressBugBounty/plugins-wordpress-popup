@@ -28,7 +28,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<p><?php esc_html_e( 'Get Hustle Pro, our full lineup of WordPress marketing tools and more when you start your WPMU DEV membership.', 'hustle' ); ?></p>
 
 		<ul>
-			<li><span class="sui-icon-check sui-lg" aria-hidden="true"></span><?php esc_html_e( 'Unlimited Pop-ups, Slide-ins, Embeds, and Social Shares', 'hustle' ); ?></li>
 			<li><span class="sui-icon-check sui-lg" aria-hidden="true"></span><?php esc_html_e( 'Smush Pro and Hummingbird Pro - the ultimate site optimization & performance package', 'hustle' ); ?></li>
 			<li><span class="sui-icon-check sui-lg" aria-hidden="true"></span><?php esc_html_e( 'Full marketing suite including pro drag-and-drop form, poll and quiz builder, customizable analytics dashboards and WordPress white labeler.', 'hustle' ); ?></li>
 			<li><span class="sui-icon-check sui-lg" aria-hidden="true"></span><?php esc_html_e( 'Manage unlimited WordPress sites from the Hub', 'hustle' ); ?></li>

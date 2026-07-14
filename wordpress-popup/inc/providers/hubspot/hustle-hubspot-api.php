@@ -155,6 +155,20 @@ if ( ! class_exists( 'Hustle_HubSpot_Api' ) ) :
 				return true;
 			}
 
+			// Mark the integration as errored when we can't get a valid token.
+			$this->is_error = true;
+
+			if ( is_object( $response ) ) {
+				if ( ! empty( $response->message ) ) {
+					$this->error_message = $response->message;
+				} elseif ( ! empty( $response->error_description ) ) {
+					$this->error_message = $response->error_description;
+				}
+			}
+
+			// Clear stored tokens so we don't keep trying to refresh on every check.
+			$this->remove_wp_options();
+
 			return false;
 		}
 

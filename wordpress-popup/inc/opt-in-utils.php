@@ -868,6 +868,15 @@ class Opt_In_Utils {
 	}
 
 	/**
+	 * Check if Forminator is installed or not.
+	 *
+	 * @return bool
+	 */
+	public static function is_forminator_installed() {
+		return file_exists( WP_PLUGIN_DIR . '/forminator/forminator.php' );
+	}
+
+	/**
 	 * Gets the first key of an array.
 	 *
 	 * @since 4.0.0
