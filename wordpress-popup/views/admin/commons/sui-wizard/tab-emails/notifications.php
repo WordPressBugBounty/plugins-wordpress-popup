@@ -58,14 +58,14 @@ ob_start();
 								name="notification_email_recipient"
 								value="<?php echo esc_attr( $settings['notification_email_recipient'] ); ?>"
 								placeholder="Email {email-1}"
-								id="hustle-email-recipient"
+								id="hustle-notification-email-recipient"
 								class="sui-form-control"
 								data-attribute="notification_email_recipient"
 							/>
 
 							<select
 								class="sui-variables hustle-field-options hustle-select-variables"
-								data-for="hustle-email-recipient"
+								data-for="hustle-notification-email-recipient"
 								data-behavior="insert"
 								data-type="email"
 							></select>

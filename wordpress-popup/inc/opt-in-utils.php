@@ -484,6 +484,48 @@ class Opt_In_Utils {
 	}
 
 	/**
+	 * Encode square brackets so a value cannot form a live shortcode.
+	 *
+	 * @param mixed $value Raw user-supplied value.
+	 * @return mixed
+	 */
+	public static function encode_shortcode_brackets( $value ) {
+		if ( is_array( $value ) ) {
+			array_walk_recursive(
+				$value,
+				function ( &$item ) {
+					if ( is_string( $item ) ) {
+						$item = str_replace( array( '[', ']' ), array( '&#91;', '&#93;' ), $item );
+					}
+				}
+			);
+
+			return $value;
+		}
+
+		if ( ! is_string( $value ) ) {
+			return $value;
+		}
+
+		return str_replace( array( '[', ']' ), array( '&#91;', '&#93;' ), $value );
+	}
+
+	/**
+	 * Restore encoded shortcode brackets for exported values.
+	 *
+	 * @param mixed $value Value to decode.
+	 *
+	 * @return mixed
+	 */
+	public static function decode_shortcode_brackets( $value ) {
+		if ( ! is_string( $value ) ) {
+			return $value;
+		}
+
+		return str_replace( array( '&#91;', '&#93;' ), array( '[', ']' ), $value );
+	}
+
+	/**
 	 * Adds an entry to debug log
 	 *
 	 * By default it will check `WP_DEBUG` and HUSTLE_DEBUG to decide whether to add the log,

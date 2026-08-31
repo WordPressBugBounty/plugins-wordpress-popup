@@ -1,12 +1,12 @@
-# Copyright (C) 2026 Hustle 7.8.14.1
-# This file is distributed under the same license as the Hustle 7.8.14.1 package.
+# Copyright (C) 2026 Hustle 7.8.14.2
+# This file is distributed under the same license as the Hustle 7.8.14.2 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Hustle 7.8.14.1\n"
+"Project-Id-Version: Hustle 7.8.14.2\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-08 11:48+0000\n"
+"POT-Creation-Date: 2026-08-31 09:09+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -173,7 +173,7 @@ msgstr ""
 msgid "Roadmap"
 msgstr ""
 
-#: inc/class-hustle-module-admin.php:251, inc/opt-in-utils.php:1360
+#: inc/class-hustle-module-admin.php:251, inc/opt-in-utils.php:1402
 msgid "Hustle"
 msgstr ""
 
@@ -1077,7 +1077,7 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: inc/hustle-module-model.php:602, inc/hustle-sshare-model.php:179
+#: inc/hustle-module-model.php:603, inc/hustle-sshare-model.php:179
 msgid "This field is required"
 msgstr ""
 
@@ -1484,1355 +1484,1355 @@ msgstr ""
 msgid "Field %s is required."
 msgstr ""
 
-#: inc/opt-in-utils.php:613
+#: inc/opt-in-utils.php:655
 msgid "Arabic"
 msgstr ""
 
-#: inc/opt-in-utils.php:614
+#: inc/opt-in-utils.php:656
 msgid "Afrikaans"
 msgstr ""
 
-#: inc/opt-in-utils.php:615
+#: inc/opt-in-utils.php:657
 msgid "Amharic"
 msgstr ""
 
-#: inc/opt-in-utils.php:616
+#: inc/opt-in-utils.php:658
 msgid "Armenian"
 msgstr ""
 
-#: inc/opt-in-utils.php:617
+#: inc/opt-in-utils.php:659
 msgid "Azerbaijani"
 msgstr ""
 
-#: inc/opt-in-utils.php:618
+#: inc/opt-in-utils.php:660
 msgid "Basque"
 msgstr ""
 
-#: inc/opt-in-utils.php:619
+#: inc/opt-in-utils.php:661
 msgid "Bengali"
 msgstr ""
 
-#: inc/opt-in-utils.php:620
+#: inc/opt-in-utils.php:662
 msgid "Bulgarian"
 msgstr ""
 
-#: inc/opt-in-utils.php:621
+#: inc/opt-in-utils.php:663
 msgid "Catalan"
 msgstr ""
 
-#: inc/opt-in-utils.php:622
+#: inc/opt-in-utils.php:664
 msgid "Chinese (Hong Kong)"
 msgstr ""
 
-#: inc/opt-in-utils.php:623
+#: inc/opt-in-utils.php:665
 msgid "Chinese (Simplified)"
 msgstr ""
 
-#: inc/opt-in-utils.php:624
+#: inc/opt-in-utils.php:666
 msgid "Chinese (Traditional)"
 msgstr ""
 
-#: inc/opt-in-utils.php:625
+#: inc/opt-in-utils.php:667
 msgid "Croatian"
 msgstr ""
 
-#: inc/opt-in-utils.php:626
+#: inc/opt-in-utils.php:668
 msgid "Czech"
 msgstr ""
 
-#: inc/opt-in-utils.php:627
+#: inc/opt-in-utils.php:669
 msgid "Danish"
 msgstr ""
 
-#: inc/opt-in-utils.php:628
+#: inc/opt-in-utils.php:670
 msgid "Dutch"
 msgstr ""
 
-#: inc/opt-in-utils.php:629
+#: inc/opt-in-utils.php:671
 msgid "English (UK)"
 msgstr ""
 
-#: inc/opt-in-utils.php:630
+#: inc/opt-in-utils.php:672
 msgid "English (US)"
 msgstr ""
 
-#: inc/opt-in-utils.php:631
+#: inc/opt-in-utils.php:673
 msgid "Estonian"
 msgstr ""
 
-#: inc/opt-in-utils.php:632
+#: inc/opt-in-utils.php:674
 msgid "Filipino"
 msgstr ""
 
-#: inc/opt-in-utils.php:633
+#: inc/opt-in-utils.php:675
 msgid "Finnish"
 msgstr ""
 
-#: inc/opt-in-utils.php:634
+#: inc/opt-in-utils.php:676
 msgid "French"
 msgstr ""
 
-#: inc/opt-in-utils.php:635
+#: inc/opt-in-utils.php:677
 msgid "French (Canadian)"
 msgstr ""
 
-#: inc/opt-in-utils.php:636
+#: inc/opt-in-utils.php:678
 msgid "Galician"
 msgstr ""
 
-#: inc/opt-in-utils.php:637
+#: inc/opt-in-utils.php:679
 msgid "Georgian"
 msgstr ""
 
-#: inc/opt-in-utils.php:638
+#: inc/opt-in-utils.php:680
 msgid "German"
 msgstr ""
 
-#: inc/opt-in-utils.php:639
+#: inc/opt-in-utils.php:681
 msgid "German (Austria)"
 msgstr ""
 
-#: inc/opt-in-utils.php:640
+#: inc/opt-in-utils.php:682
 msgid "German (Switzerland)"
 msgstr ""
 
-#: inc/opt-in-utils.php:641
+#: inc/opt-in-utils.php:683
 msgid "Greek"
 msgstr ""
 
-#: inc/opt-in-utils.php:642
+#: inc/opt-in-utils.php:684
 msgid "Gujarati"
 msgstr ""
 
-#: inc/opt-in-utils.php:643
+#: inc/opt-in-utils.php:685
 msgid "Hebrew"
 msgstr ""
 
-#: inc/opt-in-utils.php:644
+#: inc/opt-in-utils.php:686
 msgid "Hindi"
 msgstr ""
 
-#: inc/opt-in-utils.php:645
+#: inc/opt-in-utils.php:687
 msgid "Hungarain"
 msgstr ""
 
-#: inc/opt-in-utils.php:646
+#: inc/opt-in-utils.php:688
 msgid "Icelandic"
 msgstr ""
 
-#: inc/opt-in-utils.php:647
+#: inc/opt-in-utils.php:689
 msgid "Indonesian"
 msgstr ""
 
-#: inc/opt-in-utils.php:648
+#: inc/opt-in-utils.php:690
 msgid "Italian"
 msgstr ""
 
-#: inc/opt-in-utils.php:649
+#: inc/opt-in-utils.php:691
 msgid "Japanese"
 msgstr ""
 
-#: inc/opt-in-utils.php:650
+#: inc/opt-in-utils.php:692
 msgid "Kannada"
 msgstr ""
 
-#: inc/opt-in-utils.php:651
+#: inc/opt-in-utils.php:693
 msgid "Korean"
 msgstr ""
 
-#: inc/opt-in-utils.php:652
+#: inc/opt-in-utils.php:694
 msgid "Laothian"
 msgstr ""
 
-#: inc/opt-in-utils.php:653
+#: inc/opt-in-utils.php:695
 msgid "Latvian"
 msgstr ""
 
-#: inc/opt-in-utils.php:654
+#: inc/opt-in-utils.php:696
 msgid "Lithuanian"
 msgstr ""
 
-#: inc/opt-in-utils.php:655
+#: inc/opt-in-utils.php:697
 msgid "Malay"
 msgstr ""
 
-#: inc/opt-in-utils.php:656
+#: inc/opt-in-utils.php:698
 msgid "Malayalam"
 msgstr ""
 
-#: inc/opt-in-utils.php:657
+#: inc/opt-in-utils.php:699
 msgid "Marathi"
 msgstr ""
 
-#: inc/opt-in-utils.php:658
+#: inc/opt-in-utils.php:700
 msgid "Mongolian"
 msgstr ""
 
-#: inc/opt-in-utils.php:659
+#: inc/opt-in-utils.php:701
 msgid "Norwegian"
 msgstr ""
 
-#: inc/opt-in-utils.php:660
+#: inc/opt-in-utils.php:702
 msgid "Persian"
 msgstr ""
 
-#: inc/opt-in-utils.php:661
+#: inc/opt-in-utils.php:703
 msgid "Polish"
 msgstr ""
 
-#: inc/opt-in-utils.php:662
+#: inc/opt-in-utils.php:704
 msgid "Portuguese"
 msgstr ""
 
-#: inc/opt-in-utils.php:663
+#: inc/opt-in-utils.php:705
 msgid "Portuguese (Brazil)"
 msgstr ""
 
-#: inc/opt-in-utils.php:664
+#: inc/opt-in-utils.php:706
 msgid "Portuguese (Portugal)"
 msgstr ""
 
-#: inc/opt-in-utils.php:665
+#: inc/opt-in-utils.php:707
 msgid "Romanian"
 msgstr ""
 
-#: inc/opt-in-utils.php:666
+#: inc/opt-in-utils.php:708
 msgid "Russian"
 msgstr ""
 
-#: inc/opt-in-utils.php:667
+#: inc/opt-in-utils.php:709
 msgid "Serbian"
 msgstr ""
 
-#: inc/opt-in-utils.php:668
+#: inc/opt-in-utils.php:710
 msgid "Sinhalese"
 msgstr ""
 
-#: inc/opt-in-utils.php:669
+#: inc/opt-in-utils.php:711
 msgid "Slovak"
 msgstr ""
 
-#: inc/opt-in-utils.php:670
+#: inc/opt-in-utils.php:712
 msgid "Slovenian"
 msgstr ""
 
-#: inc/opt-in-utils.php:671
+#: inc/opt-in-utils.php:713
 msgid "Spanish"
 msgstr ""
 
-#: inc/opt-in-utils.php:672
+#: inc/opt-in-utils.php:714
 msgid "Spanish (Latin America)"
 msgstr ""
 
-#: inc/opt-in-utils.php:673
+#: inc/opt-in-utils.php:715
 msgid "Swahili"
 msgstr ""
 
-#: inc/opt-in-utils.php:674
+#: inc/opt-in-utils.php:716
 msgid "Swedish"
 msgstr ""
 
-#: inc/opt-in-utils.php:675
+#: inc/opt-in-utils.php:717
 msgid "Tamil"
 msgstr ""
 
-#: inc/opt-in-utils.php:676
+#: inc/opt-in-utils.php:718
 msgid "Telugu"
 msgstr ""
 
-#: inc/opt-in-utils.php:677
+#: inc/opt-in-utils.php:719
 msgid "Thai"
 msgstr ""
 
-#: inc/opt-in-utils.php:678
+#: inc/opt-in-utils.php:720
 msgid "Turkish"
 msgstr ""
 
-#: inc/opt-in-utils.php:679
+#: inc/opt-in-utils.php:721
 msgid "Ukrainian"
 msgstr ""
 
-#: inc/opt-in-utils.php:680
+#: inc/opt-in-utils.php:722
 msgid "Urdu"
 msgstr ""
 
-#: inc/opt-in-utils.php:681
+#: inc/opt-in-utils.php:723
 msgid "Vietnamese"
 msgstr ""
 
-#: inc/opt-in-utils.php:682
+#: inc/opt-in-utils.php:724
 msgid "Zulu"
 msgstr ""
 
-#: inc/opt-in-utils.php:816, views/admin/sshare/wizard.php:21
+#: inc/opt-in-utils.php:858, views/admin/sshare/wizard.php:21
 msgid "social shares"
 msgstr ""
 
-#: inc/opt-in-utils.php:814
+#: inc/opt-in-utils.php:856
 msgid "social sharing"
 msgstr ""
 
-#: inc/opt-in-utils.php:810, views/admin/embedded/dashboard.php:14, views/admin/embedded/wizard.php:22
+#: inc/opt-in-utils.php:852, views/admin/embedded/dashboard.php:14, views/admin/embedded/wizard.php:22
 msgid "embeds"
 msgstr ""
 
-#: inc/opt-in-utils.php:808, views/admin/embedded/dashboard.php:13, views/admin/embedded/wizard.php:21
+#: inc/opt-in-utils.php:850, views/admin/embedded/dashboard.php:13, views/admin/embedded/wizard.php:21
 msgid "embed"
 msgstr ""
 
-#: inc/opt-in-utils.php:804
+#: inc/opt-in-utils.php:846
 msgid "slide-ins"
 msgstr ""
 
-#: inc/opt-in-utils.php:802, views/admin/slidein/dashboard.php:13, views/admin/slidein/dashboard.php:14, views/admin/slidein/wizard.php:21, views/admin/slidein/wizard.php:22
+#: inc/opt-in-utils.php:844, views/admin/slidein/dashboard.php:13, views/admin/slidein/dashboard.php:14, views/admin/slidein/wizard.php:21, views/admin/slidein/wizard.php:22
 msgid "slide-in"
 msgstr ""
 
-#: inc/opt-in-utils.php:798, views/admin/popup/dashboard.php:14, views/admin/popup/wizard.php:22
+#: inc/opt-in-utils.php:840, views/admin/popup/dashboard.php:14, views/admin/popup/wizard.php:22
 msgid "pop-ups"
 msgstr ""
 
-#: inc/opt-in-utils.php:796, views/admin/popup/dashboard.php:13, views/admin/popup/wizard.php:21
+#: inc/opt-in-utils.php:838, views/admin/popup/dashboard.php:13, views/admin/popup/wizard.php:21
 msgid "pop-up"
 msgstr ""
 
-#: inc/opt-in-utils.php:904
+#: inc/opt-in-utils.php:946
 msgid "Site URL"
 msgstr ""
 
-#: inc/opt-in-utils.php:905
+#: inc/opt-in-utils.php:947
 msgid "Site name"
 msgstr ""
 
-#: inc/opt-in-utils.php:906
+#: inc/opt-in-utils.php:948
 msgid "Post/page URL"
 msgstr ""
 
-#: inc/opt-in-utils.php:907
+#: inc/opt-in-utils.php:949
 msgid "Post/page title"
 msgstr ""
 
-#: inc/opt-in-utils.php:983
+#: inc/opt-in-utils.php:1025
 msgid "Chrome"
 msgstr ""
 
-#: inc/opt-in-utils.php:984
+#: inc/opt-in-utils.php:1026
 msgid "Firefox"
 msgstr ""
 
-#: inc/opt-in-utils.php:985
+#: inc/opt-in-utils.php:1027
 msgid "Safari"
 msgstr ""
 
-#: inc/opt-in-utils.php:986
+#: inc/opt-in-utils.php:1028
 msgid "Edge"
 msgstr ""
 
-#: inc/opt-in-utils.php:987
+#: inc/opt-in-utils.php:1029
 msgid "Internet Explorer"
 msgstr ""
 
-#: inc/opt-in-utils.php:988
+#: inc/opt-in-utils.php:1030
 msgid "Opera"
 msgstr ""
 
-#: inc/opt-in-utils.php:1009
+#: inc/opt-in-utils.php:1051
 msgid "Australia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1010
+#: inc/opt-in-utils.php:1052
 msgid "Afghanistan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1011
+#: inc/opt-in-utils.php:1053
 msgid "Albania"
 msgstr ""
 
-#: inc/opt-in-utils.php:1012
+#: inc/opt-in-utils.php:1054
 msgid "Algeria"
 msgstr ""
 
-#: inc/opt-in-utils.php:1013
+#: inc/opt-in-utils.php:1055
 msgid "American Samoa"
 msgstr ""
 
-#: inc/opt-in-utils.php:1014
+#: inc/opt-in-utils.php:1056
 msgid "Andorra"
 msgstr ""
 
-#: inc/opt-in-utils.php:1015
+#: inc/opt-in-utils.php:1057
 msgid "Angola"
 msgstr ""
 
-#: inc/opt-in-utils.php:1016
+#: inc/opt-in-utils.php:1058
 msgid "Anguilla"
 msgstr ""
 
-#: inc/opt-in-utils.php:1017
+#: inc/opt-in-utils.php:1059
 msgid "Antarctica"
 msgstr ""
 
-#: inc/opt-in-utils.php:1018
+#: inc/opt-in-utils.php:1060
 msgid "Antigua and Barbuda"
 msgstr ""
 
-#: inc/opt-in-utils.php:1019
+#: inc/opt-in-utils.php:1061
 msgid "Argentina"
 msgstr ""
 
-#: inc/opt-in-utils.php:1020
+#: inc/opt-in-utils.php:1062
 msgid "Armenia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1021
+#: inc/opt-in-utils.php:1063
 msgid "Aruba"
 msgstr ""
 
-#: inc/opt-in-utils.php:1022
+#: inc/opt-in-utils.php:1064
 msgid "Austria"
 msgstr ""
 
-#: inc/opt-in-utils.php:1023
+#: inc/opt-in-utils.php:1065
 msgid "Azerbaijan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1024
+#: inc/opt-in-utils.php:1066
 msgid "Bahamas"
 msgstr ""
 
-#: inc/opt-in-utils.php:1025
+#: inc/opt-in-utils.php:1067
 msgid "Bahrain"
 msgstr ""
 
-#: inc/opt-in-utils.php:1026
+#: inc/opt-in-utils.php:1068
 msgid "Bangladesh"
 msgstr ""
 
-#: inc/opt-in-utils.php:1027
+#: inc/opt-in-utils.php:1069
 msgid "Barbados"
 msgstr ""
 
-#: inc/opt-in-utils.php:1028
+#: inc/opt-in-utils.php:1070
 msgid "Belarus"
 msgstr ""
 
-#: inc/opt-in-utils.php:1029
+#: inc/opt-in-utils.php:1071
 msgid "Belgium"
 msgstr ""
 
-#: inc/opt-in-utils.php:1030
+#: inc/opt-in-utils.php:1072
 msgid "Belize"
 msgstr ""
 
-#: inc/opt-in-utils.php:1031
+#: inc/opt-in-utils.php:1073
 msgid "Benin"
 msgstr ""
 
-#: inc/opt-in-utils.php:1032
+#: inc/opt-in-utils.php:1074
 msgid "Bermuda"
 msgstr ""
 
-#: inc/opt-in-utils.php:1033
+#: inc/opt-in-utils.php:1075
 msgid "Bhutan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1034
+#: inc/opt-in-utils.php:1076
 msgid "Bolivia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1035
+#: inc/opt-in-utils.php:1077
 msgid "Bosnia and Herzegovina"
 msgstr ""
 
-#: inc/opt-in-utils.php:1036
+#: inc/opt-in-utils.php:1078
 msgid "Botswana"
 msgstr ""
 
-#: inc/opt-in-utils.php:1037
+#: inc/opt-in-utils.php:1079
 msgid "Bouvet Island"
 msgstr ""
 
-#: inc/opt-in-utils.php:1038
+#: inc/opt-in-utils.php:1080
 msgid "Brazil"
 msgstr ""
 
-#: inc/opt-in-utils.php:1039
+#: inc/opt-in-utils.php:1081
 msgid "British Indian Ocean Territory"
 msgstr ""
 
-#: inc/opt-in-utils.php:1040
+#: inc/opt-in-utils.php:1082
 msgid "Brunei"
 msgstr ""
 
-#: inc/opt-in-utils.php:1041
+#: inc/opt-in-utils.php:1083
 msgid "Bulgaria"
 msgstr ""
 
-#: inc/opt-in-utils.php:1042
+#: inc/opt-in-utils.php:1084
 msgid "Burkina Faso"
 msgstr ""
 
-#: inc/opt-in-utils.php:1043
+#: inc/opt-in-utils.php:1085
 msgid "Burundi"
 msgstr ""
 
-#: inc/opt-in-utils.php:1044
+#: inc/opt-in-utils.php:1086
 msgid "Cambodia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1045
+#: inc/opt-in-utils.php:1087
 msgid "Cameroon"
 msgstr ""
 
-#: inc/opt-in-utils.php:1046
+#: inc/opt-in-utils.php:1088
 msgid "Canada"
 msgstr ""
 
-#: inc/opt-in-utils.php:1047
+#: inc/opt-in-utils.php:1089
 msgid "Cape Verde"
 msgstr ""
 
-#: inc/opt-in-utils.php:1048
+#: inc/opt-in-utils.php:1090
 msgid "Cayman Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1049
+#: inc/opt-in-utils.php:1091
 msgid "Central African Republic"
 msgstr ""
 
-#: inc/opt-in-utils.php:1050
+#: inc/opt-in-utils.php:1092
 msgid "Chad"
 msgstr ""
 
-#: inc/opt-in-utils.php:1051
+#: inc/opt-in-utils.php:1093
 msgid "Chile"
 msgstr ""
 
-#: inc/opt-in-utils.php:1052
+#: inc/opt-in-utils.php:1094
 msgid "China, People's Republic of"
 msgstr ""
 
-#: inc/opt-in-utils.php:1053
+#: inc/opt-in-utils.php:1095
 msgid "Christmas Island"
 msgstr ""
 
-#: inc/opt-in-utils.php:1054
+#: inc/opt-in-utils.php:1096
 msgid "Cocos Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1055
+#: inc/opt-in-utils.php:1097
 msgid "Colombia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1056
+#: inc/opt-in-utils.php:1098
 msgid "Comoros"
 msgstr ""
 
-#: inc/opt-in-utils.php:1057
+#: inc/opt-in-utils.php:1099
 msgid "Congo, Democratic Republic of the"
 msgstr ""
 
-#: inc/opt-in-utils.php:1058
+#: inc/opt-in-utils.php:1100
 msgid "Congo, Republic of the"
 msgstr ""
 
-#: inc/opt-in-utils.php:1059
+#: inc/opt-in-utils.php:1101
 msgid "Cook Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1060
+#: inc/opt-in-utils.php:1102
 msgid "Costa Rica"
 msgstr ""
 
-#: inc/opt-in-utils.php:1061
+#: inc/opt-in-utils.php:1103
 msgid "Côte d'Ivoire"
 msgstr ""
 
-#: inc/opt-in-utils.php:1062
+#: inc/opt-in-utils.php:1104
 msgid "Croatia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1063
+#: inc/opt-in-utils.php:1105
 msgid "Cuba"
 msgstr ""
 
-#: inc/opt-in-utils.php:1064
+#: inc/opt-in-utils.php:1106
 msgid "Curaçao"
 msgstr ""
 
-#: inc/opt-in-utils.php:1065
+#: inc/opt-in-utils.php:1107
 msgid "Cyprus"
 msgstr ""
 
-#: inc/opt-in-utils.php:1066
+#: inc/opt-in-utils.php:1108
 msgid "Czech Republic"
 msgstr ""
 
-#: inc/opt-in-utils.php:1067
+#: inc/opt-in-utils.php:1109
 msgid "Denmark"
 msgstr ""
 
-#: inc/opt-in-utils.php:1068
+#: inc/opt-in-utils.php:1110
 msgid "Djibouti"
 msgstr ""
 
-#: inc/opt-in-utils.php:1069
+#: inc/opt-in-utils.php:1111
 msgid "Dominica"
 msgstr ""
 
-#: inc/opt-in-utils.php:1070
+#: inc/opt-in-utils.php:1112
 msgid "Dominican Republic"
 msgstr ""
 
-#: inc/opt-in-utils.php:1071
+#: inc/opt-in-utils.php:1113
 msgid "East Timor"
 msgstr ""
 
-#: inc/opt-in-utils.php:1072
+#: inc/opt-in-utils.php:1114
 msgid "Ecuador"
 msgstr ""
 
-#: inc/opt-in-utils.php:1073
+#: inc/opt-in-utils.php:1115
 msgid "Egypt"
 msgstr ""
 
-#: inc/opt-in-utils.php:1074
+#: inc/opt-in-utils.php:1116
 msgid "El Salvador"
 msgstr ""
 
-#: inc/opt-in-utils.php:1075
+#: inc/opt-in-utils.php:1117
 msgid "Equatorial Guinea"
 msgstr ""
 
-#: inc/opt-in-utils.php:1076
+#: inc/opt-in-utils.php:1118
 msgid "Eritrea"
 msgstr ""
 
-#: inc/opt-in-utils.php:1077
+#: inc/opt-in-utils.php:1119
 msgid "Estonia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1078
+#: inc/opt-in-utils.php:1120
 msgid "Ethiopia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1079
+#: inc/opt-in-utils.php:1121
 msgid "Falkland Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1080
+#: inc/opt-in-utils.php:1122
 msgid "Faroe Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1081
+#: inc/opt-in-utils.php:1123
 msgid "Fiji"
 msgstr ""
 
-#: inc/opt-in-utils.php:1082
+#: inc/opt-in-utils.php:1124
 msgid "Finland"
 msgstr ""
 
-#: inc/opt-in-utils.php:1083
+#: inc/opt-in-utils.php:1125
 msgid "France"
 msgstr ""
 
-#: inc/opt-in-utils.php:1084
+#: inc/opt-in-utils.php:1126
 msgid "France, Metropolitan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1085
+#: inc/opt-in-utils.php:1127
 msgid "French Guiana"
 msgstr ""
 
-#: inc/opt-in-utils.php:1086
+#: inc/opt-in-utils.php:1128
 msgid "French Polynesia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1087
+#: inc/opt-in-utils.php:1129
 msgid "French South Territories"
 msgstr ""
 
-#: inc/opt-in-utils.php:1088
+#: inc/opt-in-utils.php:1130
 msgid "Gabon"
 msgstr ""
 
-#: inc/opt-in-utils.php:1089
+#: inc/opt-in-utils.php:1131
 msgid "Gambia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1090
+#: inc/opt-in-utils.php:1132
 msgid "Georgia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1091
+#: inc/opt-in-utils.php:1133
 msgid "Germany"
 msgstr ""
 
-#: inc/opt-in-utils.php:1092
+#: inc/opt-in-utils.php:1134
 msgid "Ghana"
 msgstr ""
 
-#: inc/opt-in-utils.php:1093
+#: inc/opt-in-utils.php:1135
 msgid "Gibraltar"
 msgstr ""
 
-#: inc/opt-in-utils.php:1094
+#: inc/opt-in-utils.php:1136
 msgid "Greece"
 msgstr ""
 
-#: inc/opt-in-utils.php:1095
+#: inc/opt-in-utils.php:1137
 msgid "Greenland"
 msgstr ""
 
-#: inc/opt-in-utils.php:1096
+#: inc/opt-in-utils.php:1138
 msgid "Grenada"
 msgstr ""
 
-#: inc/opt-in-utils.php:1097
+#: inc/opt-in-utils.php:1139
 msgid "Guadeloupe"
 msgstr ""
 
-#: inc/opt-in-utils.php:1098
+#: inc/opt-in-utils.php:1140
 msgid "Guam"
 msgstr ""
 
-#: inc/opt-in-utils.php:1099
+#: inc/opt-in-utils.php:1141
 msgid "Guatemala"
 msgstr ""
 
-#: inc/opt-in-utils.php:1100
+#: inc/opt-in-utils.php:1142
 msgid "Guinea"
 msgstr ""
 
-#: inc/opt-in-utils.php:1101
+#: inc/opt-in-utils.php:1143
 msgid "Guinea-Bissau"
 msgstr ""
 
-#: inc/opt-in-utils.php:1102
+#: inc/opt-in-utils.php:1144
 msgid "Guyana"
 msgstr ""
 
-#: inc/opt-in-utils.php:1103
+#: inc/opt-in-utils.php:1145
 msgid "Haiti"
 msgstr ""
 
-#: inc/opt-in-utils.php:1104
+#: inc/opt-in-utils.php:1146
 msgid "Heard Island And Mcdonald Island"
 msgstr ""
 
-#: inc/opt-in-utils.php:1105
+#: inc/opt-in-utils.php:1147
 msgid "Honduras"
 msgstr ""
 
-#: inc/opt-in-utils.php:1106
+#: inc/opt-in-utils.php:1148
 msgid "Hong Kong"
 msgstr ""
 
-#: inc/opt-in-utils.php:1107
+#: inc/opt-in-utils.php:1149
 msgid "Hungary"
 msgstr ""
 
-#: inc/opt-in-utils.php:1108
+#: inc/opt-in-utils.php:1150
 msgid "Iceland"
 msgstr ""
 
-#: inc/opt-in-utils.php:1109
+#: inc/opt-in-utils.php:1151
 msgid "India"
 msgstr ""
 
-#: inc/opt-in-utils.php:1110
+#: inc/opt-in-utils.php:1152
 msgid "Indonesia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1111
+#: inc/opt-in-utils.php:1153
 msgid "Iran"
 msgstr ""
 
-#: inc/opt-in-utils.php:1112
+#: inc/opt-in-utils.php:1154
 msgid "Iraq"
 msgstr ""
 
-#: inc/opt-in-utils.php:1113
+#: inc/opt-in-utils.php:1155
 msgid "Ireland"
 msgstr ""
 
-#: inc/opt-in-utils.php:1114
+#: inc/opt-in-utils.php:1156
 msgid "Israel"
 msgstr ""
 
-#: inc/opt-in-utils.php:1115
+#: inc/opt-in-utils.php:1157
 msgid "Italy"
 msgstr ""
 
-#: inc/opt-in-utils.php:1116
+#: inc/opt-in-utils.php:1158
 msgid "Jamaica"
 msgstr ""
 
-#: inc/opt-in-utils.php:1117
+#: inc/opt-in-utils.php:1159
 msgid "Japan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1118
+#: inc/opt-in-utils.php:1160
 msgid "Johnston Island"
 msgstr ""
 
-#: inc/opt-in-utils.php:1119
+#: inc/opt-in-utils.php:1161
 msgid "Jordan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1120
+#: inc/opt-in-utils.php:1162
 msgid "Kazakhstan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1121
+#: inc/opt-in-utils.php:1163
 msgid "Kenya"
 msgstr ""
 
-#: inc/opt-in-utils.php:1122
+#: inc/opt-in-utils.php:1164
 msgid "Kosovo"
 msgstr ""
 
-#: inc/opt-in-utils.php:1123
+#: inc/opt-in-utils.php:1165
 msgid "Kiribati"
 msgstr ""
 
-#: inc/opt-in-utils.php:1124
+#: inc/opt-in-utils.php:1166
 msgid "Korea, Democratic People's Republic of"
 msgstr ""
 
-#: inc/opt-in-utils.php:1125
+#: inc/opt-in-utils.php:1167
 msgid "Korea, Republic of"
 msgstr ""
 
-#: inc/opt-in-utils.php:1126
+#: inc/opt-in-utils.php:1168
 msgid "Kuwait"
 msgstr ""
 
-#: inc/opt-in-utils.php:1127
+#: inc/opt-in-utils.php:1169
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1128
+#: inc/opt-in-utils.php:1170
 msgid "Lao People's Democratic Republic"
 msgstr ""
 
-#: inc/opt-in-utils.php:1129
+#: inc/opt-in-utils.php:1171
 msgid "Latvia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1130
+#: inc/opt-in-utils.php:1172
 msgid "Lebanon"
 msgstr ""
 
-#: inc/opt-in-utils.php:1131
+#: inc/opt-in-utils.php:1173
 msgid "Lesotho"
 msgstr ""
 
-#: inc/opt-in-utils.php:1132
+#: inc/opt-in-utils.php:1174
 msgid "Liberia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1133
+#: inc/opt-in-utils.php:1175
 msgid "Libya"
 msgstr ""
 
-#: inc/opt-in-utils.php:1134
+#: inc/opt-in-utils.php:1176
 msgid "Liechtenstein"
 msgstr ""
 
-#: inc/opt-in-utils.php:1135
+#: inc/opt-in-utils.php:1177
 msgid "Lithuania"
 msgstr ""
 
-#: inc/opt-in-utils.php:1136
+#: inc/opt-in-utils.php:1178
 msgid "Luxembourg"
 msgstr ""
 
-#: inc/opt-in-utils.php:1137
+#: inc/opt-in-utils.php:1179
 msgid "Macau"
 msgstr ""
 
-#: inc/opt-in-utils.php:1138
+#: inc/opt-in-utils.php:1180
 msgid "Macedonia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1139
+#: inc/opt-in-utils.php:1181
 msgid "Madagascar"
 msgstr ""
 
-#: inc/opt-in-utils.php:1140
+#: inc/opt-in-utils.php:1182
 msgid "Malawi"
 msgstr ""
 
-#: inc/opt-in-utils.php:1141
+#: inc/opt-in-utils.php:1183
 msgid "Malaysia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1142
+#: inc/opt-in-utils.php:1184
 msgid "Maldives"
 msgstr ""
 
-#: inc/opt-in-utils.php:1143
+#: inc/opt-in-utils.php:1185
 msgid "Mali"
 msgstr ""
 
-#: inc/opt-in-utils.php:1144
+#: inc/opt-in-utils.php:1186
 msgid "Malta"
 msgstr ""
 
-#: inc/opt-in-utils.php:1145
+#: inc/opt-in-utils.php:1187
 msgid "Marshall Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1146
+#: inc/opt-in-utils.php:1188
 msgid "Martinique"
 msgstr ""
 
-#: inc/opt-in-utils.php:1147
+#: inc/opt-in-utils.php:1189
 msgid "Mauritania"
 msgstr ""
 
-#: inc/opt-in-utils.php:1148
+#: inc/opt-in-utils.php:1190
 msgid "Mauritius"
 msgstr ""
 
-#: inc/opt-in-utils.php:1149
+#: inc/opt-in-utils.php:1191
 msgid "Mayotte"
 msgstr ""
 
-#: inc/opt-in-utils.php:1150
+#: inc/opt-in-utils.php:1192
 msgid "Mexico"
 msgstr ""
 
-#: inc/opt-in-utils.php:1151
+#: inc/opt-in-utils.php:1193
 msgid "Micronesia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1152
+#: inc/opt-in-utils.php:1194
 msgid "Moldova"
 msgstr ""
 
-#: inc/opt-in-utils.php:1153
+#: inc/opt-in-utils.php:1195
 msgid "Monaco"
 msgstr ""
 
-#: inc/opt-in-utils.php:1154
+#: inc/opt-in-utils.php:1196
 msgid "Mongolia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1155
+#: inc/opt-in-utils.php:1197
 msgid "Montenegro"
 msgstr ""
 
-#: inc/opt-in-utils.php:1156
+#: inc/opt-in-utils.php:1198
 msgid "Montserrat"
 msgstr ""
 
-#: inc/opt-in-utils.php:1157
+#: inc/opt-in-utils.php:1199
 msgid "Morocco"
 msgstr ""
 
-#: inc/opt-in-utils.php:1158
+#: inc/opt-in-utils.php:1200
 msgid "Mozambique"
 msgstr ""
 
-#: inc/opt-in-utils.php:1159
+#: inc/opt-in-utils.php:1201
 msgid "Myanmar"
 msgstr ""
 
-#: inc/opt-in-utils.php:1160
+#: inc/opt-in-utils.php:1202
 msgid "Namibia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1161
+#: inc/opt-in-utils.php:1203
 msgid "Nauru"
 msgstr ""
 
-#: inc/opt-in-utils.php:1162
+#: inc/opt-in-utils.php:1204
 msgid "Nepal"
 msgstr ""
 
-#: inc/opt-in-utils.php:1163
+#: inc/opt-in-utils.php:1205
 msgid "Netherlands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1164
+#: inc/opt-in-utils.php:1206
 msgid "Netherlands Antilles"
 msgstr ""
 
-#: inc/opt-in-utils.php:1165
+#: inc/opt-in-utils.php:1207
 msgid "New Caledonia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1166
+#: inc/opt-in-utils.php:1208
 msgid "New Zealand"
 msgstr ""
 
-#: inc/opt-in-utils.php:1167
+#: inc/opt-in-utils.php:1209
 msgid "Nicaragua"
 msgstr ""
 
-#: inc/opt-in-utils.php:1168
+#: inc/opt-in-utils.php:1210
 msgid "Niger"
 msgstr ""
 
-#: inc/opt-in-utils.php:1169
+#: inc/opt-in-utils.php:1211
 msgid "Nigeria"
 msgstr ""
 
-#: inc/opt-in-utils.php:1170
+#: inc/opt-in-utils.php:1212
 msgid "Niue"
 msgstr ""
 
-#: inc/opt-in-utils.php:1171
+#: inc/opt-in-utils.php:1213
 msgid "Norfolk Island"
 msgstr ""
 
-#: inc/opt-in-utils.php:1172
+#: inc/opt-in-utils.php:1214
 msgid "Northern Mariana Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1173
+#: inc/opt-in-utils.php:1215
 msgid "Mariana Islands, Northern"
 msgstr ""
 
-#: inc/opt-in-utils.php:1174
+#: inc/opt-in-utils.php:1216
 msgid "Norway"
 msgstr ""
 
-#: inc/opt-in-utils.php:1175
+#: inc/opt-in-utils.php:1217
 msgid "Oman"
 msgstr ""
 
-#: inc/opt-in-utils.php:1176
+#: inc/opt-in-utils.php:1218
 msgid "Pakistan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1177
+#: inc/opt-in-utils.php:1219
 msgid "Palau"
 msgstr ""
 
-#: inc/opt-in-utils.php:1178
+#: inc/opt-in-utils.php:1220
 msgid "Palestine, State of"
 msgstr ""
 
-#: inc/opt-in-utils.php:1179
+#: inc/opt-in-utils.php:1221
 msgid "Panama"
 msgstr ""
 
-#: inc/opt-in-utils.php:1180
+#: inc/opt-in-utils.php:1222
 msgid "Papua New Guinea"
 msgstr ""
 
-#: inc/opt-in-utils.php:1181
+#: inc/opt-in-utils.php:1223
 msgid "Paraguay"
 msgstr ""
 
-#: inc/opt-in-utils.php:1182
+#: inc/opt-in-utils.php:1224
 msgid "Peru"
 msgstr ""
 
-#: inc/opt-in-utils.php:1183
+#: inc/opt-in-utils.php:1225
 msgid "Philippines"
 msgstr ""
 
-#: inc/opt-in-utils.php:1184
+#: inc/opt-in-utils.php:1226
 msgid "Pitcairn Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1185
+#: inc/opt-in-utils.php:1227
 msgid "Poland"
 msgstr ""
 
-#: inc/opt-in-utils.php:1186
+#: inc/opt-in-utils.php:1228
 msgid "Portugal"
 msgstr ""
 
-#: inc/opt-in-utils.php:1187
+#: inc/opt-in-utils.php:1229
 msgid "Puerto Rico"
 msgstr ""
 
-#: inc/opt-in-utils.php:1188
+#: inc/opt-in-utils.php:1230
 msgid "Qatar"
 msgstr ""
 
-#: inc/opt-in-utils.php:1189
+#: inc/opt-in-utils.php:1231
 msgid "Réunion"
 msgstr ""
 
-#: inc/opt-in-utils.php:1190
+#: inc/opt-in-utils.php:1232
 msgid "Romania"
 msgstr ""
 
-#: inc/opt-in-utils.php:1191
+#: inc/opt-in-utils.php:1233
 msgid "Russia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1192
+#: inc/opt-in-utils.php:1234
 msgid "Rwanda"
 msgstr ""
 
-#: inc/opt-in-utils.php:1193
+#: inc/opt-in-utils.php:1235
 msgid "Saint Helena"
 msgstr ""
 
-#: inc/opt-in-utils.php:1194
+#: inc/opt-in-utils.php:1236
 msgid "Saint Kitts and Nevis"
 msgstr ""
 
-#: inc/opt-in-utils.php:1195
+#: inc/opt-in-utils.php:1237
 msgid "Saint Lucia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1196
+#: inc/opt-in-utils.php:1238
 msgid "Saint Pierre and Miquelon"
 msgstr ""
 
-#: inc/opt-in-utils.php:1197
+#: inc/opt-in-utils.php:1239
 msgid "Saint Vincent and the Grenadines"
 msgstr ""
 
-#: inc/opt-in-utils.php:1198
+#: inc/opt-in-utils.php:1240
 msgid "Samoa"
 msgstr ""
 
-#: inc/opt-in-utils.php:1199
+#: inc/opt-in-utils.php:1241
 msgid "San Marino"
 msgstr ""
 
-#: inc/opt-in-utils.php:1200
+#: inc/opt-in-utils.php:1242
 msgid "Sao Tome and Principe"
 msgstr ""
 
-#: inc/opt-in-utils.php:1201
+#: inc/opt-in-utils.php:1243
 msgid "Saudi Arabia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1202
+#: inc/opt-in-utils.php:1244
 msgid "Senegal"
 msgstr ""
 
-#: inc/opt-in-utils.php:1203
+#: inc/opt-in-utils.php:1245
 msgid "Serbia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1204
+#: inc/opt-in-utils.php:1246
 msgid "Seychelles"
 msgstr ""
 
-#: inc/opt-in-utils.php:1205
+#: inc/opt-in-utils.php:1247
 msgid "Sierra Leone"
 msgstr ""
 
-#: inc/opt-in-utils.php:1206
+#: inc/opt-in-utils.php:1248
 msgid "Singapore"
 msgstr ""
 
-#: inc/opt-in-utils.php:1207
+#: inc/opt-in-utils.php:1249
 msgid "Sint Maarten"
 msgstr ""
 
-#: inc/opt-in-utils.php:1208
+#: inc/opt-in-utils.php:1250
 msgid "Slovakia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1209
+#: inc/opt-in-utils.php:1251
 msgid "Slovenia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1210
+#: inc/opt-in-utils.php:1252
 msgid "Solomon Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1211
+#: inc/opt-in-utils.php:1253
 msgid "Somalia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1212
+#: inc/opt-in-utils.php:1254
 msgid "South Africa"
 msgstr ""
 
-#: inc/opt-in-utils.php:1213
+#: inc/opt-in-utils.php:1255
 msgid "South Georgia and the South Sandwich Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1214
+#: inc/opt-in-utils.php:1256
 msgid "Spain"
 msgstr ""
 
-#: inc/opt-in-utils.php:1215
+#: inc/opt-in-utils.php:1257
 msgid "Sri Lanka"
 msgstr ""
 
-#: inc/opt-in-utils.php:1216
+#: inc/opt-in-utils.php:1258
 msgid "Stateless Persons"
 msgstr ""
 
-#: inc/opt-in-utils.php:1217
+#: inc/opt-in-utils.php:1259
 msgid "Sudan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1218
+#: inc/opt-in-utils.php:1260
 msgid "South Sudan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1219
+#: inc/opt-in-utils.php:1261
 msgid "Suriname"
 msgstr ""
 
-#: inc/opt-in-utils.php:1220
+#: inc/opt-in-utils.php:1262
 msgid "Svalbard and Jan Mayen"
 msgstr ""
 
-#: inc/opt-in-utils.php:1221
+#: inc/opt-in-utils.php:1263
 msgid "Swaziland"
 msgstr ""
 
-#: inc/opt-in-utils.php:1222
+#: inc/opt-in-utils.php:1264
 msgid "Sweden"
 msgstr ""
 
-#: inc/opt-in-utils.php:1223
+#: inc/opt-in-utils.php:1265
 msgid "Switzerland"
 msgstr ""
 
-#: inc/opt-in-utils.php:1224
+#: inc/opt-in-utils.php:1266
 msgid "Syria"
 msgstr ""
 
-#: inc/opt-in-utils.php:1225
+#: inc/opt-in-utils.php:1267
 msgid "Taiwan, Republic of China"
 msgstr ""
 
-#: inc/opt-in-utils.php:1226
+#: inc/opt-in-utils.php:1268
 msgid "Tajikistan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1227
+#: inc/opt-in-utils.php:1269
 msgid "Tanzania"
 msgstr ""
 
-#: inc/opt-in-utils.php:1228
+#: inc/opt-in-utils.php:1270
 msgid "Thailand"
 msgstr ""
 
-#: inc/opt-in-utils.php:1229
+#: inc/opt-in-utils.php:1271
 msgid "Togo"
 msgstr ""
 
-#: inc/opt-in-utils.php:1230
+#: inc/opt-in-utils.php:1272
 msgid "Tokelau"
 msgstr ""
 
-#: inc/opt-in-utils.php:1231
+#: inc/opt-in-utils.php:1273
 msgid "Tonga"
 msgstr ""
 
-#: inc/opt-in-utils.php:1232
+#: inc/opt-in-utils.php:1274
 msgid "Trinidad and Tobago"
 msgstr ""
 
-#: inc/opt-in-utils.php:1233
+#: inc/opt-in-utils.php:1275
 msgid "Tunisia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1234
+#: inc/opt-in-utils.php:1276
 msgid "Turkey"
 msgstr ""
 
-#: inc/opt-in-utils.php:1235
+#: inc/opt-in-utils.php:1277
 msgid "Turkmenistan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1236
+#: inc/opt-in-utils.php:1278
 msgid "Turks and Caicos Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1237
+#: inc/opt-in-utils.php:1279
 msgid "Tuvalu"
 msgstr ""
 
-#: inc/opt-in-utils.php:1238
+#: inc/opt-in-utils.php:1280
 msgid "Uganda"
 msgstr ""
 
-#: inc/opt-in-utils.php:1239
+#: inc/opt-in-utils.php:1281
 msgid "Ukraine"
 msgstr ""
 
-#: inc/opt-in-utils.php:1240
+#: inc/opt-in-utils.php:1282
 msgid "United Arab Emirates"
 msgstr ""
 
-#: inc/opt-in-utils.php:1241
+#: inc/opt-in-utils.php:1283
 msgid "United Kingdom"
 msgstr ""
 
-#: inc/opt-in-utils.php:1242
+#: inc/opt-in-utils.php:1284
 msgid "United States of America (USA)"
 msgstr ""
 
-#: inc/opt-in-utils.php:1243
+#: inc/opt-in-utils.php:1285
 msgid "US Minor Outlying Islands"
 msgstr ""
 
-#: inc/opt-in-utils.php:1244
+#: inc/opt-in-utils.php:1286
 msgid "Uruguay"
 msgstr ""
 
-#: inc/opt-in-utils.php:1245
+#: inc/opt-in-utils.php:1287
 msgid "Uzbekistan"
 msgstr ""
 
-#: inc/opt-in-utils.php:1246
+#: inc/opt-in-utils.php:1288
 msgid "Vanuatu"
 msgstr ""
 
-#: inc/opt-in-utils.php:1247
+#: inc/opt-in-utils.php:1289
 msgid "Vatican City"
 msgstr ""
 
-#: inc/opt-in-utils.php:1248
+#: inc/opt-in-utils.php:1290
 msgid "Venezuela"
 msgstr ""
 
-#: inc/opt-in-utils.php:1249
+#: inc/opt-in-utils.php:1291
 msgid "Vietnam"
 msgstr ""
 
-#: inc/opt-in-utils.php:1250
+#: inc/opt-in-utils.php:1292
 msgid "Virgin Islands, British"
 msgstr ""
 
-#: inc/opt-in-utils.php:1251
+#: inc/opt-in-utils.php:1293
 msgid "Virgin Islands, U.S."
 msgstr ""
 
-#: inc/opt-in-utils.php:1252
+#: inc/opt-in-utils.php:1294
 msgid "Wallis And Futuna"
 msgstr ""
 
-#: inc/opt-in-utils.php:1253
+#: inc/opt-in-utils.php:1295
 msgid "Western Sahara"
 msgstr ""
 
-#: inc/opt-in-utils.php:1254
+#: inc/opt-in-utils.php:1296
 msgid "Yemen"
 msgstr ""
 
-#: inc/opt-in-utils.php:1255
+#: inc/opt-in-utils.php:1297
 msgid "Zambia"
 msgstr ""
 
-#: inc/opt-in-utils.php:1256
+#: inc/opt-in-utils.php:1298
 msgid "Zimbabwe"
 msgstr ""
 
-#: inc/opt-in-utils.php:1279
+#: inc/opt-in-utils.php:1321
 msgid "Note: When enabled, this will set a tracking cookie in your visitor’s web browser."
 msgstr ""
 
-#: inc/opt-in-utils.php:1362
+#: inc/opt-in-utils.php:1404
 msgid "Hustle Pro"
 msgstr ""
 
@@ -2854,47 +2854,47 @@ msgstr ""
 msgid "%s Preview"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:111, inc/front/hustle-module-front-ajax.php:1214
+#: inc/front/hustle-module-front-ajax.php:114, inc/front/hustle-module-front-ajax.php:1214
 msgid "Invalid security token."
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:116
+#: inc/front/hustle-module-front-ajax.php:119
 msgid "Invalid module ID!"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:126, inc/front/hustle-module-front-ajax.php:1225, inc/front/hustle-module-front-ajax.php:1272, inc/provider/class-hustle-provider-admin-ajax.php:498, inc/provider/class-hustle-provider-admin-ajax.php:717
+#: inc/front/hustle-module-front-ajax.php:129, inc/front/hustle-module-front-ajax.php:1225, inc/front/hustle-module-front-ajax.php:1272, inc/provider/class-hustle-provider-admin-ajax.php:498, inc/provider/class-hustle-provider-admin-ajax.php:717
 msgid "Invalid module!"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:276
+#: inc/front/hustle-module-front-ajax.php:279
 msgid "Invalid module"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:280
+#: inc/front/hustle-module-front-ajax.php:283
 msgid "Module is not active"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:318
+#: inc/front/hustle-module-front-ajax.php:321
 msgid "Error saving form"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:624
+#: inc/front/hustle-module-front-ajax.php:622
 msgid "reCAPTCHA must be verified to submit the form."
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:652
+#: inc/front/hustle-module-front-ajax.php:650
 msgid "reCAPTCHA validation failed. Please try again."
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:662
+#: inc/front/hustle-module-front-ajax.php:660
 msgid "reCAPTCHA validation failed. The score is too low."
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:701
+#: inc/front/hustle-module-front-ajax.php:699
 msgid "Please complete the Cloudflare Turnstile challenge."
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:730
+#: inc/front/hustle-module-front-ajax.php:728
 msgid "Turnstile validation failed. Please try again."
 msgstr ""
 

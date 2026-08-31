@@ -1177,6 +1177,7 @@ class Hustle_Entries_Admin extends Hustle_Admin_Page_Abstract {
 				continue;
 			}
 			if ( is_scalar( $field ) ) {
+				$field              = Opt_In_Utils::decode_shortcode_brackets( $field );
 				$formatted_fields[] = self::escape_csv_data( $field );
 			}
 		}

@@ -1,14 +1,14 @@
 === Hustle - Email Marketing, Lead Generation, Optins, Popups ===
 Plugin Name: Hustle - Email Marketing, Lead Generation, Opt-ins, Popups
-Version: 7.8.14.1
+Version: 7.8.14.2
 Author: WPMU DEV
 Author URI: https://wpmudev.com/
 Contributors: WPMUDEV
 Tags: marketing, popup, optin, newsletter, subscription form, email, advertise, signup, mailing list, wordpress popup plugin, popup maker, pop-up, opt-in
 Requires at least: 6.4
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 7.8.14.1
+Stable tag: 7.8.14.2
 
 Setup email optin forms, popups, newsletter forms & subscription forms to generate email leads with the best marketing popup builder
 
@@ -189,12 +189,17 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 
 == Changelog ==
 
-= 7.8.14.1 ( 2026-07-14 )
+= 7.8.14.2 ( 2026-08-31 )
+
+- Fix: Security improvements (Credit: Jakub Herman)
+
+
+= 7.8.14.1 ( 2026-07-08 )
 
 Fix: Facebook Social Sharing module displaying an error notice on mobile devices.
 
 
-= 7.8.14 ( 2026-07-14 )
+= 7.8.14 ( 2026-06-24 )
 
 - Enhancement: Facebook Social Sharing service requires APP ID.
 - Fix: An error occurred when the scheduled module was saved.
@@ -223,6 +228,17 @@ Fix: Facebook Social Sharing module displaying an error notice on mobile devices
 - Fix: Prevent form submission failures caused by stale browser cache
 - Fix: Correct integration status remaining connected after disconnection
 - Fix: Resolve Social Sharing module preview not rendering
+
+
+= 7.8.12.1 ( 2026-03-30 )
+
+- Fix: Security hardening for conversion tracking requests.
+
+
+= 7.8.12 ( 2026-03-12 )
+
+- Fix: Avoid repeated HubSpot token refresh requests to the WPMU DEV API when refresh fails.
+- Fix: Schedule settings not saving when schedule is expired.
 
 
 = 7.8.11 ( 2026-03-10 )

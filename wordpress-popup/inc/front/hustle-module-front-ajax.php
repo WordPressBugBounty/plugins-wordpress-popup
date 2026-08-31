@@ -89,6 +89,9 @@ class Hustle_Module_Front_Ajax {
 				} else {
 					// find field placeholders.
 					$value = $this->maybe_replace_to_field( $placeholder, $form_data );
+					if ( $value !== $placeholder ) {
+						$value = Opt_In_Utils::encode_shortcode_brackets( $value );
+					}
 				}
 
 				if ( $value !== $placeholder ) {
@@ -337,12 +340,7 @@ class Hustle_Module_Front_Ajax {
 
 		if ( ! is_null( $fields ) ) {
 			$form_data = Opt_In_Utils::validate_and_sanitize_fields( $form_data );
-			array_walk_recursive(
-				$form_data,
-				function ( &$value ) {
-					$value = strip_shortcodes( $value );
-				}
-			);
+			$form_data = Opt_In_Utils::encode_shortcode_brackets( $form_data );
 
 			// Verify recaptcha first.
 			if ( isset( $fields['recaptcha'] ) ) {
@@ -546,7 +544,7 @@ class Hustle_Module_Front_Ajax {
 			) {
 				$notification_recipient = $this->replace_placeholders(
 					$module_id,
-					sanitize_email( $emails_settings['notification_email_recipient'] ),
+					$emails_settings['notification_email_recipient'],
 					$form_data
 				);
 				$notification_subject   = $this->replace_placeholders(
@@ -831,6 +829,8 @@ class Hustle_Module_Front_Ajax {
 	 * @return string
 	 */
 	private function parse_message_with_fields_placeholders( $raw_message, $submitted_data ) {
+
+		$submitted_data = Opt_In_Utils::encode_shortcode_brackets( $submitted_data );
 
 		$message = str_replace(
 			array_keys( $submitted_data ),

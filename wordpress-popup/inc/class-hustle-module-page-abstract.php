@@ -378,7 +378,7 @@ abstract class Hustle_Module_Page_Abstract extends Hustle_Admin_Page_Abstract {
 			// Add Unsubscribe Link.
 			$fields['hustle_unsubscribe_link'] = esc_html__( 'Unsubscribe Link', 'hustle' );
 
-			$available_editors = array( 'success_message', 'email_body' );
+			$available_editors = array( 'success_message', 'email_body', 'notification_email_body' );
 
 			/**
 			 * Print JS details for the custom TinyMCE "Insert Variable" button

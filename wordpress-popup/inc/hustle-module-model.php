@@ -550,6 +550,7 @@ class Hustle_Module_Model extends Hustle_Model {
 						'gdpr_message',
 						'required_error_message',
 						'v3_recaptcha_badge_replacement',
+						'notification_email_body',
 					)
 				);
 				if ( in_array( $key, array( 'refs', 'urls' ), true ) ) {
