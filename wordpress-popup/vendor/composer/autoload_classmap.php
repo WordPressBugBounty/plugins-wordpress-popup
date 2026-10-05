@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Ctct\\Auth\\CtctDataStore' => $baseDir . '/inc/providers/constantcontact/CtCt/Auth/CtctDataStore.php',
     'Ctct\\Auth\\CtctOAuth2' => $baseDir . '/inc/providers/constantcontact/CtCt/Auth/CtctOAuth2.php',
     'Ctct\\Auth\\SessionDataStore' => $baseDir . '/inc/providers/constantcontact/CtCt/Auth/SessionDataStore.php',

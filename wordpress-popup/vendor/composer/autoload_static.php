@@ -11,6 +11,7 @@ class ComposerStaticInitd45a15be3ceca75ee1c0c2f87d2b07c1
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Ctct\\Auth\\CtctDataStore' => __DIR__ . '/../..' . '/inc/providers/constantcontact/CtCt/Auth/CtctDataStore.php',
         'Ctct\\Auth\\CtctOAuth2' => __DIR__ . '/../..' . '/inc/providers/constantcontact/CtCt/Auth/CtctOAuth2.php',
         'Ctct\\Auth\\SessionDataStore' => __DIR__ . '/../..' . '/inc/providers/constantcontact/CtCt/Auth/SessionDataStore.php',

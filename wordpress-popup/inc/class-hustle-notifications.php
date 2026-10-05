@@ -60,6 +60,8 @@ class Hustle_Notifications {
 
 		if ( $this->is_free && ( wp_doing_ajax() || is_admin() ) ) {
 			require_once Opt_In::$plugin_path . 'lib/free-dashboard/module.php';
+		} elseif ( ! $this->is_free ) {
+			$this->load_wpmudev_dashboard_notice();
 		}
 
 		add_action( 'admin_init', array( $this, 'init_notices' ), 1 );
@@ -408,6 +410,50 @@ class Hustle_Notifications {
 	}
 
 	/**
+	 * Register Hustle Pro for the WPMU DEV Dashboard install/activate notice.
+	 */
+	private function load_wpmudev_dashboard_notice() {
+		global $wpmudev_notices;
+
+		if ( ! isset( $wpmudev_notices ) || ! is_array( $wpmudev_notices ) ) {
+			$wpmudev_notices = array();
+		}
+
+		$wpmudev_notices[] = array(
+			'id'      => 1107020,
+			'name'    => 'Hustle',
+			'screens' => $this->get_wpmudev_dashboard_notice_screens(),
+		);
+
+		$notice_file = Opt_In::$plugin_path . 'lib/wpmudev-dashboard/wpmudev-dash-notification.php';
+		if ( ! file_exists( $notice_file ) ) {
+			return;
+		}
+
+		$already_loaded = class_exists( 'WPMUDEV_Dashboard_Notice5', false );
+		require_once $notice_file;
+
+		if ( ! $already_loaded && did_action( 'init' ) && isset( $GLOBALS['WPMUDEV_Dashboard_Notice5'] ) ) { // phpcs:ignore WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase
+			$GLOBALS['WPMUDEV_Dashboard_Notice5']->init(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase
+		}
+	}
+
+	/**
+	 * Screen IDs where the WPMU DEV Dashboard notice should appear.
+	 *
+	 * @return array
+	 */
+	private function get_wpmudev_dashboard_notice_screens() {
+		$screens = array( 'toplevel_page_hustle' );
+
+		foreach ( Hustle_Data::get_hustle_pages() as $page ) {
+			$screens[] = 'hustle_page_' . $page;
+		}
+
+		return $screens;
+	}
+
+	/**
 	 * Add notices in the plugin's row.
 	 *
 	 * @since 4.2.2
@@ -425,18 +471,6 @@ class Hustle_Notifications {
 				},
 				22 // Must be called after Dashboard which is 21.
 			);
-
-			// Load dashboard notice.
-			global $wpmudev_notices;
-			$wpmudev_notices[] = array(
-				'id'      => 1107020,
-				'name'    => 'Hustle',
-				'screens' => array(
-					'toplevel_page_hustle',
-					'optin-pro_page_inc_optin',
-				),
-			);
-			require_once Opt_In::$plugin_path . 'lib/wpmudev-dashboard/wpmudev-dash-notification.php';
 		}
 	}
 

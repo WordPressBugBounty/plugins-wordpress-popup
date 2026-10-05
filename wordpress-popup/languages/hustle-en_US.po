@@ -1,12 +1,12 @@
-# Copyright (C) 2026 Hustle 7.8.14.2
-# This file is distributed under the same license as the Hustle 7.8.14.2 package.
+# Copyright (C) 2026 Hustle 7.8.14.3
+# This file is distributed under the same license as the Hustle 7.8.14.3 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Hustle 7.8.14.2\n"
+"Project-Id-Version: Hustle 7.8.14.3\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-31 09:09+0000\n"
+"POT-Creation-Date: 2026-10-01 11:07+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Draft"
 msgstr ""
 
-#: inc/class-hustle-admin-page-abstract.php:273, inc/class-hustle-notifications.php:588, inc/class-hustle-notifications.php:895
+#: inc/class-hustle-admin-page-abstract.php:273, inc/class-hustle-notifications.php:622, inc/class-hustle-notifications.php:929
 msgid "Dismiss"
 msgstr ""
 
@@ -133,7 +133,7 @@ msgstr ""
 msgid "Total Modules"
 msgstr ""
 
-#: inc/class-hustle-dashboard-admin.php:282, inc/class-hustle-dashboard-admin.php:318, inc/class-hustle-module-page-abstract.php:814, inc/providers/mailpoet/class-hustle-mailpoet-form-settings.php:391, inc/providers/mailster/class-hustle-mailster-form-settings.php:433, views/admin/integrations-page/summary.php:33, views/admin/commons/sui-wizard/elements/image-fitting.php:35, views/admin/commons/sui-wizard/tab-content/call-to-action.php:137, views/admin/commons/sui-wizard/tab-visibility/conditions.php:1407, views/admin/commons/sui-wizard/tab-appearance/row-typography/advanced/text-decoration.php:12, views/admin/commons/sui-wizard/tab-appearance/row-typography/advanced/text-transform.php:12
+#: inc/class-hustle-dashboard-admin.php:282, inc/class-hustle-dashboard-admin.php:318, inc/class-hustle-module-page-abstract.php:816, inc/providers/mailpoet/class-hustle-mailpoet-form-settings.php:391, inc/providers/mailster/class-hustle-mailster-form-settings.php:433, views/admin/integrations-page/summary.php:33, views/admin/commons/sui-wizard/elements/image-fitting.php:35, views/admin/commons/sui-wizard/tab-content/call-to-action.php:137, views/admin/commons/sui-wizard/tab-visibility/conditions.php:1407, views/admin/commons/sui-wizard/tab-appearance/row-typography/advanced/text-decoration.php:12, views/admin/commons/sui-wizard/tab-appearance/row-typography/advanced/text-transform.php:12
 msgid "None"
 msgstr ""
 
@@ -192,42 +192,42 @@ msgid "Add %s Fields"
 msgstr ""
 
 #. translators: number of conversions
-#: inc/class-hustle-module-page-abstract.php:594
+#: inc/class-hustle-module-page-abstract.php:596
 msgid "%d Conversions"
 msgstr ""
 
 #. translators: number of shares
-#: inc/class-hustle-module-page-abstract.php:595
+#: inc/class-hustle-module-page-abstract.php:597
 msgid "%d Shares"
 msgstr ""
 
 #. translators: number of views
-#: inc/class-hustle-module-page-abstract.php:597
+#: inc/class-hustle-module-page-abstract.php:599
 msgid "%d Views"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:604
+#: inc/class-hustle-module-page-abstract.php:606
 msgid "Oops! The module you are looking for doesn't exist."
 msgstr ""
 
 #. translators: 1. opening 'a' tag for adding a new module, 2. closing 'a' tag, 3. opening 'a' tag for importing
-#: inc/class-hustle-module-page-abstract.php:609
+#: inc/class-hustle-module-page-abstract.php:611
 msgid " You can %1$screate%2$s a new module or %3$simport%2$s an existing module."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:617
+#: inc/class-hustle-module-page-abstract.php:619
 msgid "Module successfully imported."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:618, inc/hustle-modules-common-admin-ajax.php:340
+#: inc/class-hustle-module-page-abstract.php:620, inc/hustle-modules-common-admin-ajax.php:340
 msgid "Module successfully duplicated."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:619, inc/hustle-modules-common-admin-ajax.php:647
+#: inc/class-hustle-module-page-abstract.php:621, inc/hustle-modules-common-admin-ajax.php:647
 msgid "Module's tracking data successfully reset."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:620, inc/hustle-modules-common-admin-ajax.php:682
+#: inc/class-hustle-module-page-abstract.php:622, inc/hustle-modules-common-admin-ajax.php:682
 msgid "Module's Email List successfully purged."
 msgstr ""
 
@@ -243,481 +243,481 @@ msgstr ""
 msgid "%1$s created successfully. Get started by adding content to your new %2$s below."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:637, inc/hustle-model.php:1275, views/admin/sshare/wizard.php:37, views/admin/sshare/display-options/template.php:54, views/admin/sshare/services/template.php:14
+#: inc/class-hustle-module-page-abstract.php:639, inc/hustle-model.php:1275, views/admin/sshare/wizard.php:37, views/admin/sshare/display-options/template.php:54, views/admin/sshare/services/template.php:14
 msgid "Services"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:638, inc/hustle-model.php:1312, views/admin/embedded/wizard.php:86, views/admin/sshare/wizard.php:45, views/admin/sshare/appearance/template.php:87, views/admin/sshare/display-options/template.php:14, views/admin/sshare/services/template.php:38, views/admin/commons/sui-wizard/templates/tab-appearance.php:112, views/admin/commons/sui-wizard/templates/tab-display.php:16, views/admin/commons/sui-wizard/templates/tab-visibility.php:62
+#: inc/class-hustle-module-page-abstract.php:640, inc/hustle-model.php:1312, views/admin/embedded/wizard.php:86, views/admin/sshare/wizard.php:45, views/admin/sshare/appearance/template.php:87, views/admin/sshare/display-options/template.php:14, views/admin/sshare/services/template.php:38, views/admin/commons/sui-wizard/templates/tab-appearance.php:112, views/admin/commons/sui-wizard/templates/tab-display.php:16, views/admin/commons/sui-wizard/templates/tab-visibility.php:62
 msgid "Display Options"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:778, views/admin/commons/sui-wizard/dialogs/visibility-options.php:77
+#: inc/class-hustle-module-page-abstract.php:780, views/admin/commons/sui-wizard/dialogs/visibility-options.php:77
 msgid "Logged in status"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:779
+#: inc/class-hustle-module-page-abstract.php:781
 msgid "Number of times visitor has seen this module"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:780, views/admin/commons/sui-wizard/dialogs/visibility-options.php:75
+#: inc/class-hustle-module-page-abstract.php:782, views/admin/commons/sui-wizard/dialogs/visibility-options.php:75
 msgid "Visitor's Device"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:781, views/admin/commons/sui-wizard/dialogs/visibility-options.php:80
+#: inc/class-hustle-module-page-abstract.php:783, views/admin/commons/sui-wizard/dialogs/visibility-options.php:80
 msgid "Referrer"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:782, views/admin/commons/sui-wizard/dialogs/visibility-options.php:79
+#: inc/class-hustle-module-page-abstract.php:784, views/admin/commons/sui-wizard/dialogs/visibility-options.php:79
 msgid "Source of Arrival"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:783, views/admin/commons/sui-wizard/dialogs/visibility-options.php:81
+#: inc/class-hustle-module-page-abstract.php:785, views/admin/commons/sui-wizard/dialogs/visibility-options.php:81
 msgid "Specific URL"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:784, views/admin/commons/sui-wizard/dialogs/visibility-options.php:76
+#: inc/class-hustle-module-page-abstract.php:786, views/admin/commons/sui-wizard/dialogs/visibility-options.php:76
 msgid "Visitor's Browser"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:785, views/admin/commons/sui-wizard/dialogs/visibility-options.php:84
+#: inc/class-hustle-module-page-abstract.php:787, views/admin/commons/sui-wizard/dialogs/visibility-options.php:84
 msgid "Visitor Commented Before"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:786, views/admin/commons/sui-wizard/dialogs/visibility-options.php:78
+#: inc/class-hustle-module-page-abstract.php:788, views/admin/commons/sui-wizard/dialogs/visibility-options.php:78
 msgid "Visitor's Country"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:787, views/admin/commons/sui-wizard/dialogs/visibility-options.php:73
+#: inc/class-hustle-module-page-abstract.php:789, views/admin/commons/sui-wizard/dialogs/visibility-options.php:73
 msgid "User Roles"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:788, views/admin/commons/sui-wizard/dialogs/visibility-options.php:72
+#: inc/class-hustle-module-page-abstract.php:790, views/admin/commons/sui-wizard/dialogs/visibility-options.php:72
 msgid "Static Pages"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:789, views/admin/commons/sui-wizard/dialogs/visibility-options.php:71
+#: inc/class-hustle-module-page-abstract.php:791, views/admin/commons/sui-wizard/dialogs/visibility-options.php:71
 msgid "Archive Pages"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:790, views/admin/commons/sui-wizard/dialogs/visibility-options.php:74
+#: inc/class-hustle-module-page-abstract.php:792, views/admin/commons/sui-wizard/dialogs/visibility-options.php:74
 msgid "Page Templates"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:791, views/admin/commons/sui-wizard/dialogs/visibility-options.php:82
+#: inc/class-hustle-module-page-abstract.php:793, views/admin/commons/sui-wizard/dialogs/visibility-options.php:82
 msgid "After Registration"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:792, inc/class-hustle-module-page-abstract.php:831
+#: inc/class-hustle-module-page-abstract.php:794, inc/class-hustle-module-page-abstract.php:833
 msgid "404 page"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:793, views/admin/commons/sui-wizard/dialogs/visibility-options.php:65
+#: inc/class-hustle-module-page-abstract.php:795, views/admin/commons/sui-wizard/dialogs/visibility-options.php:65
 msgid "Posts"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:794, views/admin/commons/sui-wizard/dialogs/visibility-options.php:66
+#: inc/class-hustle-module-page-abstract.php:796, views/admin/commons/sui-wizard/dialogs/visibility-options.php:66
 msgid "Pages"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:795, views/admin/commons/sui-wizard/dialogs/visibility-options.php:69
+#: inc/class-hustle-module-page-abstract.php:797, views/admin/commons/sui-wizard/dialogs/visibility-options.php:69
 msgid "Categories"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:796, inc/provider/class-hustle-provider-form-hooks-abstract.php:398, inc/providers/mailchimp/hustle-mailchimp-form-settings.php:783, views/admin/commons/sui-wizard/dialogs/visibility-options.php:70
+#: inc/class-hustle-module-page-abstract.php:798, inc/provider/class-hustle-provider-form-hooks-abstract.php:398, inc/providers/mailchimp/hustle-mailchimp-form-settings.php:783, views/admin/commons/sui-wizard/dialogs/visibility-options.php:70
 msgid "Tags"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:797
+#: inc/class-hustle-module-page-abstract.php:799
 msgid "WooCommerce Pages"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:798, views/admin/commons/sui-wizard/dialogs/visibility-options.php:95
+#: inc/class-hustle-module-page-abstract.php:800, views/admin/commons/sui-wizard/dialogs/visibility-options.php:95
 msgid "WooCommerce Categories"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:799, views/admin/commons/sui-wizard/dialogs/visibility-options.php:96
+#: inc/class-hustle-module-page-abstract.php:801, views/admin/commons/sui-wizard/dialogs/visibility-options.php:96
 msgid "WooCommerce Tags"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:800, views/admin/commons/sui-wizard/dialogs/visibility-options.php:97
+#: inc/class-hustle-module-page-abstract.php:802, views/admin/commons/sui-wizard/dialogs/visibility-options.php:97
 msgid "WooCommerce Archives"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:801, views/admin/commons/sui-wizard/dialogs/visibility-options.php:98
+#: inc/class-hustle-module-page-abstract.php:803, views/admin/commons/sui-wizard/dialogs/visibility-options.php:98
 msgid "WooCommerce Static Pages"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:802, views/admin/commons/sui-wizard/dialogs/visibility-options.php:85
+#: inc/class-hustle-module-page-abstract.php:804, views/admin/commons/sui-wizard/dialogs/visibility-options.php:85
 msgid "Browser Cookie"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:806, views/admin/commons/sui-wizard/tab-visibility/conditions.php:674
+#: inc/class-hustle-module-page-abstract.php:808, views/admin/commons/sui-wizard/tab-visibility/conditions.php:674
 msgid "Mobile only"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:807, views/admin/commons/sui-wizard/tab-visibility/conditions.php:689
+#: inc/class-hustle-module-page-abstract.php:809, views/admin/commons/sui-wizard/tab-visibility/conditions.php:689
 msgid "Desktop only"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:808
+#: inc/class-hustle-module-page-abstract.php:810
 msgid "{number} condition(s)"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:811, views/admin/settings/permissions/edit-modules.php:147
+#: inc/class-hustle-module-page-abstract.php:813, views/admin/settings/permissions/edit-modules.php:147
 msgid "Any"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:812, views/admin/commons/sui-listing/dialogs/import-module-settings-section.php:26, views/admin/commons/sui-listing/elements/tracking-data-chart.php:11
+#: inc/class-hustle-module-page-abstract.php:814, views/admin/commons/sui-listing/dialogs/import-module-settings-section.php:26, views/admin/commons/sui-listing/elements/tracking-data-chart.php:11
 msgid "All"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:813, inc/providers/zapier/hustle-zapier-form-hooks.php:231, views/admin/email-lists/emails-list.php:263, views/admin/commons/sui-wizard/dialogs/edit-field.php:149, views/admin/commons/sui-wizard/dialogs/edit-field.php:172
+#: inc/class-hustle-module-page-abstract.php:815, inc/providers/zapier/hustle-zapier-form-hooks.php:231, views/admin/email-lists/emails-list.php:263, views/admin/commons/sui-wizard/dialogs/edit-field.php:149, views/admin/commons/sui-wizard/dialogs/edit-field.php:172
 msgid "No"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:815, views/admin/commons/sui-wizard/tab-visibility/conditions.php:1002
+#: inc/class-hustle-module-page-abstract.php:817, views/admin/commons/sui-wizard/tab-visibility/conditions.php:1002
 msgid "True"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:816, views/admin/commons/sui-wizard/tab-visibility/conditions.php:1013
+#: inc/class-hustle-module-page-abstract.php:818, views/admin/commons/sui-wizard/tab-visibility/conditions.php:1013
 msgid "False"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:817, views/admin/commons/sui-wizard/tab-visibility/conditions.php:545
+#: inc/class-hustle-module-page-abstract.php:819, views/admin/commons/sui-wizard/tab-visibility/conditions.php:545
 msgid "Logged in"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:818, views/admin/commons/sui-wizard/tab-visibility/conditions.php:556
+#: inc/class-hustle-module-page-abstract.php:820, views/admin/commons/sui-wizard/tab-visibility/conditions.php:556
 msgid "Logged out"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:819
+#: inc/class-hustle-module-page-abstract.php:821
 msgid "Only {number}"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:820
+#: inc/class-hustle-module-page-abstract.php:822
 msgid "All except {number}"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:821
+#: inc/class-hustle-module-page-abstract.php:823
 msgid "Day {number} "
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:822, inc/class-hustle-module-page-abstract.php:913, views/admin/commons/sui-wizard/tab-behaviour/schedule-tpl.php:15
+#: inc/class-hustle-module-page-abstract.php:824, inc/class-hustle-module-page-abstract.php:915, views/admin/commons/sui-wizard/tab-behaviour/schedule-tpl.php:15
 msgid "Immediately"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:823, views/admin/settings/privacy/ip-retention.php:48, views/admin/settings/privacy/submissions-retention.php:48, views/admin/settings/privacy/tracking-data.php:54, views/admin/commons/sui-wizard/tab-behaviour/schedule-tpl.php:17
+#: inc/class-hustle-module-page-abstract.php:825, views/admin/settings/privacy/ip-retention.php:48, views/admin/settings/privacy/submissions-retention.php:48, views/admin/settings/privacy/tracking-data.php:54, views/admin/commons/sui-wizard/tab-behaviour/schedule-tpl.php:17
 msgid "Forever"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:824
+#: inc/class-hustle-module-page-abstract.php:826
 msgid "{name} is anything"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:825
+#: inc/class-hustle-module-page-abstract.php:827
 msgid "{name} does not exist"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:826
+#: inc/class-hustle-module-page-abstract.php:828
 msgid "{name} {value_condition} {value}"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:830
+#: inc/class-hustle-module-page-abstract.php:832
 msgid "Front page"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:832
+#: inc/class-hustle-module-page-abstract.php:834
 msgid "Search results"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:836
+#: inc/class-hustle-module-page-abstract.php:838
 msgid "Cart"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:837
+#: inc/class-hustle-module-page-abstract.php:839
 msgid "Checkout"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:838
+#: inc/class-hustle-module-page-abstract.php:840
 msgid "Order Received"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:839
+#: inc/class-hustle-module-page-abstract.php:841
 msgid "My account"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:843
+#: inc/class-hustle-module-page-abstract.php:845
 msgid "Category archive"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:844
+#: inc/class-hustle-module-page-abstract.php:846
 msgid "Tag archive"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:845
+#: inc/class-hustle-module-page-abstract.php:847
 msgid "Author archive"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:846
+#: inc/class-hustle-module-page-abstract.php:848
 msgid "Date archive"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:847
+#: inc/class-hustle-module-page-abstract.php:849
 msgid "Custom post archive"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:851
+#: inc/class-hustle-module-page-abstract.php:853
 msgid "Shop"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:852
+#: inc/class-hustle-module-page-abstract.php:854
 msgid "Product Category"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:853
+#: inc/class-hustle-module-page-abstract.php:855
 msgid "Product Tag"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:857, views/admin/commons/sui-wizard/tab-emails/automated-email.php:51
+#: inc/class-hustle-module-page-abstract.php:859, views/admin/commons/sui-wizard/tab-emails/automated-email.php:51
 msgid "Day"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:858
+#: inc/class-hustle-module-page-abstract.php:860
 msgid "Week"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:859
+#: inc/class-hustle-module-page-abstract.php:861
 msgid "Month"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:860
+#: inc/class-hustle-module-page-abstract.php:862
 msgid "Year"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:864
+#: inc/class-hustle-module-page-abstract.php:866
 msgid "is anything"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:865
+#: inc/class-hustle-module-page-abstract.php:867
 msgid "equals"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:866
+#: inc/class-hustle-module-page-abstract.php:868
 msgid "contains"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:867
+#: inc/class-hustle-module-page-abstract.php:869
 msgid "matches a pattern"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:868
+#: inc/class-hustle-module-page-abstract.php:870
 msgid "does not equals"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:869
+#: inc/class-hustle-module-page-abstract.php:871
 msgid "does not contain"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:870
+#: inc/class-hustle-module-page-abstract.php:872
 msgid "does not match a pattern"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:871
+#: inc/class-hustle-module-page-abstract.php:873
 msgid "is less than"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:872
+#: inc/class-hustle-module-page-abstract.php:874
 msgid "is less or equal to"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:873
+#: inc/class-hustle-module-page-abstract.php:875
 msgid "is greater than"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:874
+#: inc/class-hustle-module-page-abstract.php:876
 msgid "is greater or equal to"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:902, inc/hustle-providers-admin.php:65
+#: inc/class-hustle-module-page-abstract.php:904, inc/hustle-providers-admin.php:65
 msgid "Fetching integration list…"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:905
+#: inc/class-hustle-module-page-abstract.php:907
 msgid "Your font was correctly applied to all elements"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:909
+#: inc/class-hustle-module-page-abstract.php:911
 msgid "Select or Upload Image"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:910
+#: inc/class-hustle-module-page-abstract.php:912
 msgid "Use this image"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:914, views/admin/commons/sui-wizard/tab-behaviour/additional-settings.php:218, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:68, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:165, views/admin/commons/sui-wizard/tab-behaviour/trigger.php:10, views/admin/commons/sui-wizard/tab-emails/automated-email.php:32, views/admin/commons/sui-wizard/tab-emails/automated-email.php:125, views/admin/commons/sui-wizard/tab-emails/submission-behaviour.php:71, views/admin/commons/sui-wizard/tab-behaviour/trigger/adblock.php:40, views/admin/commons/sui-wizard/tab-behaviour/trigger/exit-intent.php:67, views/admin/commons/sui-wizard/tab-behaviour/trigger/time.php:39
+#: inc/class-hustle-module-page-abstract.php:916, views/admin/commons/sui-wizard/tab-behaviour/additional-settings.php:218, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:68, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:165, views/admin/commons/sui-wizard/tab-behaviour/trigger.php:10, views/admin/commons/sui-wizard/tab-emails/automated-email.php:32, views/admin/commons/sui-wizard/tab-emails/automated-email.php:125, views/admin/commons/sui-wizard/tab-emails/submission-behaviour.php:71, views/admin/commons/sui-wizard/tab-behaviour/trigger/adblock.php:40, views/admin/commons/sui-wizard/tab-behaviour/trigger/exit-intent.php:67, views/admin/commons/sui-wizard/tab-behaviour/trigger/time.php:39
 msgid "seconds"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:915, views/admin/commons/sui-wizard/tab-behaviour/additional-settings.php:225, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:73, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:170, views/admin/commons/sui-wizard/tab-behaviour/trigger.php:11, views/admin/commons/sui-wizard/tab-emails/automated-email.php:33, views/admin/commons/sui-wizard/tab-emails/automated-email.php:126, views/admin/commons/sui-wizard/tab-emails/submission-behaviour.php:74, views/admin/commons/sui-wizard/tab-behaviour/trigger/adblock.php:46, views/admin/commons/sui-wizard/tab-behaviour/trigger/exit-intent.php:73, views/admin/commons/sui-wizard/tab-behaviour/trigger/time.php:45
+#: inc/class-hustle-module-page-abstract.php:917, views/admin/commons/sui-wizard/tab-behaviour/additional-settings.php:225, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:73, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:170, views/admin/commons/sui-wizard/tab-behaviour/trigger.php:11, views/admin/commons/sui-wizard/tab-emails/automated-email.php:33, views/admin/commons/sui-wizard/tab-emails/automated-email.php:126, views/admin/commons/sui-wizard/tab-emails/submission-behaviour.php:74, views/admin/commons/sui-wizard/tab-behaviour/trigger/adblock.php:46, views/admin/commons/sui-wizard/tab-behaviour/trigger/exit-intent.php:73, views/admin/commons/sui-wizard/tab-behaviour/trigger/time.php:45
 msgid "minutes"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:916, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:78, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:175, views/admin/commons/sui-wizard/tab-behaviour/trigger.php:12, views/admin/commons/sui-wizard/tab-emails/automated-email.php:34, views/admin/commons/sui-wizard/tab-emails/automated-email.php:127, views/admin/commons/sui-wizard/tab-behaviour/trigger/adblock.php:52, views/admin/commons/sui-wizard/tab-behaviour/trigger/exit-intent.php:79, views/admin/commons/sui-wizard/tab-behaviour/trigger/time.php:51
+#: inc/class-hustle-module-page-abstract.php:918, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:78, views/admin/commons/sui-wizard/tab-behaviour/closing-methods.php:175, views/admin/commons/sui-wizard/tab-behaviour/trigger.php:12, views/admin/commons/sui-wizard/tab-emails/automated-email.php:34, views/admin/commons/sui-wizard/tab-emails/automated-email.php:127, views/admin/commons/sui-wizard/tab-behaviour/trigger/adblock.php:52, views/admin/commons/sui-wizard/tab-behaviour/trigger/exit-intent.php:79, views/admin/commons/sui-wizard/tab-behaviour/trigger/time.php:51
 msgid "hours"
 msgstr ""
 
 #. translators: 1. {time} tag to replace, 2. {unit} tag to replace
-#: inc/class-hustle-module-page-abstract.php:918
+#: inc/class-hustle-module-page-abstract.php:920
 msgid "Delay %1$s %2$s"
 msgstr ""
 
 #. translators: {value}% tag to replace
-#: inc/class-hustle-module-page-abstract.php:920
+#: inc/class-hustle-module-page-abstract.php:922
 msgid "%s page scroll"
 msgstr ""
 
 #. translators: {value} tag to replace
-#: inc/class-hustle-module-page-abstract.php:922
+#: inc/class-hustle-module-page-abstract.php:924
 msgid "Scroll to %s"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:974
+#: inc/class-hustle-module-page-abstract.php:976
 msgid "You don't have any {field_type} field in your opt-in form."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:980
+#: inc/class-hustle-module-page-abstract.php:982
 msgid "{field} is required."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:981
+#: inc/class-hustle-module-page-abstract.php:983
 msgid "This field can't be empty."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:982
+#: inc/class-hustle-module-page-abstract.php:984
 msgid "Your website url is required."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:983
+#: inc/class-hustle-module-page-abstract.php:985
 msgid "Your {field} is required."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:984
+#: inc/class-hustle-module-page-abstract.php:986
 msgid "Please enter a valid date."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:985
+#: inc/class-hustle-module-page-abstract.php:987
 msgid "Please enter a valid time."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:986
+#: inc/class-hustle-module-page-abstract.php:988
 msgid "Please enter a valid {field}."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:987, inc/class-hustle-module-page-abstract.php:988
+#: inc/class-hustle-module-page-abstract.php:989, inc/class-hustle-module-page-abstract.php:990
 msgid "reCAPTCHA verification failed. Please try again."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:989
+#: inc/class-hustle-module-page-abstract.php:991
 msgid "Turnstile verification failed. Please try again."
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:990
+#: inc/class-hustle-module-page-abstract.php:992
 msgid "Please accept the terms and try again."
 msgstr ""
 
 #. translators: 1. opening 'a' tag, 2. closing 'a' tag
-#: inc/class-hustle-module-page-abstract.php:992
+#: inc/class-hustle-module-page-abstract.php:994
 msgid "I've read and accept the %1$sterms & conditions%2$s"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:994
+#: inc/class-hustle-module-page-abstract.php:996
 msgid "Enter placeholder here"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:995, inc/providers/gutenberg/blocks/block-embeds.php:131, inc/providers/gutenberg/blocks/block-popup-trigger.php:107, inc/providers/gutenberg/blocks/block-slidein-trigger.php:107, inc/providers/gutenberg/blocks/block-social-share.php:116, views/admin/dashboard/templates/widget-modules.php:35, views/admin/settings/dialogs/palettes-edit-palette.php:24, views/admin/settings/permissions/edit-modules.php:177, views/admin/commons/sui-wizard/dialogs/edit-field.php:99, views/admin/commons/sui-wizard/dialogs/edit-field.php:953, views/admin/commons/sui-wizard/dialogs/edit-field.php:1074, views/admin/commons/sui-wizard/dialogs/edit-field.php:1209, views/admin/commons/sui-wizard/dialogs/optin-fields.php:12, views/admin/commons/sui-listing/dialogs/create-module/create-non-sshare.php:38
+#: inc/class-hustle-module-page-abstract.php:997, inc/providers/gutenberg/blocks/block-embeds.php:131, inc/providers/gutenberg/blocks/block-popup-trigger.php:107, inc/providers/gutenberg/blocks/block-slidein-trigger.php:107, inc/providers/gutenberg/blocks/block-social-share.php:116, views/admin/dashboard/templates/widget-modules.php:35, views/admin/settings/dialogs/palettes-edit-palette.php:24, views/admin/settings/permissions/edit-modules.php:177, views/admin/commons/sui-wizard/dialogs/edit-field.php:99, views/admin/commons/sui-wizard/dialogs/edit-field.php:953, views/admin/commons/sui-wizard/dialogs/edit-field.php:1074, views/admin/commons/sui-wizard/dialogs/edit-field.php:1209, views/admin/commons/sui-wizard/dialogs/optin-fields.php:12, views/admin/commons/sui-listing/dialogs/create-module/create-non-sshare.php:38
 msgid "Name"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:996
+#: inc/class-hustle-module-page-abstract.php:998
 msgid "E.g. John"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:997
+#: inc/class-hustle-module-page-abstract.php:999
 msgid "Email Address"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:998
+#: inc/class-hustle-module-page-abstract.php:1000
 msgid "E.g. john@doe.com"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:999
+#: inc/class-hustle-module-page-abstract.php:1001
 msgid "Phone Number"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1000
+#: inc/class-hustle-module-page-abstract.php:1002
 msgid "E.g. +1 300 400 500"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1001, views/admin/commons/sui-wizard/dialogs/optin-fields.php:24
+#: inc/class-hustle-module-page-abstract.php:1003, views/admin/commons/sui-wizard/dialogs/optin-fields.php:24
 msgid "Address"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1003, views/admin/commons/sui-wizard/dialogs/optin-fields.php:63
+#: inc/class-hustle-module-page-abstract.php:1005, views/admin/commons/sui-wizard/dialogs/optin-fields.php:63
 msgid "Hidden Field"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1005, views/admin/commons/sui-wizard/dialogs/optin-fields.php:28
+#: inc/class-hustle-module-page-abstract.php:1007, views/admin/commons/sui-wizard/dialogs/optin-fields.php:28
 msgid "Website"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1006
+#: inc/class-hustle-module-page-abstract.php:1008
 msgid "E.g. https://example.com"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1007, views/admin/sshare/appearance/tpl--icons-appearance.php:153, views/admin/commons/sui-wizard/dialogs/optin-fields.php:32
+#: inc/class-hustle-module-page-abstract.php:1009, views/admin/sshare/appearance/tpl--icons-appearance.php:153, views/admin/commons/sui-wizard/dialogs/optin-fields.php:32
 msgid "Text"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1008
+#: inc/class-hustle-module-page-abstract.php:1010
 msgid "E.g. Enter your nick name"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1009, views/admin/commons/sui-wizard/dialogs/optin-fields.php:36
+#: inc/class-hustle-module-page-abstract.php:1011, views/admin/commons/sui-wizard/dialogs/optin-fields.php:36
 msgid "Number"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1010
+#: inc/class-hustle-module-page-abstract.php:1012
 msgid "E.g. 1"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1011
+#: inc/class-hustle-module-page-abstract.php:1013
 msgid "Date"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1012
+#: inc/class-hustle-module-page-abstract.php:1014
 msgid "Choose date"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1013, views/admin/commons/sui-wizard/tab-behaviour/trigger.php:16
+#: inc/class-hustle-module-page-abstract.php:1015, views/admin/commons/sui-wizard/tab-behaviour/trigger.php:16
 msgid "Time"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1017, views/admin/settings.php:41, views/admin/settings/tab-turnstile.php:13, views/admin/dashboard/dialogs/new-features.php:71, views/admin/commons/sui-wizard/dialogs/optin-fields.php:53, views/admin/commons/sui-wizard/tab-emails/form-fields.php:133
+#: inc/class-hustle-module-page-abstract.php:1019, views/admin/settings.php:41, views/admin/settings/tab-turnstile.php:13, views/admin/dashboard/dialogs/new-features.php:71, views/admin/commons/sui-wizard/dialogs/optin-fields.php:53, views/admin/commons/sui-wizard/tab-emails/form-fields.php:133
 msgid "Cloudflare Turnstile"
 msgstr ""
 
-#: inc/class-hustle-module-page-abstract.php:1019, views/admin/commons/sui-wizard/tab-emails/form-fields.php:73
+#: inc/class-hustle-module-page-abstract.php:1021, views/admin/commons/sui-wizard/tab-emails/form-fields.php:73
 msgid "GDPR"
 msgstr ""
 
 #. translators: 1: closing 'a' tag, 2: opening privacy 'a' tag, 3: opening terms 'a' tag
-#: inc/class-hustle-module-page-abstract.php:1023
+#: inc/class-hustle-module-page-abstract.php:1025
 msgid "This site is protected by reCAPTCHA and the Google %2$sPrivacy Policy%1$s and %3$sTerms of Service%1$s apply."
 msgstr ""
 
 #. translators: 1. module type in lowercase
-#: inc/class-hustle-module-page-abstract.php:1047
+#: inc/class-hustle-module-page-abstract.php:1049
 msgid "Successfully added a schedule for your %1$s. However, make sure to save changes and publish your %1$s for it to start appearing as per your schedule."
 msgstr ""
 
@@ -729,122 +729,122 @@ msgstr ""
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: inc/class-hustle-notifications.php:258, inc/class-hustle-notifications.php:588, inc/class-hustle-notifications.php:759, views/admin/dashboard/dialogs/migrate-data.php:102
+#: inc/class-hustle-notifications.php:260, inc/class-hustle-notifications.php:622, inc/class-hustle-notifications.php:793, views/admin/dashboard/dialogs/migrate-data.php:102
 msgid "Migrate Data"
 msgstr ""
 
-#: inc/class-hustle-notifications.php:258
+#: inc/class-hustle-notifications.php:260
 msgid "Remind me later"
 msgstr ""
 
-#: inc/class-hustle-notifications.php:281
+#: inc/class-hustle-notifications.php:283
 msgid "Re-authorize Now"
 msgstr ""
 
 #. translators: user's name
-#: inc/class-hustle-notifications.php:323
+#: inc/class-hustle-notifications.php:325
 msgid "Hustle's Constant Contact integration has been upgraded to the latest API (v3) with OAuth2 authentication for improved security and reliability. To continue sending leads to Constant Contact, please re-authorize your integration."
 msgstr ""
 
-#: inc/class-hustle-notifications.php:326
+#: inc/class-hustle-notifications.php:328
 msgid "Hustle's Keap integration has been upgraded to the latest OAuth2 authentication for improved security and reliability. To continue sending leads to Keap, please re-authenticate your integration."
 msgstr ""
 
 #. translators: 1. user's name,
-#: inc/class-hustle-notifications.php:330
+#: inc/class-hustle-notifications.php:332
 msgid "Hey %1$s, we have updated our AWeber integration to support the oAuth 2.0. Since you are connected via oAuth 1.0, we recommend you to migrate your %2$s integration to the latest authorization method as we'll cease to support the deprecated oAuth method at some point."
 msgstr ""
 
 #. translators: 1. integration identifier
-#: inc/class-hustle-notifications.php:334
+#: inc/class-hustle-notifications.php:336
 msgid "Hustle’s Kit (Formerly ConvertKit) integration has been upgraded to the latest API (v4) for improved security and reliability. To continue sending leads to Kit, please re-authorize your \"%s\" integration."
 msgstr ""
 
 #. translators: 1. user's name, 2. provider's name
-#: inc/class-hustle-notifications.php:338
+#: inc/class-hustle-notifications.php:340
 msgid "Hey %1$s, we have updated our HubSpot integration to support the latest API (v3)."
 msgstr ""
 
-#: inc/class-hustle-notifications.php:341
+#: inc/class-hustle-notifications.php:343
 msgid "You have active Hubspot integration, but your site is not connected to WPMU Dev Hub. Please provide your own HubSpot API keys in the integration settings to continue using HubSpot with Hustle."
 msgstr ""
 
-#: inc/class-hustle-notifications.php:365
+#: inc/class-hustle-notifications.php:367
 msgid "Sign Me Up"
 msgstr ""
 
-#: inc/class-hustle-notifications.php:460
+#: inc/class-hustle-notifications.php:494
 msgid "Heads up!"
 msgstr ""
 
 #. translators: current version
-#: inc/class-hustle-notifications.php:462
+#: inc/class-hustle-notifications.php:496
 msgid "We’ve fixed visibility conditions in Hustle %1$s which may affect the visibility behavior of your pop-ups and other modules."
 msgstr ""
 
 #. translators: current version
-#: inc/class-hustle-notifications.php:464
+#: inc/class-hustle-notifications.php:498
 msgid "Prior to Hustle %1$s, the visibility engine would require you to set rules for every post type your theme used, not just the ones you specified to make it appear on correct pages. We’ve updated this behavior to only display modules based on the post types explicitly defined in your conditions. For Example, if you add a “Pages” condition to show your module on 1 page only, you’d no longer have to add other post type conditions to hide your module on them. After updating, we recommend double-checking your Hustle modules’ visibility conditions are working as expected."
 msgstr ""
 
 #. translators: Plugin name
-#: inc/class-hustle-notifications.php:513
+#: inc/class-hustle-notifications.php:547
 msgid "Congratulations! You have activated %s! We have automatically deactivated the free version."
 msgstr ""
 
 #. translators: Plugin name
-#: inc/class-hustle-notifications.php:522
+#: inc/class-hustle-notifications.php:556
 msgid "You already have %1$s activated. If you really wish to go back to the free version of %1$s, please deactivate the Pro version first"
 msgstr ""
 
-#: inc/class-hustle-notifications.php:549
+#: inc/class-hustle-notifications.php:583
 msgid "Hey"
 msgstr ""
 
 #. translators: 1. user's name 2. Plugin name
-#: inc/class-hustle-notifications.php:553
+#: inc/class-hustle-notifications.php:587
 msgid "%1$s, it appears you have an active WPMU DEV membership but haven't upgraded %2$s to the pro version. You won't lose an any settings upgrading, go for it!"
 msgstr ""
 
 #. translators: 1. user's name 2. Plugin name
-#: inc/class-hustle-notifications.php:586
+#: inc/class-hustle-notifications.php:620
 msgid "Hey %1$s, nice work on updating the %2$s! However, you need to migrate the data of your existing modules such as tracking data and email list manually."
 msgstr ""
 
 #. translators: user's name
-#: inc/class-hustle-notifications.php:610
+#: inc/class-hustle-notifications.php:644
 msgid "Hey %s, we have improved Hustle’s front-end code in this update, which included modifying some CSS classes. Any custom CSS you were using may have been affected. We recommend reviewing the modules (which were using custom CSS) to ensure they don't need any adjustments."
 msgstr ""
 
 #. translators: 1. user's name, 2. opening 'a' tag to sendgrid link, 3. closing 'a' tag, 4. opening 'b' tag, 5. closing 'b' tag
-#: inc/class-hustle-notifications.php:646
+#: inc/class-hustle-notifications.php:680
 msgid "Hey %1$s, we have updated our %4$sSendGrid%5$s integration to support the %2$snew Marketing Campaigns%3$s. You need to review your existing SendGrid integration(s) and select the Marketing Campaigns version (new or legacy) you are using to avoid failed API calls."
 msgstr ""
 
-#: inc/class-hustle-notifications.php:654
+#: inc/class-hustle-notifications.php:688
 msgid "Review Integrations"
 msgstr ""
 
-#: inc/class-hustle-notifications.php:731
+#: inc/class-hustle-notifications.php:765
 msgid "Re-authorize"
 msgstr ""
 
 #. translators: 1. opening 'a' tag, 2. closing 'a' tag
-#: inc/class-hustle-notifications.php:809
+#: inc/class-hustle-notifications.php:843
 msgid "One or more of your Social Sharing modules has Facebook active without a Facebook App ID. %1$sProvide your App ID%2$s to ensure the Facebook Share Dialog works correctly."
 msgstr ""
 
 #. translators: Plugin name
-#: inc/class-hustle-notifications.php:885
+#: inc/class-hustle-notifications.php:919
 msgid "%s - Module visibility behaviour update"
 msgstr ""
 
 #. translators: 1. Plugin name 2. 4.1 version pro or free
-#: inc/class-hustle-notifications.php:890
+#: inc/class-hustle-notifications.php:924
 msgid "%1$s %2$s fixes a visibility bug which may affect the visibility behavior of your popups and other modules. Please review the visibility conditions of each of your modules to ensure they will appear as you expect."
 msgstr ""
 
-#: inc/class-hustle-notifications.php:894
+#: inc/class-hustle-notifications.php:928
 msgid "Check conditions"
 msgstr ""
 
@@ -1209,6 +1209,10 @@ msgstr ""
 msgid "Failed"
 msgstr ""
 
+#: inc/hustle-modules-common-admin-ajax.php:1055, inc/opt-in-utils.php:178, inc/opt-in-utils.php:386
+msgid "Invalid request, you are not allowed to make this request"
+msgstr ""
+
 #. translators: Plugin name
 #: inc/hustle-providers-admin.php:24
 msgid "%s Integrations"
@@ -1473,10 +1477,6 @@ msgstr ""
 
 #: inc/opt-in-geo.php:316
 msgid "Local IP Lookup Table"
-msgstr ""
-
-#: inc/opt-in-utils.php:178, inc/opt-in-utils.php:386
-msgid "Invalid request, you are not allowed to make this request"
 msgstr ""
 
 #. translators: required field name

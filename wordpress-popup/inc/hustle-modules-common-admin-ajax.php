@@ -983,50 +983,98 @@ if ( ! class_exists( 'Hustle_Modules_Common_Admin_Ajax' ) ) :
 
 		/**
 		 * Get posts/pages/tags/categories for visibility options via ajax.
-		 * Finds and repares select2 options.
+		 * Finds and prepares select2 options.
 		 *
-		 * @global type $wpdb
+		 * @global wpdb $wpdb
 		 * @since 3.0.7
 		 */
 		public function get_new_condition_ids() {
+			Opt_In_Utils::validate_ajax_call( 'hustle_condition_ids' );
+			$this->is_user_allowed_condition_search();
+
 			global $wpdb;
 
 			$post_type = filter_input( INPUT_POST, 'postType', FILTER_SANITIZE_SPECIAL_CHARS );
-			$search    = filter_input( INPUT_POST, 'search' );
+			$search    = filter_input( INPUT_POST, 'search', FILTER_UNSAFE_RAW );
 			$result    = array();
 			$limit     = 30;
 
-			if ( ! empty( $post_type ) ) {
-				if ( in_array( $post_type, array( 'tag', 'category', 'wc_category', 'wc_tag' ), true ) ) {
-					$args = array(
-						'hide_empty' => false,
-						'number'     => $limit,
-					);
-					if ( $search ) {
-						$args['search'] = $search;
-					}
-					if ( 'tag' === $post_type ) {
-						$args['taxonomy'] = 'post_tag';
-					} elseif ( 'wc_category' === $post_type ) {
-						$args['taxonomy'] = 'product_cat';
-					} elseif ( 'wc_tag' === $post_type ) {
-						$args['taxonomy'] = 'product_tag';
-					}
-					$result = array_map( array( 'Hustle_Module_Page_Abstract', 'terms_to_select2_data' ), get_categories( $args ) );
-				} else {
-					global $wpdb;
-					$result = $wpdb->get_results( // phpcs:ignore
-						$wpdb->prepare(
-							"SELECT ID as id, post_title as text FROM {$wpdb->posts} "
-							. "WHERE post_type = %s AND post_status = 'publish' AND post_title LIKE %s LIMIT " . intval( $limit ),
-							$post_type,
-							'%' . $search . '%'
-						)
-					);
+			if ( ! is_string( $search ) ) {
+				$search = '';
+			}
+
+			if ( empty( $post_type ) || ! $this->is_allowed_condition_post_type( $post_type ) ) {
+				wp_send_json_success( $result );
+			}
+
+			if ( in_array( $post_type, array( 'tag', 'category', 'wc_category', 'wc_tag' ), true ) ) {
+				$args = array(
+					'hide_empty' => false,
+					'number'     => $limit,
+				);
+				if ( '' !== $search ) {
+					$args['search'] = $search;
 				}
+				if ( 'tag' === $post_type ) {
+					$args['taxonomy'] = 'post_tag';
+				} elseif ( 'wc_category' === $post_type ) {
+					$args['taxonomy'] = 'product_cat';
+				} elseif ( 'wc_tag' === $post_type ) {
+					$args['taxonomy'] = 'product_tag';
+				}
+				$result = array_map( array( 'Hustle_Module_Page_Abstract', 'terms_to_select2_data' ), get_categories( $args ) );
+			} else {
+				$like   = '%' . $wpdb->esc_like( $search ) . '%';
+				$result = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+					$wpdb->prepare(
+						"SELECT ID as id, post_title as text FROM {$wpdb->posts} "
+						. "WHERE post_type = %s AND post_status = 'publish' AND post_title LIKE %s LIMIT %d",
+						$post_type,
+						$like,
+						$limit
+					)
+				);
 			}
 
 			wp_send_json_success( $result );
+		}
+
+		/**
+		 * Whether the current user may search visibility-condition options.
+		 */
+		private function is_user_allowed_condition_search() {
+			if ( Opt_In_Utils::is_user_allowed( 'hustle_edit_module' ) ) {
+				return;
+			}
+
+			$module_id = filter_input( INPUT_POST, 'module_id', FILTER_VALIDATE_INT );
+			if ( ! empty( $module_id ) && Opt_In_Utils::is_user_allowed( 'hustle_edit_module', $module_id ) ) {
+				return;
+			}
+
+			wp_send_json_error( esc_html__( 'Invalid request, you are not allowed to make this request', 'hustle' ) );
+		}
+
+		/**
+		 * Post types and taxonomy aliases the visibility wizard can search.
+		 *
+		 * @param string $post_type Requested post-type or taxonomy alias.
+		 *
+		 * @return bool
+		 */
+		private function is_allowed_condition_post_type( $post_type ) {
+			$taxonomy_aliases = array( 'tag', 'category', 'wc_category', 'wc_tag' );
+			if ( in_array( $post_type, $taxonomy_aliases, true ) ) {
+				return true;
+			}
+
+			if ( in_array( $post_type, array( 'post', 'page' ), true ) ) {
+				return true;
+			}
+
+			$public_cpts = Opt_In_Utils::get_post_types();
+
+			return isset( $public_cpts[ $post_type ] );
 		}
 	}
 

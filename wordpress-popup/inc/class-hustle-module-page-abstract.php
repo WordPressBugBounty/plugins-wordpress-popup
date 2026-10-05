@@ -578,6 +578,8 @@ abstract class Hustle_Module_Page_Abstract extends Hustle_Admin_Page_Abstract {
 			);
 
 			$current_array['single_module_action_nonce'] = wp_create_nonce( 'hustle_single_action' );
+			// Nonce for the visibility-conditions search. Localized on the wizard only.
+			$current_array['condition_ids_nonce'] = wp_create_nonce( 'hustle_condition_ids' );
 
 			$current_array['messages'] = array_merge( $current_array['messages'], $messages );
 

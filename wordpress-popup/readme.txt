@@ -1,6 +1,6 @@
 === Hustle - Email Marketing, Lead Generation, Optins, Popups ===
 Plugin Name: Hustle - Email Marketing, Lead Generation, Opt-ins, Popups
-Version: 7.8.14.2
+Version: 7.8.14.3
 Author: WPMU DEV
 Author URI: https://wpmudev.com/
 Contributors: WPMUDEV
@@ -8,7 +8,7 @@ Tags: marketing, popup, optin, newsletter, subscription form, email, advertise, 
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 7.8.14.2
+Stable tag: 7.8.14.3
 
 Setup email optin forms, popups, newsletter forms & subscription forms to generate email leads with the best marketing popup builder
 
@@ -189,6 +189,11 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 
 == Changelog ==
 
+= 7.8.14.3 ( 2026-10-05 )
+
+- Fix: Security improvements
+
+
 = 7.8.14.2 ( 2026-08-31 )
 
 - Fix: Security improvements (Credit: Jakub Herman)
@@ -196,7 +201,7 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 
 = 7.8.14.1 ( 2026-07-08 )
 
-Fix: Facebook Social Sharing module displaying an error notice on mobile devices.
+- Fix: Facebook Social Sharing module displaying an error notice on mobile devices.
 
 
 = 7.8.14 ( 2026-06-24 )
