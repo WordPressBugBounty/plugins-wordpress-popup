@@ -178,7 +178,7 @@ class Hustle_Module_Renderer extends Hustle_Renderer_Abstract {
 			esc_attr( $custom_classes ),
 			$module_data,
 			$inline_style,
-			$aria_label,
+			esc_attr( $aria_label ),
 		);
 
 		return $html;
@@ -475,8 +475,7 @@ class Hustle_Module_Renderer extends Hustle_Renderer_Abstract {
 
 		$extra_class = 'cta_2' === $cta_type ? 'hustle-last-button' : '';
 		$class       = 'hustle-cta-close hustle-button-close ' . $extra_class;
-		$data        = '';
-		$label       = $this->input_sanitize( $label );
+		$label       = $this->input_sanitize( stripcslashes( $label ) );
 
 		if ( 'close' !== $target ) {
 			$data  = sprintf( 'href="%s" target="_%s"', esc_url( $url ), esc_attr( $target ) );
@@ -494,11 +493,11 @@ class Hustle_Module_Renderer extends Hustle_Renderer_Abstract {
 		 * @param $is_second Whether it's the CTA #2.
 		 * @param $target The target.
 		 */
-		$class     = apply_filters( 'hustle_cta_extra_classes', $class, $cta_type, $target );
-		$html      = '';
-		$html     .= sprintf( '<a class="hustle-button hustle-button-cta %1$s" %2$s %3$s>', esc_attr( $class ), $data, 'data-cta-type="' . esc_attr( $cta_type ) . '"' );
-			$html .= stripcslashes( $label );
-		$html     .= '</a>';
+		$class = apply_filters( 'hustle_cta_extra_classes', $class, $cta_type, $target );
+		$html  = '';
+		$html  .= sprintf( '<a class="hustle-button hustle-button-cta %1$s" %2$s %3$s>', esc_attr( $class ), $data, 'data-cta-type="' . esc_attr( $cta_type ) . '"' );
+		$html  .= $label;
+		$html  .= '</a>';
 
 		/**
 		 * Filter the markup each CTA.
@@ -1954,7 +1953,7 @@ class Hustle_Module_Renderer extends Hustle_Renderer_Abstract {
 	 *
 	 * @since 4.2.1
 	 *
-	 * @param object $content Contet.
+	 * @param string $content Content to sanitize.
 	 * @return string
 	 */
 	public function input_sanitize( $content ) {

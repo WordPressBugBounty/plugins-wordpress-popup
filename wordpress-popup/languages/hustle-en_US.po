@@ -1,12 +1,12 @@
-# Copyright (C) 2026 Hustle 7.8.14.3
-# This file is distributed under the same license as the Hustle 7.8.14.3 package.
+# Copyright (C) 2026 Hustle 7.8.14.4
+# This file is distributed under the same license as the Hustle 7.8.14.4 package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Hustle 7.8.14.3\n"
+"Project-Id-Version: Hustle 7.8.14.4\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-01 11:07+0000\n"
+"POT-Creation-Date: 2026-10-21 06:34+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -1311,7 +1311,7 @@ msgstr ""
 msgid "Provider with the slug %s does not have a valid _version property."
 msgstr ""
 
-#: inc/hustle-providers.php:319, inc/hustle-providers.php:406, inc/provider/class-hustle-provider-admin-ajax.php:195, inc/provider/class-hustle-provider-admin-ajax.php:309, inc/provider/class-hustle-provider-admin-ajax.php:364
+#: inc/hustle-providers.php:319, inc/hustle-providers.php:406, inc/provider/class-hustle-provider-admin-ajax.php:202, inc/provider/class-hustle-provider-admin-ajax.php:317, inc/provider/class-hustle-provider-admin-ajax.php:374
 msgid "Provider not found"
 msgstr ""
 
@@ -1480,7 +1480,7 @@ msgid "Local IP Lookup Table"
 msgstr ""
 
 #. translators: required field name
-#: inc/opt-in-utils.php:441, inc/provider/class-hustle-provider-admin-ajax.php:810
+#: inc/opt-in-utils.php:441, inc/provider/class-hustle-provider-admin-ajax.php:829
 msgid "Field %s is required."
 msgstr ""
 
@@ -2862,7 +2862,7 @@ msgstr ""
 msgid "Invalid module ID!"
 msgstr ""
 
-#: inc/front/hustle-module-front-ajax.php:129, inc/front/hustle-module-front-ajax.php:1225, inc/front/hustle-module-front-ajax.php:1272, inc/provider/class-hustle-provider-admin-ajax.php:498, inc/provider/class-hustle-provider-admin-ajax.php:717
+#: inc/front/hustle-module-front-ajax.php:129, inc/front/hustle-module-front-ajax.php:1225, inc/front/hustle-module-front-ajax.php:1272, inc/provider/class-hustle-provider-admin-ajax.php:511, inc/provider/class-hustle-provider-admin-ajax.php:736
 msgid "Invalid module!"
 msgstr ""
 
@@ -2934,19 +2934,19 @@ msgstr ""
 msgid "popup"
 msgstr ""
 
-#: inc/front/hustle-module-renderer.php:1729, inc/metas/class-hustle-meta-base-emails.php:109, views/admin/commons/sui-wizard/tab-emails/form-fields.php:47, views/admin/commons/sui-wizard/tab-appearance/rows/custom-css.php:54
+#: inc/front/hustle-module-renderer.php:1728, inc/metas/class-hustle-meta-base-emails.php:109, views/admin/commons/sui-wizard/tab-emails/form-fields.php:47, views/admin/commons/sui-wizard/tab-appearance/rows/custom-css.php:54
 msgid "Submit"
 msgstr ""
 
-#: inc/front/hustle-module-renderer.php:1730
+#: inc/front/hustle-module-renderer.php:1729
 msgid "Form is being submitted, please wait a bit."
 msgstr ""
 
-#: inc/front/hustle-module-renderer.php:1987, views/general/unsubscribe-form.php:17
+#: inc/front/hustle-module-renderer.php:1986, views/general/unsubscribe-form.php:17
 msgid "There was an error submitting the form"
 msgstr ""
 
-#: inc/front/hustle-module-renderer.php:2014
+#: inc/front/hustle-module-renderer.php:2013
 msgid "Never see this message again"
 msgstr ""
 
@@ -3423,44 +3423,44 @@ msgstr ""
 msgid "Addon Deactivated"
 msgstr ""
 
-#: inc/provider/class-hustle-provider-admin-ajax.php:200
+#: inc/provider/class-hustle-provider-admin-ajax.php:207
 msgid "Settings class not found"
 msgstr ""
 
-#: inc/provider/class-hustle-provider-admin-ajax.php:291, inc/provider/class-hustle-provider-admin-ajax.php:350
+#: inc/provider/class-hustle-provider-admin-ajax.php:299, inc/provider/class-hustle-provider-admin-ajax.php:358
 msgid "Please check the required fields."
 msgstr ""
 
-#: inc/provider/class-hustle-provider-admin-ajax.php:315
+#: inc/provider/class-hustle-provider-admin-ajax.php:323
 msgid "This provider does not have settings available"
 msgstr ""
 
-#: inc/provider/class-hustle-provider-admin-ajax.php:370
+#: inc/provider/class-hustle-provider-admin-ajax.php:380
 msgid "This provider does not have form settings available"
 msgstr ""
 
-#: inc/provider/class-hustle-provider-admin-ajax.php:415
+#: inc/provider/class-hustle-provider-admin-ajax.php:427
 msgid "Addon not found"
 msgstr ""
 
-#: inc/provider/class-hustle-provider-admin-ajax.php:419
+#: inc/provider/class-hustle-provider-admin-ajax.php:431
 msgid "integration not found"
 msgstr ""
 
 #. translators: provider title
-#: inc/provider/class-hustle-provider-admin-ajax.php:464
+#: inc/provider/class-hustle-provider-admin-ajax.php:476
 msgid "Failed to disconnect %1$s from this form"
 msgstr ""
 
-#: inc/provider/class-hustle-provider-admin-ajax.php:468
+#: inc/provider/class-hustle-provider-admin-ajax.php:480
 msgid "Failed to disconnected from this form"
 msgstr ""
 
-#: inc/provider/class-hustle-provider-admin-ajax.php:452
+#: inc/provider/class-hustle-provider-admin-ajax.php:464
 msgid "Successfully disconnected %s from this form"
 msgstr ""
 
-#: inc/provider/class-hustle-provider-admin-ajax.php:456
+#: inc/provider/class-hustle-provider-admin-ajax.php:468
 msgid "successfully disconnected from this form"
 msgstr ""
 

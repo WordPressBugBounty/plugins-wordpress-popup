@@ -164,6 +164,7 @@ class Hustle_Provider_Admin_Ajax {
 	 */
 	public function get_addons() {
 		$this->validate_ajax();
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_integrations' );
 
 		$providers          = Hustle_Provider_Utils::get_registered_addons_grouped_by_connected();
 		$connected_html     = $this->renderer->render( 'admin/integrations/page-table-connected', array( 'providers' => $providers['connected'] ), true );
@@ -188,6 +189,12 @@ class Hustle_Provider_Admin_Ajax {
 		$module_id = filter_input( INPUT_POST, 'id', FILTER_VALIDATE_INT );
 		$slug      = filter_input( INPUT_POST, 'slug', FILTER_SANITIZE_SPECIAL_CHARS );
 		$type      = filter_input( INPUT_POST, 'type', FILTER_SANITIZE_SPECIAL_CHARS );
+
+		if ( ! empty( $module_id ) ) {
+			Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_module', $module_id );
+		} else {
+			Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_integrations' );
+		}
 
 		$provider = Hustle_Provider_Utils::get_provider_by_slug( $slug );
 
@@ -236,6 +243,7 @@ class Hustle_Provider_Admin_Ajax {
 
 		$sanitized_data     = Opt_In_Utils::validate_and_sanitize_fields( $post_data, array( 'moduleId' => 'moduleId' ) );
 		$module_id          = isset( $sanitized_data['moduleId'] ) ? $sanitized_data['moduleId'] : '';
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_module', $module_id );
 		$providers          = Hustle_Provider_Utils::get_registered_addons_grouped_by_form_connected( $module_id );
 		$connected_html     = $this->renderer->render(
 			'admin/integrations/wizard-table-connected',
@@ -358,6 +366,8 @@ class Hustle_Provider_Admin_Ajax {
 		$current_step = (int) $sanitized_post_data['current_step'];
 		$module_id    = $sanitized_post_data['module_id'];
 
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_module', $module_id );
+
 		$provider = Hustle_Provider_Utils::get_provider_by_slug( $slug );
 
 		if ( ! $provider ) {
@@ -406,6 +416,8 @@ class Hustle_Provider_Admin_Ajax {
 		$sanitized_data = Opt_In_Utils::validate_and_sanitize_fields( $_POST['data'], array( 'slug', 'module_id' ) );// phpcs:ignore
 		$slug           = $sanitized_data['slug'];
 		$module_id      = $sanitized_data['module_id'];
+
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_module', $module_id );
 
 		$provider       = Hustle_Provider_Utils::get_provider_by_slug( $slug );
 		$provider_title = $provider->get_title();
@@ -482,6 +494,7 @@ class Hustle_Provider_Admin_Ajax {
 		$this->validate_ajax();
 
 		$id     = filter_input( INPUT_POST, 'id', FILTER_VALIDATE_INT );
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_module', $id );
 		$module = Hustle_Module_Model::new_instance( $id );
 
 		if ( 0 < $id && ! is_wp_error( $module ) ) {
@@ -508,6 +521,7 @@ class Hustle_Provider_Admin_Ajax {
 	 */
 	public function migrate_aweber() {
 		$this->validate_ajax();
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_integrations' );
 
 		if ( isset( $_POST['data'] ) && is_array( $_POST['data'] ) ) {// phpcs:ignore
 			$post_data = filter_input( INPUT_POST, 'data', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
@@ -532,6 +546,7 @@ class Hustle_Provider_Admin_Ajax {
 	 */
 	public function migrate_constantcontact() {
 		$this->validate_ajax();
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_integrations' );
 
 		// Check if site connected to Hub.
 		if ( Opt_In_Utils::get_hub_api_key() ) {
@@ -576,6 +591,7 @@ class Hustle_Provider_Admin_Ajax {
 	public function migrate_infusionsoft() {
 		// Validate the AJAX request.
 		$this->validate_ajax();
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_integrations' );
 
 		if ( isset( $_POST['data'] ) && is_array( $_POST['data'] ) ) {// phpcs:ignore
 			$post_data = filter_input( INPUT_POST, 'data', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
@@ -609,6 +625,7 @@ class Hustle_Provider_Admin_Ajax {
 	 */
 	public function migrate_convertkit() {
 		$this->validate_ajax();
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_integrations' );
 
 		if ( isset( $_POST['data'] ) && is_array( $_POST['data'] ) ) {// phpcs:ignore
 			$post_data = filter_input( INPUT_POST, 'data', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
@@ -651,6 +668,7 @@ class Hustle_Provider_Admin_Ajax {
 	 */
 	public function migrate_hubspot() {
 		$this->validate_ajax();
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_integrations' );
 
 		if ( isset( $_POST['data'] ) && is_array( $_POST['data'] ) ) {// phpcs:ignore
 			$post_data = filter_input( INPUT_POST, 'data', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
@@ -684,6 +702,7 @@ class Hustle_Provider_Admin_Ajax {
 	 */
 	public function is_on_module() {
 		$this->validate_ajax();
+		Opt_In_Utils::is_user_allowed_ajax( 'hustle_edit_integrations' );
 
 		$data = Opt_In_Utils::validate_and_sanitize_fields( $_POST['data'], array( 'slug' ) );// phpcs:ignore
 		$slug = $data['slug'];
